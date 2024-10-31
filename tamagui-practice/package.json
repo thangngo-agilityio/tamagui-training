@@ -11,8 +11,11 @@
   "dependencies": {
     "@tamagui/config": "^1.116.11",
     "@tamagui/core": "^1.116.11",
+    "@tamagui/font-inter": "^1.116.12",
     "@tamagui/next-plugin": "^1.116.11",
     "@tamagui/next-theme": "^1.116.11",
+    "@tamagui/react-native-media-driver": "^1.116.12",
+    "@tamagui/shorthands": "^1.116.12",
     "next": "15.0.2",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
