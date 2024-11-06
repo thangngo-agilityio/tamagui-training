@@ -1,22 +1,17 @@
-import { vitePlugin as remix } from '@remix-run/dev'
-import { defineConfig } from 'vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
-import { tamaguiPlugin } from '@tamagui/vite-plugin'
+import react from "@vitejs/plugin-react";
+import { tamaguiPlugin } from "@tamagui/vite-plugin";
 
-export default defineConfig({
+export default {
   plugins: [
-    remix({
-      future: {
-        v3_fetcherPersist: true,
-        v3_relativeSplatPath: true,
-        v3_throwAbortReason: true,
-      },
-    }),
-    tsconfigPaths(),
+    react(),
     tamaguiPlugin({
-      config: './tamagui.config',
+      // points to your tamagui config file
+      config: "src/tamagui.config.ts",
+      // points to any linked packages or node_modules
+      // that have tamagui components to optimize
+      components: ["tamagui"],
+      // turns on the optimizing compiler
       optimize: true,
-      outputCSS: './app/tamagui.css',
     }),
-  ],
-})
+  ].filter(Boolean),
+};
