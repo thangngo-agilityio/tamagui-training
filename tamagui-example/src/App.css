@@ -40,3 +40,35 @@
 .read-the-docs {
   color: #888;
 }
+
+@font-face {
+  font-family: "Lufga-Regular";
+  src: url("/assets/fonts/LufgaRegular.ttf") format("truetype");
+  font-style: medium;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lufga-Bold";
+  src: url("/assets/fonts/LufgaBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lufga-Semibold";
+  src: url("/assets/fonts/LufgaSemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lufga-Extrabold";
+  src: url("/assets/fonts/LufgaExtraBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}

@@ -4,7 +4,7 @@ export const breakpoints = {
   md: 768,
   lg: 992,
   xl: 1200,
-  "2xl": 1400,
+  '2xl': 1400,
 };
 
 export const media = {
@@ -29,5 +29,5 @@ export const media = {
   // XX-Large devices (larger desktops, 1400px and up)
   gtXxl: { minWidth: 1400 },
 
-  landscape: { orientation: "landscape" },
+  landscape: { orientation: 'landscape' },
 };

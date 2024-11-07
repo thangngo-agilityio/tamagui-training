@@ -1,25 +1,28 @@
 import { createTamagui, createFont } from "@tamagui/web";
-
-const body = createFont({
-  family: "Inter",
-  size: {
-    1: 12,
-    2: 14,
-    3: 16,
-    4: 20,
-    5: 24,
-    6: 32,
-    7: 48,
-    8: 64,
-  },
-});
+import { createMedia } from "@tamagui/react-native-media-driver";
+import { fontConfig, fonts, media } from "./themes";
 
 const customConfig = {
   settings: {
     defaultFont: "body",
   },
   fonts: {
-    body,
+    body: createFont({
+      family: fonts.body,
+      ...fontConfig,
+    }),
+    subBody: createFont({
+      family: fonts.subBody,
+      ...fontConfig,
+    }),
+    heading: createFont({
+      family: fonts.heading,
+      ...fontConfig,
+    }),
+    subHeading: createFont({
+      family: fonts.subheading,
+      ...fontConfig,
+    }),
   },
   themes: {
     light: {
@@ -31,30 +34,7 @@ const customConfig = {
       color: "#d83bd2",
     },
   },
-  media: {
-    // X-Small devices (portrait phones, less than 576px)
-    // No media query for `xs` since this is the default
-    gtXs: { minWidth: 414 },
-
-    // Small devices (landscape phones, 576px and up)
-    gtSm: { minWidth: 576 },
-
-    // Medium devices (tablets, 768px and up)
-    md: { maxWidth: 768 - 1 },
-    gtMd: { minWidth: 768 },
-
-    // Large devices (desktops, 992px and up)
-    lg: { maxWidth: 992 - 1 },
-    gtLg: { minWidth: 992 },
-
-    // X-Large devices (large desktops, 1200px and up)
-    gtXl: { minWidth: 1200 },
-
-    // XX-Large devices (larger desktops, 1400px and up)
-    gtXxl: { minWidth: 1400 },
-
-    landscape: { orientation: "landscape" },
-  },
+  media: createMedia(media),
   tokens: {
     color: {
       primary: "#bada55",
