@@ -1,10 +1,12 @@
-import { createTamagui, createFont } from "@tamagui/web";
-import { createMedia } from "@tamagui/react-native-media-driver";
-import { fontConfig, fonts, media } from "./themes";
+import { createTamagui, createFont, createTokens } from '@tamagui/web';
+import { createMedia } from '@tamagui/react-native-media-driver';
+import { fontConfig, fonts, media } from './themes';
+import { radius, size, space, zIndex } from './themes/metric';
+import { color } from './themes/color';
 
 const customConfig = {
   settings: {
-    defaultFont: "body",
+    defaultFont: 'body',
   },
   fonts: {
     body: createFont({
@@ -26,41 +28,16 @@ const customConfig = {
   },
   themes: {
     light: {
-      background: "#fecc1b",
-      color: "#131313",
+      background: '#fecc1b',
+      color: '#131313',
     },
     dark: {
-      background: "#121212",
-      color: "#d83bd2",
+      background: '#121212',
+      color: '#d83bd2',
     },
   },
   media: createMedia(media),
-  tokens: {
-    color: {
-      primary: "#bada55",
-      secondary: "#ffa500",
-    },
-    size: {
-      small: 8,
-      medium: 16,
-      large: 32,
-    },
-    space: {
-      small: 4,
-      medium: 8,
-      large: 16,
-    },
-    radius: {
-      small: 2,
-      medium: 4,
-      large: 8,
-    },
-    zIndex: {
-      low: 1,
-      medium: 10,
-      high: 100,
-    },
-  },
+  tokens: createTokens({ radius, size, space, zIndex, color }),
 };
 
 const tamaguiConfig = createTamagui(customConfig);
