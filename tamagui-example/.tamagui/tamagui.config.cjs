@@ -97,6 +97,35 @@ var spacing = {
   "80": 320,
   "96": 384
 };
+var radius = {
+  none: 0,
+  xs: 2,
+  sm: 4,
+  md: 6,
+  lg: 8,
+  xl: 12,
+  true: 5,
+  "2xl": 16,
+  "3xl": 24,
+  "4xl": 26,
+  full: 9999,
+  circle: "50%"
+};
+var size = {
+  small: 8,
+  medium: 16,
+  large: 32
+};
+var space = {
+  small: 4,
+  medium: 8,
+  large: 16
+};
+var zIndex = {
+  low: 1,
+  medium: 10,
+  high: 100
+};
 
 // src/themes/fontConfig.ts
 var fonts = {
@@ -121,6 +150,12 @@ var fontConfig = {
     true: 16
   },
   lineHeight
+};
+
+// src/themes/color.ts
+var color = {
+  primary: "#bada55",
+  secondary: "#ffa500"
 };
 
 // src/tamagui.config.ts
@@ -157,32 +192,7 @@ var customConfig = {
     }
   },
   media: createMedia(media),
-  tokens: {
-    color: {
-      primary: "#bada55",
-      secondary: "#ffa500"
-    },
-    size: {
-      small: 8,
-      medium: 16,
-      large: 32
-    },
-    space: {
-      small: 4,
-      medium: 8,
-      large: 16
-    },
-    radius: {
-      small: 2,
-      medium: 4,
-      large: 8
-    },
-    zIndex: {
-      low: 1,
-      medium: 10,
-      high: 100
-    }
-  }
+  tokens: (0, import_web2.createTokens)({ radius, size, space, zIndex, color })
 };
 var tamaguiConfig = (0, import_web2.createTamagui)(customConfig);
 var tamagui_config_default = tamaguiConfig;
