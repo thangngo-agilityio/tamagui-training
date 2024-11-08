@@ -34655,14 +34655,17 @@
     },
     "themes": {
       "light": {
-        "background": "#fecc1b",
-        "color": "#131313",
         "id": "light"
       },
       "dark": {
-        "background": "#121212",
-        "color": "#d83bd2",
         "id": "dark"
+      },
+      "light_web": {
+        "backgroundBody": "#FFF",
+        "textDefault": "rgba(33, 56, 66, 60%)",
+        "errorColor": "#EB5E55",
+        "buttonPrimary": "#284F49",
+        "id": "light_web"
       }
     },
     "tokens": {
@@ -34822,19 +34825,285 @@
         }
       },
       "color": {
-        "primary": {
+        "white1": {
           "isVar": true,
-          "key": "$primary",
-          "name": "c-primary",
-          "val": "#bada55",
-          "variable": "var(--c-primary)"
+          "key": "$white1",
+          "name": "c-white1",
+          "val": "#FFF",
+          "variable": "var(--c-white1)"
         },
-        "secondary": {
+        "white2": {
           "isVar": true,
-          "key": "$secondary",
-          "name": "c-secondary",
-          "val": "#ffa500",
-          "variable": "var(--c-secondary)"
+          "key": "$white2",
+          "name": "c-white2",
+          "val": "#FAFAFA",
+          "variable": "var(--c-white2)"
+        },
+        "white3": {
+          "isVar": true,
+          "key": "$white3",
+          "name": "c-white3",
+          "val": "#F0F0F0",
+          "variable": "var(--c-white3)"
+        },
+        "white4": {
+          "isVar": true,
+          "key": "$white4",
+          "name": "c-white4",
+          "val": "#F9F9F9",
+          "variable": "var(--c-white4)"
+        },
+        "white5": {
+          "isVar": true,
+          "key": "$white5",
+          "name": "c-white5",
+          "val": "#F0F0F5",
+          "variable": "var(--c-white5)"
+        },
+        "black1": {
+          "isVar": true,
+          "key": "$black1",
+          "name": "c-black1",
+          "val": "#181725",
+          "variable": "var(--c-black1)"
+        },
+        "black2": {
+          "isVar": true,
+          "key": "$black2",
+          "name": "c-black2",
+          "val": "#000000",
+          "variable": "var(--c-black2)"
+        },
+        "black3": {
+          "isVar": true,
+          "key": "$black3",
+          "name": "c-black3",
+          "val": "#121212",
+          "variable": "var(--c-black3)"
+        },
+        "black4": {
+          "isVar": true,
+          "key": "$black4",
+          "name": "c-black4",
+          "val": "rgba(0, 0 , 0, .6)",
+          "variable": "var(--c-black4)"
+        },
+        "grey1": {
+          "isVar": true,
+          "key": "$grey1",
+          "name": "c-grey1",
+          "val": "#3A3A3A",
+          "variable": "var(--c-grey1)"
+        },
+        "grey2": {
+          "isVar": true,
+          "key": "$grey2",
+          "name": "c-grey2",
+          "val": "#3A3335",
+          "variable": "var(--c-grey2)"
+        },
+        "grey3": {
+          "isVar": true,
+          "key": "$grey3",
+          "name": "c-grey3",
+          "val": "#808080",
+          "variable": "var(--c-grey3)"
+        },
+        "grey4": {
+          "isVar": true,
+          "key": "$grey4",
+          "name": "c-grey4",
+          "val": "#908E8E",
+          "variable": "var(--c-grey4)"
+        },
+        "grey5": {
+          "isVar": true,
+          "key": "$grey5",
+          "name": "c-grey5",
+          "val": "#898989",
+          "variable": "var(--c-grey5)"
+        },
+        "grey6": {
+          "isVar": true,
+          "key": "$grey6",
+          "name": "c-grey6",
+          "val": "#AAAAAA",
+          "variable": "var(--c-grey6)"
+        },
+        "grey7": {
+          "isVar": true,
+          "key": "$grey7",
+          "name": "c-grey7",
+          "val": "#7C7C7C",
+          "variable": "var(--c-grey7)"
+        },
+        "grey8": {
+          "isVar": true,
+          "key": "$grey8",
+          "name": "c-grey8",
+          "val": "#D4D6D4",
+          "variable": "var(--c-grey8)"
+        },
+        "grey9": {
+          "isVar": true,
+          "key": "$grey9",
+          "name": "c-grey9",
+          "val": "#F2F0E0",
+          "variable": "var(--c-grey9)"
+        },
+        "grey10": {
+          "isVar": true,
+          "key": "$grey10",
+          "name": "c-grey10",
+          "val": "#EFE5D5",
+          "variable": "var(--c-grey10)"
+        },
+        "grey11": {
+          "isVar": true,
+          "key": "$grey11",
+          "name": "c-grey11",
+          "val": "#EDE8E9",
+          "variable": "var(--c-grey11)"
+        },
+        "grey12": {
+          "isVar": true,
+          "key": "$grey12",
+          "name": "c-grey12",
+          "val": "#C4C4C4",
+          "variable": "var(--c-grey12)"
+        },
+        "grey13": {
+          "isVar": true,
+          "key": "$grey13",
+          "name": "c-grey13",
+          "val": "#C6D8D3",
+          "variable": "var(--c-grey13)"
+        },
+        "grey14": {
+          "isVar": true,
+          "key": "$grey14",
+          "name": "c-grey14",
+          "val": "#58514B",
+          "variable": "var(--c-grey14)"
+        },
+        "green1": {
+          "isVar": true,
+          "key": "$green1",
+          "name": "c-green1",
+          "val": "#284F49",
+          "variable": "var(--c-green1)"
+        },
+        "green2": {
+          "isVar": true,
+          "key": "$green2",
+          "name": "c-green2",
+          "val": "#A4EDA3",
+          "variable": "var(--c-green2)"
+        },
+        "green3": {
+          "isVar": true,
+          "key": "$green3",
+          "name": "c-green3",
+          "val": "#284F49",
+          "variable": "var(--c-green3)"
+        },
+        "green4": {
+          "isVar": true,
+          "key": "$green4",
+          "name": "c-green4",
+          "val": "#5D6544",
+          "variable": "var(--c-green4)"
+        },
+        "green5": {
+          "isVar": true,
+          "key": "$green5",
+          "name": "c-green5",
+          "val": "#B6C197",
+          "variable": "var(--c-green5)"
+        },
+        "green6": {
+          "isVar": true,
+          "key": "$green6",
+          "name": "c-green6",
+          "val": "#B5C096",
+          "variable": "var(--c-green6)"
+        },
+        "green7": {
+          "isVar": true,
+          "key": "$green7",
+          "name": "c-green7",
+          "val": "#4D533C",
+          "variable": "var(--c-green7)"
+        },
+        "green8": {
+          "isVar": true,
+          "key": "$green8",
+          "name": "c-green8",
+          "val": "#5B5E3E",
+          "variable": "var(--c-green8)"
+        },
+        "green9": {
+          "isVar": true,
+          "key": "$green9",
+          "name": "c-green9",
+          "val": "#444A34",
+          "variable": "var(--c-green9)"
+        },
+        "blue1": {
+          "isVar": true,
+          "key": "$blue1",
+          "name": "c-blue1",
+          "val": "#56CCF2",
+          "variable": "var(--c-blue1)"
+        },
+        "blue2": {
+          "isVar": true,
+          "key": "$blue2",
+          "name": "c-blue2",
+          "val": "rgba(33, 56, 66, 60%)",
+          "variable": "var(--c-blue2)"
+        },
+        "orange1": {
+          "isVar": true,
+          "key": "$orange1",
+          "name": "c-orange1",
+          "val": "#E68314",
+          "variable": "var(--c-orange1)"
+        },
+        "orange2": {
+          "isVar": true,
+          "key": "$orange2",
+          "name": "c-orange2",
+          "val": "#B5710D",
+          "variable": "var(--c-orange2)"
+        },
+        "red1": {
+          "isVar": true,
+          "key": "$red1",
+          "name": "c-red1",
+          "val": "#EB5E55",
+          "variable": "var(--c-red1)"
+        },
+        "red2": {
+          "isVar": true,
+          "key": "$red2",
+          "name": "c-red2",
+          "val": "#E53E3E",
+          "variable": "var(--c-red2)"
+        },
+        "red3": {
+          "isVar": true,
+          "key": "$red3",
+          "name": "c-red3",
+          "val": "#FF4747",
+          "variable": "var(--c-red3)"
+        },
+        "red4": {
+          "isVar": true,
+          "key": "$red4",
+          "name": "c-red4",
+          "val": "#9B1717",
+          "variable": "var(--c-red4)"
         }
       }
     },
@@ -34995,19 +35264,285 @@
         "val": 100,
         "variable": "var(--t-zIndex-high)"
       },
-      "$color.primary": {
+      "$color.white1": {
         "isVar": true,
-        "key": "$primary",
-        "name": "c-primary",
-        "val": "#bada55",
-        "variable": "var(--c-primary)"
+        "key": "$white1",
+        "name": "c-white1",
+        "val": "#FFF",
+        "variable": "var(--c-white1)"
       },
-      "$color.secondary": {
+      "$color.white2": {
         "isVar": true,
-        "key": "$secondary",
-        "name": "c-secondary",
-        "val": "#ffa500",
-        "variable": "var(--c-secondary)"
+        "key": "$white2",
+        "name": "c-white2",
+        "val": "#FAFAFA",
+        "variable": "var(--c-white2)"
+      },
+      "$color.white3": {
+        "isVar": true,
+        "key": "$white3",
+        "name": "c-white3",
+        "val": "#F0F0F0",
+        "variable": "var(--c-white3)"
+      },
+      "$color.white4": {
+        "isVar": true,
+        "key": "$white4",
+        "name": "c-white4",
+        "val": "#F9F9F9",
+        "variable": "var(--c-white4)"
+      },
+      "$color.white5": {
+        "isVar": true,
+        "key": "$white5",
+        "name": "c-white5",
+        "val": "#F0F0F5",
+        "variable": "var(--c-white5)"
+      },
+      "$color.black1": {
+        "isVar": true,
+        "key": "$black1",
+        "name": "c-black1",
+        "val": "#181725",
+        "variable": "var(--c-black1)"
+      },
+      "$color.black2": {
+        "isVar": true,
+        "key": "$black2",
+        "name": "c-black2",
+        "val": "#000000",
+        "variable": "var(--c-black2)"
+      },
+      "$color.black3": {
+        "isVar": true,
+        "key": "$black3",
+        "name": "c-black3",
+        "val": "#121212",
+        "variable": "var(--c-black3)"
+      },
+      "$color.black4": {
+        "isVar": true,
+        "key": "$black4",
+        "name": "c-black4",
+        "val": "rgba(0, 0 , 0, .6)",
+        "variable": "var(--c-black4)"
+      },
+      "$color.grey1": {
+        "isVar": true,
+        "key": "$grey1",
+        "name": "c-grey1",
+        "val": "#3A3A3A",
+        "variable": "var(--c-grey1)"
+      },
+      "$color.grey2": {
+        "isVar": true,
+        "key": "$grey2",
+        "name": "c-grey2",
+        "val": "#3A3335",
+        "variable": "var(--c-grey2)"
+      },
+      "$color.grey3": {
+        "isVar": true,
+        "key": "$grey3",
+        "name": "c-grey3",
+        "val": "#808080",
+        "variable": "var(--c-grey3)"
+      },
+      "$color.grey4": {
+        "isVar": true,
+        "key": "$grey4",
+        "name": "c-grey4",
+        "val": "#908E8E",
+        "variable": "var(--c-grey4)"
+      },
+      "$color.grey5": {
+        "isVar": true,
+        "key": "$grey5",
+        "name": "c-grey5",
+        "val": "#898989",
+        "variable": "var(--c-grey5)"
+      },
+      "$color.grey6": {
+        "isVar": true,
+        "key": "$grey6",
+        "name": "c-grey6",
+        "val": "#AAAAAA",
+        "variable": "var(--c-grey6)"
+      },
+      "$color.grey7": {
+        "isVar": true,
+        "key": "$grey7",
+        "name": "c-grey7",
+        "val": "#7C7C7C",
+        "variable": "var(--c-grey7)"
+      },
+      "$color.grey8": {
+        "isVar": true,
+        "key": "$grey8",
+        "name": "c-grey8",
+        "val": "#D4D6D4",
+        "variable": "var(--c-grey8)"
+      },
+      "$color.grey9": {
+        "isVar": true,
+        "key": "$grey9",
+        "name": "c-grey9",
+        "val": "#F2F0E0",
+        "variable": "var(--c-grey9)"
+      },
+      "$color.grey10": {
+        "isVar": true,
+        "key": "$grey10",
+        "name": "c-grey10",
+        "val": "#EFE5D5",
+        "variable": "var(--c-grey10)"
+      },
+      "$color.grey11": {
+        "isVar": true,
+        "key": "$grey11",
+        "name": "c-grey11",
+        "val": "#EDE8E9",
+        "variable": "var(--c-grey11)"
+      },
+      "$color.grey12": {
+        "isVar": true,
+        "key": "$grey12",
+        "name": "c-grey12",
+        "val": "#C4C4C4",
+        "variable": "var(--c-grey12)"
+      },
+      "$color.grey13": {
+        "isVar": true,
+        "key": "$grey13",
+        "name": "c-grey13",
+        "val": "#C6D8D3",
+        "variable": "var(--c-grey13)"
+      },
+      "$color.grey14": {
+        "isVar": true,
+        "key": "$grey14",
+        "name": "c-grey14",
+        "val": "#58514B",
+        "variable": "var(--c-grey14)"
+      },
+      "$color.green1": {
+        "isVar": true,
+        "key": "$green1",
+        "name": "c-green1",
+        "val": "#284F49",
+        "variable": "var(--c-green1)"
+      },
+      "$color.green2": {
+        "isVar": true,
+        "key": "$green2",
+        "name": "c-green2",
+        "val": "#A4EDA3",
+        "variable": "var(--c-green2)"
+      },
+      "$color.green3": {
+        "isVar": true,
+        "key": "$green3",
+        "name": "c-green3",
+        "val": "#284F49",
+        "variable": "var(--c-green3)"
+      },
+      "$color.green4": {
+        "isVar": true,
+        "key": "$green4",
+        "name": "c-green4",
+        "val": "#5D6544",
+        "variable": "var(--c-green4)"
+      },
+      "$color.green5": {
+        "isVar": true,
+        "key": "$green5",
+        "name": "c-green5",
+        "val": "#B6C197",
+        "variable": "var(--c-green5)"
+      },
+      "$color.green6": {
+        "isVar": true,
+        "key": "$green6",
+        "name": "c-green6",
+        "val": "#B5C096",
+        "variable": "var(--c-green6)"
+      },
+      "$color.green7": {
+        "isVar": true,
+        "key": "$green7",
+        "name": "c-green7",
+        "val": "#4D533C",
+        "variable": "var(--c-green7)"
+      },
+      "$color.green8": {
+        "isVar": true,
+        "key": "$green8",
+        "name": "c-green8",
+        "val": "#5B5E3E",
+        "variable": "var(--c-green8)"
+      },
+      "$color.green9": {
+        "isVar": true,
+        "key": "$green9",
+        "name": "c-green9",
+        "val": "#444A34",
+        "variable": "var(--c-green9)"
+      },
+      "$color.blue1": {
+        "isVar": true,
+        "key": "$blue1",
+        "name": "c-blue1",
+        "val": "#56CCF2",
+        "variable": "var(--c-blue1)"
+      },
+      "$color.blue2": {
+        "isVar": true,
+        "key": "$blue2",
+        "name": "c-blue2",
+        "val": "rgba(33, 56, 66, 60%)",
+        "variable": "var(--c-blue2)"
+      },
+      "$color.orange1": {
+        "isVar": true,
+        "key": "$orange1",
+        "name": "c-orange1",
+        "val": "#E68314",
+        "variable": "var(--c-orange1)"
+      },
+      "$color.orange2": {
+        "isVar": true,
+        "key": "$orange2",
+        "name": "c-orange2",
+        "val": "#B5710D",
+        "variable": "var(--c-orange2)"
+      },
+      "$color.red1": {
+        "isVar": true,
+        "key": "$red1",
+        "name": "c-red1",
+        "val": "#EB5E55",
+        "variable": "var(--c-red1)"
+      },
+      "$color.red2": {
+        "isVar": true,
+        "key": "$red2",
+        "name": "c-red2",
+        "val": "#E53E3E",
+        "variable": "var(--c-red2)"
+      },
+      "$color.red3": {
+        "isVar": true,
+        "key": "$red3",
+        "name": "c-red3",
+        "val": "#FF4747",
+        "variable": "var(--c-red3)"
+      },
+      "$color.red4": {
+        "isVar": true,
+        "key": "$red4",
+        "name": "c-red4",
+        "val": "#9B1717",
+        "variable": "var(--c-red4)"
       }
     },
     "defaultFontToken": "$body"

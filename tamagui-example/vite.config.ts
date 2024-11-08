@@ -15,7 +15,7 @@ export default defineConfig(() => {
     },
     build: {
       rollupOptions: {
-        external: ['react-native'],
+        // external: ['react-native'],
       },
     },
     optimizeDeps: {

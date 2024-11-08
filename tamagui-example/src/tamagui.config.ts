@@ -1,13 +1,13 @@
 import { createTamagui, createFont, createTokens } from '@tamagui/web';
 import { createMedia } from '@tamagui/react-native-media-driver';
-import { fontConfig, fonts, media } from './themes';
+import { colors, customThemes, fontConfig, fonts, media } from './themes';
 import { radius, size, space, zIndex } from './themes/metric';
-import { color } from './themes/color';
 
 const customConfig = {
   settings: {
     defaultFont: 'body',
   },
+  themes: customThemes,
   fonts: {
     body: createFont({
       family: fonts.body,
@@ -26,22 +26,20 @@ const customConfig = {
       ...fontConfig,
     }),
   },
-  themes: {
-    light: {
-      background: '#fecc1b',
-      color: '#131313',
-    },
-    dark: {
-      background: '#121212',
-      color: '#d83bd2',
-    },
-  },
   media: createMedia(media),
-  tokens: createTokens({ radius, size, space, zIndex, color }),
+  tokens: createTokens({ radius, size, space, zIndex, color: colors }),
 };
 
 const tamaguiConfig = createTamagui(customConfig);
 
 export type TamaguiConfig = typeof tamaguiConfig;
+
+declare module '@tamagui/core' {
+  interface TamaguiCustomConfig extends TamaguiConfig {
+    themes: {
+      light_web: typeof customThemes.light_web;
+    };
+  }
+}
 
 export default tamaguiConfig;

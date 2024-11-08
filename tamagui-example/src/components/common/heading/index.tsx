@@ -1,19 +1,13 @@
-import { Heading as HeadingBase, styled } from 'tamagui';
+import { styled, Text } from '@tamagui/core';
 
-export const Heading = styled(HeadingBase, {
+export const Heading = styled(Text, {
   name: 'Heading',
-  color: '$color',
+  color: '$textDefault',
 
   variants: {
     variant: {
       default: {
-        color: '$color',
-      },
-      reversal: {
-        color: '$reversalColor',
-      },
-      placeHolder: {
-        color: '$placeholderColor',
+        color: '$textDefault',
       },
       error: {
         color: '$errorColor',
