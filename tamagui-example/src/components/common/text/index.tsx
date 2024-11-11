@@ -1,8 +1,10 @@
-import { styled, Text } from '@tamagui/core';
+import { styled, Text as textBase } from "@tamagui/core";
 
-export const Heading = styled(Text, {
-  name: 'Heading',
-  color: '$textDefault',
+
+export const Text = styled(textBase, {
+  name: 'Text',
+  color: '$color',
+  overflow: 'hidden',
   textOverflow: 'ellipsis',
 
   variants: {
@@ -31,84 +33,87 @@ export const Heading = styled(Text, {
       septenary: {
         color: '$textSeptenary',
       },
-      product: {
-        color: '$textProduct',
+      productCard: {
+        color: '$textProductCard'
       },
-      orderSuccess: {
-        color: '$textOrderSuccess',
+      footer: {
+        color: '$textFooter'
       },
+      copyright: {
+        color: '$textCopyright'
+      }
     },
 
     size: {
       tiny: {
         fontSize: '$1',
-        lineHeight: 22,
+        lineHeight: 16,
       },
-
       extraSmall: {
         fontSize: '$2',
-        lineHeight: 24,
+        lineHeight: 20,
       },
 
       small: {
         fontSize: '$3',
-        lineHeight: 24,
-      },
-
-      middleLarge: {
-        fontSize: '$4',
-        lineHeight: 32,
+        lineHeight: 22,
       },
 
       medium: {
-        fontSize: '$5',
-        lineHeight: 28,
+        fontSize: '$4',
+        lineHeight: 24,
       },
 
       large: {
-        fontSize: '$6',
+        fontSize: '$4',
+        lineHeight: 28,
+      },
+
+      middleLarge: {
+        fontSize: '$5',
         lineHeight: 32,
       },
 
       extraLarge: {
+        fontSize: '$6',
+        lineHeight: 28,
+      },
+
+      specialLarge: {
         fontSize: '$7',
-        lineHeight: 40,
+        lineHeight: 24,
+      },
+
+      ultraLarge: {
+        fontSize: '$8',
+        lineHeight: 32,
       },
 
       superLarge: {
-        fontSize: '$8',
+        fontSize: '$9',
         lineHeight: 40,
       },
 
-      huge: {
-        fontSize: '$9',
-        lineHeight: 48,
-      },
-
-      extraHuge: {
+      megaLarge: {
         fontSize: '$10',
         lineHeight: 56,
       },
     },
 
     weight: {
+      normal: {
+        fontFamily: '$body',
+        fontWeight: 'normal',
+      },
       bold: {
-        fontWeight: 'bold',
         fontFamily: '$heading',
-      },
-      semiBold: {
-        fontWeight: 600,
-        fontFamily: '$semiHeading',
-      },
-      extraBold: {
-        fontWeight: 800,
-        fontFamily: '$extraHeading',
+        fontWeight: 'bold',
       },
     },
   } as const,
 
   defaultVariants: {
     size: 'medium',
-    weight: 'bold',
+    weight: 'normal',
   },
 });
