@@ -1,21 +1,43 @@
-import react from '@vitejs/plugin-react';
-import { tamaguiPlugin } from '@tamagui/vite-plugin';
+import react from '@vitejs/plugin-react-swc';
+import reactNativeWeb from 'vite-plugin-react-native-web';
 import { defineConfig } from 'vite';
 
 const extensions = ['.web.tsx', '.web.jsx', '.web.js', '.web.ts', '.tsx', '.ts', '.js'];
 
 export default defineConfig(() => {
   const config = {
+    plugins: [
+      react({
+        babel: {
+          plugins: [
+            [
+              '@babel/plugin-transform-react-jsx',
+              {
+                runtime: 'automatic',
+                importSource: 'nativewind',
+              },
+            ],
+          ],
+        },
+      }),
+      reactNativeWeb(),
+    ],
     define: {
       DEV: `${process.env.NODE_ENV === 'development' ? true : false}`,
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     },
     resolve: {
-      alias: [{ find: 'react-native', replacement: 'react-native-web' }],
+      extensions,
+      alias: [
+        { find: './runtimeConfig', replacement: './runtimeConfig.browser' },
+        // **@NOTE**: This is the most important piece, swapping **react-native** with **react-native-web**
+        { find: 'react-native', replacement: 'react-native-web' },
+        { find: 'react-native-svg', replacement: 'react-native-svg-web' },
+      ],
     },
     build: {
       rollupOptions: {
-        // external: ['react-native'],
+        external: ['react-native'],
       },
     },
     optimizeDeps: {
@@ -23,18 +45,10 @@ export default defineConfig(() => {
         resolveExtensions: extensions,
       },
     },
-    plugins: [
-      react(),
-      tamaguiPlugin({
-        // points to your tamagui config file
-        config: 'src/tamagui.config.ts',
-        // points to any linked packages or node_modules
-        // that have tamagui components to optimize
-        components: ['tamagui'],
-        // turns on the optimizing compiler
-        optimize: true,
-      }),
-    ].filter(Boolean),
+    loader: {
+      '.js': 'jsx',
+      '.ts': 'tsx',
+    },
   };
   return config;
 });

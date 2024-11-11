@@ -33,13 +33,12 @@ const greyPallet = {
 const greenPallet = {
   green1: '#284F49',
   green2: '#A4EDA3',
-  green3: '#284F49',
-  green4: '#5D6544',
-  green5: '#B6C197',
-  green6: '#B5C096',
-  green7: '#4D533C',
-  green8: '#5B5E3E',
-  green9: '#444A34',
+  green3: '#5D6544',
+  green4: '#B6C197',
+  green5: '#B5C096',
+  green6: '#4D533C',
+  green7: '#5B5E3E',
+  green8: '#444A34',
 };
 
 const bluePallet = {

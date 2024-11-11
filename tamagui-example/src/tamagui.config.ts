@@ -13,16 +13,16 @@ const customConfig = {
       family: fonts.body,
       ...fontConfig,
     }),
-    subBody: createFont({
-      family: fonts.subBody,
+    semiHeading: createFont({
+      family: fonts.semiHeading,
       ...fontConfig,
     }),
     heading: createFont({
       family: fonts.heading,
       ...fontConfig,
     }),
-    subHeading: createFont({
-      family: fonts.subheading,
+    extraHeading: createFont({
+      family: fonts.extraHeading,
       ...fontConfig,
     }),
   },

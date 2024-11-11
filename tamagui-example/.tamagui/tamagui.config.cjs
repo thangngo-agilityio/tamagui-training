@@ -62,52 +62,30 @@ var spacing = {
   px: 1,
   "0": 0,
   "0.5": 2,
-  "1": 4,
-  "1.5": 6,
-  "2": 8,
-  "2.5": 10,
-  "3": 12,
-  "3.5": 14,
+  "1": 10,
+  "2": 12,
+  "3": 14,
   "4": 16,
-  "4.5": 18,
-  "5": 20,
-  "5.5": 22,
-  "6": 24,
-  "6.5": 26,
-  "7": 28,
-  "7.5": 30,
-  "8": 32,
-  "7.75": 31,
-  "9": 36,
-  "10": 40,
-  "12": 48,
-  "13": 57,
-  "15": 60,
-  "16": 64,
-  "20": 80,
-  "22": 88,
-  "24": 96,
-  "30": 120,
-  "32": 128,
-  "40": 160,
-  "48": 192,
-  "56": 224,
-  "64": 256,
-  "72": 288,
-  "80": 320,
-  "96": 384
+  "5": 18,
+  "6": 20,
+  "7": 22,
+  "8": 24,
+  "9": 34,
+  "10": 36,
+  "11": 40,
+  "12": 50,
+  "13": 60,
+  "14": 80
 };
 var radius = {
   none: 0,
-  xs: 2,
-  sm: 4,
-  md: 6,
-  lg: 8,
+  xs: 5,
+  sm: 8,
+  md: 9,
+  lg: 10,
   xl: 12,
-  true: 5,
   "2xl": 16,
-  "3xl": 24,
-  "4xl": 26,
+  "3xl": 34.5,
   full: 9999,
   circle: "50%"
 };
@@ -130,9 +108,9 @@ var zIndex = {
 // src/themes/fontConfig.ts
 var fonts = {
   body: "Lufga-Regular",
-  subBody: "Lufga-Semibold",
+  semiHeading: "Lufga-Semibold",
   heading: "Lufga-Bold",
-  subheading: "Lufga-Extrabold"
+  extraHeading: "Lufga-Extrabold"
 };
 var lineHeight = {
   extraTiny: 20,
@@ -185,13 +163,12 @@ var greyPallet = {
 var greenPallet = {
   green1: "#284F49",
   green2: "#A4EDA3",
-  green3: "#284F49",
-  green4: "#5D6544",
-  green5: "#B6C197",
-  green6: "#B5C096",
-  green7: "#4D533C",
-  green8: "#5B5E3E",
-  green9: "#444A34"
+  green3: "#5D6544",
+  green4: "#B6C197",
+  green5: "#B5C096",
+  green6: "#4D533C",
+  green7: "#5B5E3E",
+  green8: "#444A34"
 };
 var bluePallet = {
   blue1: "#56CCF2",
@@ -222,11 +199,28 @@ var webTheme = {
   light_web: {
     // Background
     backgroundBody: colors.white1,
+    backgroundPrimary: colors.orange1,
+    backgroundError: colors.red2,
+    backgroundAuth: colors.green1,
     // Text
     textDefault: colors.blue2,
-    errorColor: colors.red1,
+    textError: colors.red1,
+    textPrimary: colors.white1,
+    textSecondary: colors.grey1,
+    textTertiary: colors.orange1,
+    textQuaternary: colors.black2,
+    textQuinary: colors.green1,
+    textSenary: colors.grey6,
+    textSeptenary: colors.green6,
+    textProduct: colors.grey5,
+    textOrderSuccess: colors.black1,
+    textProductCard: colors.black3,
+    textFooter: colors.green4,
+    textCopyright: colors.green5,
     // Button
-    buttonPrimary: colors.green1
+    buttonPrimary: colors.green1,
+    // Border
+    borderIcon: colors.grey11
   }
 };
 
@@ -248,16 +242,16 @@ var customConfig = {
       family: fonts.body,
       ...fontConfig
     }),
-    subBody: (0, import_web3.createFont)({
-      family: fonts.subBody,
+    semiHeading: (0, import_web3.createFont)({
+      family: fonts.semiHeading,
       ...fontConfig
     }),
     heading: (0, import_web3.createFont)({
       family: fonts.heading,
       ...fontConfig
     }),
-    subHeading: (0, import_web3.createFont)({
-      family: fonts.subheading,
+    extraHeading: (0, import_web3.createFont)({
+      family: fonts.extraHeading,
       ...fontConfig
     })
   },

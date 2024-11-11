@@ -2,9 +2,9 @@ import { spacing } from './metric';
 
 export const fonts = {
   body: 'Lufga-Regular',
-  subBody: 'Lufga-Semibold',
+  semiHeading: 'Lufga-Semibold',
   heading: 'Lufga-Bold',
-  subheading: 'Lufga-Extrabold',
+  extraHeading: 'Lufga-Extrabold',
 };
 
 export const lineHeight = {
