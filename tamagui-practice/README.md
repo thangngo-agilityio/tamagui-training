@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NEXTJS
 
-## Getting Started
+## Overview
 
-First, run the development server:
+- This document provides requirements and estimation for NextJs Practice.
+- Plan: [Plan Practice](https://docs.google.com/document/d/1d1QqUP4VJu389_t5mr29gMB_BJCoZx0S0LJbm-o1q58/edit)
+- Develop plan: [Develop plan](https://docs.google.com/document/d/1Ta_o1vBg6NKd8opWx18HKadu3bGw7DwD/edit)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Time line:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Timeline: 9 days ( Sep 23, 2024 - Oct 03, 2024 )
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Design:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Design: [Figma](<https://www.figma.com/design/4gQuNxlb8yFu1AsYgcCxST/AI-Furniture-E-commerce-UI-Kit-(Community)-(Copy)?node-id=65-549&node-type=frame&t=k0NNhykdBpQqcofE-0>)
 
-## Learn More
+### Editor
 
-To learn more about Next.js, take a look at the following resources:
+- Visual Studio Code
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Target
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Use some available hooks to make Search features work efficiently.
+- Distinguish between server, and client directives and use it correspondingly for each case.
+- Handle errors and be aware of which errors should be shown for each situation.
+- Bear in mind that improving accessibility and form validation will always be involved.
+- Get to know metadata which is crucial for SEO and shareability.
 
-## Deploy on Vercel
+## Technical
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Vite - v5.3.4
+- Prettier - v3.3.3
+- ESLint - v9.7.0
+- React - v18.3.1
+- TypeScript - v5.2.2
+- Storybook - v8.2.4
+- Jest - v29.7.0
+- React Query - v.5.51.15
+- Zustand - v4.5.4
+- React-Testing-Library - 16.0.0
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Development Tools
+
+- Eslint
+- Prettier
+- Husky
+- CommitLint
+- Pre-commit
+
+### Getting Started
+
+- Step 1: Clone repository.
+  - SSH:
+    - `$ git clone git@gitlab.asoft-python.com:thang.ngo/nextjs-training.git`.
+  - HTTPS:
+    - `$ git clone https://gitlab.asoft-python.com/thang.ngo/nextjs-training.git`.
+- Step 2:
+  - Open terminal: `cd nextjs-training`
+  - Install the packages `pnpm install`.
+- Step 3:
+  - Add file .env and add elements like .env.example
+  - Run app:
+    - Run web local: `pnpm dev`
+    - Run json server: `pnpm start`
+- Step 4:
+  - Run Storybook: `pnpm storybook`.
+  - Run Test: `pnpm test-coverage`
+
+## Author
+
+- Thang ngo.
+- Email: [thang.ngo@asnet.com.vn](thang.ngo@asnet.com.vn).
