@@ -34,6 +34,9 @@ import { LoginFormData } from '@/types';
 
 // Utils
 import { isEnableSubmitButton } from '@/utils';
+import { InputFiled } from '@/universal';
+import { useFocus } from '@/hooks';
+import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
 
 type TAuthFormProps = {
   isPending?: boolean;
@@ -62,6 +65,7 @@ const LoginForm = ({
     },
   });
 
+  const { focusProps, isFocused } = useFocus();
   const { isOpen: isShowPassword, onToggle: onShowPassword } = useDisclosure();
 
   const renderPasswordIcon = useCallback(
@@ -269,6 +273,32 @@ const LoginForm = ({
           Sign Up with Google
         </Button>
       </Flex>
+
+      <Controller
+        control={control}
+        rules={AUTH_SCHEMA.EMAIL}
+        name="email"
+        render={({ field: { value, onChange }, fieldState: { error } }) => {
+          const handleChange = (valueInput: NativeSyntheticEvent<TextInputChangeEventData>) => {
+            const sanitizedValue = valueInput;
+
+            !!error && clearErrors('email');
+            onChange(sanitizedValue);
+          };
+
+          return (
+            <InputFiled label="Email"
+              variant="form"
+              isError={!!error?.message}
+              errorMessages={error?.message}
+              value={value}
+              onChange={handleChange}
+              onFocus={() => focusProps.onFocus()}
+              onBlur={() => focusProps.onBlur()}
+            />
+          );
+        }}
+      />
     </Stack>
   );
 };

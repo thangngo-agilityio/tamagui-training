@@ -65,7 +65,6 @@ const InputField = forwardRef(
             marginInlineEnd={0}
             minW="max-content"
             color="text.900"
-            fontWeight={value ? '400' : 'bold'}
             position="absolute"
             transition="0.2s ease"
             transform="auto"
@@ -75,6 +74,7 @@ const InputField = forwardRef(
               scale: '0.9',
               fontWeight: '400',
             }}
+            fontWeight={value ? '400' : 'bold'}
             translateX={value ? '-1px' : 0}
             translateY={value ? '-15px' : 0}
             scale={value ? '0.9' : 'unset'}

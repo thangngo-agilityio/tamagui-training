@@ -37,6 +37,7 @@
     "react-dom": "^18",
     "react-fast-compare": "^3.2.2",
     "react-hook-form": "^7.53.0",
+    "react-native": "^0.76.1",
     "react-router-dom": "^6.26.2",
     "styled-components": "^6.1.13",
     "tamagui": "^1.116.14",

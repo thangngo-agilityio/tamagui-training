@@ -1,39 +1,38 @@
 {
   "root": true,
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": [
-    "next",
-    "prettier",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:storybook/recommended"
-  ],
-  "plugins": ["@typescript-eslint", "react", "react-refresh"],
-  "rules": {
-    "react-refresh/only-export-components": [
-      "warn",
-      {
-        "allowConstantExport": true
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nx"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "off",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
       }
-    ],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "semi": ["error"],
-    "quotes": ["error", "single"],
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      {
-        "varsIgnorePattern": "^_"
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
+      "rules": {
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-empty-function": "off"
       }
-    ],
-    "no-useless-escape": "off",
-    "no-useless-catch": "off",
-    "arrow-body-style": ["error", "as-needed"],
-    "react/display-name": "off"
-  }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    }
+  ]
 }
