@@ -1,6 +1,6 @@
-import { ComponentProps, forwardRef, ReactNode, Ref, useCallback, useState } from "react";
+import { ComponentProps, forwardRef, Ref, useCallback, useState } from "react";
 import { styled, Input, Label, YStack, XStack, Text as TextBase } from "tamagui";
-import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
+import { GestureResponderEvent, NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
 
 
 const StyledInput = styled(Input, {
@@ -100,13 +100,15 @@ export interface InputFiledProps extends ComponentProps<typeof StyledInput> {
   errorMessages?: string;
   label?: string;
   value?: string;
-  rightIcon?: ReactNode;
+  // suffixIcon?: React.ForwardRefExoticComponent<SvgFactoryProps & React.RefAttributes<unknown>>;
   isError?: boolean;
   isValidate?: boolean;
   isSearch?: boolean;
   containerStyle?: ComponentProps<typeof YStack>;
   frameStyle?: ComponentProps<typeof InputFieldFrame>;
+  suffixIconStyle?: ComponentProps<typeof IconStyled>;
   variant?: 'form';
+  onPressSuffixIcon?: (event: GestureResponderEvent) => void;
 }
 
 const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
@@ -115,16 +117,27 @@ const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
     errorMessages = 'Default error',
     label,
     value,
-    rightIcon,
+    // suffixIcon: SuffixIcon,
+    suffixIconStyle,
     isSearch,
     disabled,
     containerStyle,
     frameStyle,
-    onChange,
+    onBlur,
     onFocus,
+    onPressSuffixIcon,
     ...props
   }, ref) => {
     const [focusInput, setFocusInput] = useState(false);
+
+    const onBlurInput = useCallback(
+      (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
+        setFocusInput(false);
+        onBlur?.(event);
+      },
+      [onBlur],
+    );
+
     const onFocusInput = useCallback(
       (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
         setFocusInput(true);
@@ -132,19 +145,22 @@ const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
       },
       [onFocus],
     );
+
     return (
       <YStack {...containerStyle}>
-        <InputFieldFrame disabled={disabled} hasError={isError} focusable={focusInput} {...frameStyle}>
+        <InputFieldFrame disabled={disabled} hasError={isError} {...frameStyle}>
           {label && <StyledLabel
-            focusStyle={{
-              transform: 'translateX(-1px) translateY(-15px) scale(0.9)',
-            }}
-            fontWeight={value ? '400' : 'bold'}
-            transform={`translateX(${value ? '-1px' : 0}) translateY(${value ? '-15px' : 0}) scale(${value ? '0.9' : 'unset'})`}
+            fontWeight={value || focusInput ? '400' : 'bold'}
+            transform={`translateX(${value || focusInput ? '-1px' : 0}) translateY(${value || focusInput ? '-15px' : 0}) scale(${value || focusInput ? '0.9' : 'unset'})`}
             htmlFor={label}>
             {label}
           </StyledLabel>}
-          <StyledInput id={label} ref={ref as Ref<Input>} onFocus={onFocusInput} {...props} />
+          <StyledInput id={label} ref={ref as Ref<Input>} onFocus={onFocusInput} onBlur={onBlurInput} {...props} />
+          {/* {SuffixIcon && (
+            <IconStyled {...suffixIconStyle} onPress={onPressSuffixIcon} focused={focusInput}>
+              <SuffixIcon disabled={disabled} />
+            </IconStyled>
+          )} */}
         </InputFieldFrame>
       </YStack >
     );

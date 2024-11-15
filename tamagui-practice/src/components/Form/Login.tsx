@@ -14,11 +14,11 @@ import {
 } from '@chakra-ui/react';
 import { useCallback, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 
+
 // Component
-import { InputField } from '../common';
+// import { InputField } from '../common';
 import { GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
@@ -34,9 +34,10 @@ import { LoginFormData } from '@/types';
 
 // Utils
 import { isEnableSubmitButton } from '@/utils';
-import { InputFiled } from '@/universal';
+import { InputField } from '@/universal';
 import { useFocus } from '@/hooks';
 import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
+import { Form } from 'tamagui';
 
 type TAuthFormProps = {
   isPending?: boolean;
@@ -68,22 +69,22 @@ const LoginForm = ({
   const { focusProps, isFocused } = useFocus();
   const { isOpen: isShowPassword, onToggle: onShowPassword } = useDisclosure();
 
-  const renderPasswordIcon = useCallback(
-    (isCorrect: boolean, callback: typeof onShowPassword): JSX.Element => {
-      const Icon = isCorrect ? ViewIcon : ViewOffIcon;
+  // const renderPasswordIcon = useCallback(
+  //   (isCorrect: boolean, callback: typeof onShowPassword): JSX.Element => {
+  //     const Icon = isCorrect ? EyeIcon : EyeOffIcon;
 
-      return (
-        <Icon
-          color="gray.400"
-          w="25px"
-          h="25px"
-          cursor="pointer"
-          onClick={callback}
-        />
-      );
-    },
-    [],
-  );
+  //     return (
+  //       <Icon
+  //         color="gray.400"
+  //         width="25px"
+  //         height="25px"
+  //         cursor="pointer"
+  //         onPress={callback}
+  //       />
+  //     );
+  //   },
+  //   [],
+  // );
 
   const handleClearErrorMessage = useCallback(
     (
@@ -129,15 +130,39 @@ const LoginForm = ({
         </Text>
       </Box>
 
-      <VStack
-        w="100%"
+      <Form
+        width="100%"
         gap="10px"
         alignItems="center"
-        mb="24px"
-        as="form"
+        marginBottom="24px"
         onSubmit={handleSubmit(handleSignIn)}
       >
         <Controller
+          control={control}
+          rules={AUTH_SCHEMA.EMAIL}
+          name="email"
+          render={({ field: { value, onChange }, fieldState: { error } }) => {
+            const handleChange = (valueInput: string) => {
+              const sanitizedValue = valueInput.trim();
+
+              !!error && clearErrors('email');
+              onChange(sanitizedValue);
+            };
+
+            return (
+              <InputField label="Email"
+                variant="form"
+                isError={!!error?.message}
+                errorMessages={error?.message}
+                value={value}
+                onChangeText={handleChange}
+                onFocus={() => focusProps.onFocus()}
+                onBlur={() => focusProps.onBlur()}
+              />
+            );
+          }}
+        />
+        {/* <Controller
           control={control}
           rules={AUTH_SCHEMA.EMAIL}
           name="email"
@@ -161,7 +186,7 @@ const LoginForm = ({
               />
             );
           }}
-        />
+        /> */}
 
         <Controller
           control={control}
@@ -170,13 +195,14 @@ const LoginForm = ({
           render={({ field, fieldState: { error } }) => (
             <InputField
               label="Your password"
-              type={isShowPassword ? 'text' : 'password'}
+              // secureTextEntry={isShowPassword ? false : true}
               variant="form"
-              rightIcon={renderPasswordIcon(isShowPassword, onShowPassword)}
+              // suffixIcon={isShowPassword ? EyeOffIcon : EyeIcon}
+              // onPressSuffixIcon={onShowPassword}
               isError={!!error?.message}
               errorMessages={error?.message}
               {...field}
-              onChange={handleClearErrorMessage(
+              onChangeText={handleClearErrorMessage(
                 'password',
                 !!error,
                 field.onChange,
@@ -224,7 +250,7 @@ const LoginForm = ({
             SIGN IN
           </Button>
         </Box>
-      </VStack>
+      </Form>
 
       <Flex justifyContent="center" alignItems="center" mb="100px">
         <Text
@@ -274,31 +300,7 @@ const LoginForm = ({
         </Button>
       </Flex>
 
-      <Controller
-        control={control}
-        rules={AUTH_SCHEMA.EMAIL}
-        name="email"
-        render={({ field: { value, onChange }, fieldState: { error } }) => {
-          const handleChange = (valueInput: NativeSyntheticEvent<TextInputChangeEventData>) => {
-            const sanitizedValue = valueInput;
 
-            !!error && clearErrors('email');
-            onChange(sanitizedValue);
-          };
-
-          return (
-            <InputFiled label="Email"
-              variant="form"
-              isError={!!error?.message}
-              errorMessages={error?.message}
-              value={value}
-              onChange={handleChange}
-              onFocus={() => focusProps.onFocus()}
-              onBlur={() => focusProps.onBlur()}
-            />
-          );
-        }}
-      />
     </Stack>
   );
 };
