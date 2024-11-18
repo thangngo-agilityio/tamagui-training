@@ -31,6 +31,7 @@
     "@vercel/postgres": "^0.10.0",
     "bcryptjs": "^2.4.3",
     "framer-motion": "^11.5.2",
+    "mini-css-extract-plugin": "0.11.1",
     "next": "14.2.3",
     "next-auth": "5.0.0-beta.21",
     "react": "^18",

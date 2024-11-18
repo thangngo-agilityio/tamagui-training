@@ -1,15 +1,15 @@
-import { ComponentProps, forwardRef, Ref, useCallback, useState } from "react";
-import { styled, Input, Label, YStack, XStack, Text as TextBase } from "tamagui";
-import { GestureResponderEvent, NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
+import { ComponentProps, forwardRef, ReactNode, Ref, useCallback, useState } from "react";
+import { styled, Input, Label, YStack, XStack, View, Stack } from "tamagui";
+import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
 
 
 const StyledInput = styled(Input, {
   name: 'InputField',
 
-  fontFamily: 'inter',
-  borderRadius: 'sm',
+  fontSize: '$5',
+  borderRadius: '$sm',
   borderWidth: '1px',
-  borderColor: '$borderPrimaryInput',
+  borderColor: '$grey11',
   borderStyle: 'solid',
   color: '$textInput',
   backgroundColor: '$backgroundBody',
@@ -23,9 +23,11 @@ const StyledInput = styled(Input, {
   variants: {
     variant: {
       form: {
-        px: '20px',
-        pt: '36px',
-        pb: '30px',
+        width: '100%',
+        paddingLeft: '20px',
+        paddingRight: '20px',
+        paddingTop: '25px',
+        paddingBottom: '22px',
         focusStyle: { borderColor: '$borderSecondaryInput' },
       },
       search: {
@@ -52,35 +54,34 @@ const StyledLabel = styled(Label, {
   },
 })
 
-const IconStyled = styled(
-  TextBase,
-  {
-    name: 'InputField',
-    cursor: 'pointer',
+// const IconStyled = styled(
+//   View,
+//   {
+//     display: 'block',
+//     name: 'InputField',
+//     cursor: 'pointer',
 
-    asChild: true,
+//     asChild: true,
 
-    width: '$6',
-    height: '$6',
+//     width: '$6',
+//     height: '$6',
 
-    color: '$color',
-
-    variants: {
-      disabled: {
-        true: {
-          cursor: 'not-allowed',
-          color: '$disabledColor',
-        },
-      },
-      focused: {
-        true: {
-          color: '$borderColorFocus',
-        },
-      },
-    },
-  },
-  { accept: { color: 'color' } as const },
-);
+//     variants: {
+//       disabled: {
+//         true: {
+//           cursor: 'not-allowed',
+//           color: '$disabledColor',
+//         },
+//       },
+//       focused: {
+//         true: {
+//           color: '$borderColorFocus',
+//         },
+//       },
+//     },
+//   },
+//   { accept: { color: 'color' } as const },
+// );
 
 const InputFieldFrame = styled(XStack, {
   name: 'InputField',
@@ -100,15 +101,13 @@ export interface InputFiledProps extends ComponentProps<typeof StyledInput> {
   errorMessages?: string;
   label?: string;
   value?: string;
-  // suffixIcon?: React.ForwardRefExoticComponent<SvgFactoryProps & React.RefAttributes<unknown>>;
+  suffixIcon?: ReactNode;
   isError?: boolean;
   isValidate?: boolean;
   isSearch?: boolean;
   containerStyle?: ComponentProps<typeof YStack>;
   frameStyle?: ComponentProps<typeof InputFieldFrame>;
-  suffixIconStyle?: ComponentProps<typeof IconStyled>;
   variant?: 'form';
-  onPressSuffixIcon?: (event: GestureResponderEvent) => void;
 }
 
 const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
@@ -117,15 +116,14 @@ const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
     errorMessages = 'Default error',
     label,
     value,
-    // suffixIcon: SuffixIcon,
-    suffixIconStyle,
+    suffixIcon: SuffixIcon,
     isSearch,
     disabled,
     containerStyle,
     frameStyle,
     onBlur,
     onFocus,
-    onPressSuffixIcon,
+    onPress,
     ...props
   }, ref) => {
     const [focusInput, setFocusInput] = useState(false);
@@ -146,8 +144,9 @@ const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
       [onFocus],
     );
 
+
     return (
-      <YStack {...containerStyle}>
+      <YStack width='100%' {...containerStyle}>
         <InputFieldFrame disabled={disabled} hasError={isError} {...frameStyle}>
           {label && <StyledLabel
             fontWeight={value || focusInput ? '400' : 'bold'}
@@ -156,11 +155,29 @@ const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
             {label}
           </StyledLabel>}
           <StyledInput id={label} ref={ref as Ref<Input>} onFocus={onFocusInput} onBlur={onBlurInput} {...props} />
-          {/* {SuffixIcon && (
-            <IconStyled {...suffixIconStyle} onPress={onPressSuffixIcon} focused={focusInput}>
-              <SuffixIcon disabled={disabled} />
-            </IconStyled>
-          )} */}
+          {SuffixIcon && (
+            <Stack
+              width="25px"
+              height="25px"
+              position="absolute"
+              top="25px"
+              right="15px"
+              cursor='pointer'
+              aria-label="The eye icon"
+              hoverStyle={{
+                borderColor: 'transparent',
+                outlineStyle: 'none',
+              }}
+              focusStyle={{
+                borderColor: 'transparent',
+                outlineStyle: 'none',
+              }}
+              data-testid="right-icon-input"
+              onPress={onPress}
+            >
+              {SuffixIcon}
+            </Stack>
+          )}
         </InputFieldFrame>
       </YStack >
     );

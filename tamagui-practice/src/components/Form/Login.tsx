@@ -19,7 +19,7 @@ import Link from 'next/link';
 
 // Component
 // import { InputField } from '../common';
-import { GoogleIcon, LineIcon } from '@/icons';
+import { EyeIcon, EyeOffIcon, GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
 import {
@@ -36,7 +36,6 @@ import { LoginFormData } from '@/types';
 import { isEnableSubmitButton } from '@/utils';
 import { InputField } from '@/universal';
 import { useFocus } from '@/hooks';
-import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
 import { Form } from 'tamagui';
 
 type TAuthFormProps = {
@@ -66,20 +65,20 @@ const LoginForm = ({
     },
   });
 
-  const { focusProps, isFocused } = useFocus();
+  const { focusProps } = useFocus();
   const { isOpen: isShowPassword, onToggle: onShowPassword } = useDisclosure();
 
   // const renderPasswordIcon = useCallback(
   //   (isCorrect: boolean, callback: typeof onShowPassword): JSX.Element => {
-  //     const Icon = isCorrect ? EyeIcon : EyeOffIcon;
+  //     const Icon = isCorrect ? <EyeIcon /> : <EyeOffIcon/>;
 
   //     return (
   //       <Icon
-  //         color="gray.400"
+  //         color='$grey4'
   //         width="25px"
   //         height="25px"
   //         cursor="pointer"
-  //         onPress={callback}
+  //         onClick={callback}
   //       />
   //     );
   //   },
@@ -151,7 +150,7 @@ const LoginForm = ({
 
             return (
               <InputField label="Email"
-                variant="form"
+                variant='form'
                 isError={!!error?.message}
                 errorMessages={error?.message}
                 value={value}
@@ -195,10 +194,10 @@ const LoginForm = ({
           render={({ field, fieldState: { error } }) => (
             <InputField
               label="Your password"
-              // secureTextEntry={isShowPassword ? false : true}
               variant="form"
-              // suffixIcon={isShowPassword ? EyeOffIcon : EyeIcon}
-              // onPressSuffixIcon={onShowPassword}
+              secureTextEntry={isShowPassword ? false : true}
+              suffixIcon={isShowPassword ? <EyeOffIcon /> : <EyeIcon />}
+              onPress={onShowPassword}
               isError={!!error?.message}
               errorMessages={error?.message}
               {...field}

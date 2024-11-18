@@ -1,4 +1,4 @@
-export const PlusIcon = () => (
+export const PlusIcon = (): JSX.Element => (
   <svg
     width="12"
     height="12"
