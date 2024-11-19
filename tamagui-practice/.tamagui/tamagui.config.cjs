@@ -208,7 +208,7 @@ var webTheme = {
     textPrimary: colors.white1,
     textSecondary: colors.grey1,
     textTertiary: colors.orange1,
-    textQuaternary: colors.black2,
+    textQuaternary: colors.grey4,
     textQuinary: colors.green1,
     textSenary: colors.grey6,
     textSeptenary: colors.green6,

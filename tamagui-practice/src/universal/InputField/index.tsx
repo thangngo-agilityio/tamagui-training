@@ -9,7 +9,7 @@ const StyledInput = styled(Input, {
   fontSize: '$4',
   borderRadius: '$sm',
   borderWidth: '1px',
-  borderColor: '$grey11',
+  borderColor: '$borderPrimaryInput',
   borderStyle: 'solid',
   color: '$textInput',
   backgroundColor: '$backgroundBody',

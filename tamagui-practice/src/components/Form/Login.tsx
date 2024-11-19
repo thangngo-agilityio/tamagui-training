@@ -5,20 +5,18 @@ import {
   Button,
   Checkbox,
   Flex,
-  Heading,
   HStack,
   Stack,
-  Text,
   useDisclosure,
-  VStack,
 } from '@chakra-ui/react';
 import { useCallback, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Link from 'next/link';
+import { Form, YStack } from 'tamagui';
 
 
 // Component
-// import { InputField } from '../common';
+import { Heading, InputField, Text } from '@/universal';
 import { EyeIcon, EyeOffIcon, GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
@@ -34,9 +32,7 @@ import { LoginFormData } from '@/types';
 
 // Utils
 import { isEnableSubmitButton } from '@/utils';
-import { InputField } from '@/universal';
 import { useFocus } from '@/hooks';
-import { Form } from 'tamagui';
 
 type TAuthFormProps = {
   isPending?: boolean;
@@ -120,14 +116,14 @@ const LoginForm = ({
       alignItems="center"
       justifyContent="center"
     >
-      <Box mb="36px" textAlign="center">
-        <Heading as="h1" mb="8px" variant="tertiary" size="size4xl">
+      <YStack marginBottom="36px" alignItems='center'>
+        <Heading marginBottom="8px" variant='tertiary' size='huge'>
           Welcome Back!
         </Heading>
-        <Text variant="quaternary" size="textMd">
+        <Text variant="quaternary" size="small">
           Enter your details to proceed further
         </Text>
-      </Box>
+      </YStack>
 
       <Form
         width="100%"
@@ -230,7 +226,7 @@ const LoginForm = ({
         </HStack>
 
         <Box mb={7} w="76%">
-          <Text color="red" textAlign="center" py={2} h={10}>
+          <Text color="$textError" textAlign="center" paddingVertical={2} height={10}>
             {errorMessage}
           </Text>
           <Button
@@ -300,7 +296,7 @@ const LoginForm = ({
       </Flex>
 
 
-    </Stack>
+    </Stack >
   );
 };
 
