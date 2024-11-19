@@ -14,12 +14,12 @@ import {
 } from '@chakra-ui/react';
 import { useCallback, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 
+
 // Component
-import { InputField } from '../common';
-import { GoogleIcon, LineIcon } from '@/icons';
+// import { InputField } from '../common';
+import { EyeIcon, EyeOffIcon, GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
 import {
@@ -34,6 +34,9 @@ import { LoginFormData } from '@/types';
 
 // Utils
 import { isEnableSubmitButton } from '@/utils';
+import { InputField } from '@/universal';
+import { useFocus } from '@/hooks';
+import { Form } from 'tamagui';
 
 type TAuthFormProps = {
   isPending?: boolean;
@@ -62,24 +65,25 @@ const LoginForm = ({
     },
   });
 
+  const { focusProps } = useFocus();
   const { isOpen: isShowPassword, onToggle: onShowPassword } = useDisclosure();
 
-  const renderPasswordIcon = useCallback(
-    (isCorrect: boolean, callback: typeof onShowPassword): JSX.Element => {
-      const Icon = isCorrect ? ViewIcon : ViewOffIcon;
+  // const renderPasswordIcon = useCallback(
+  //   (isCorrect: boolean, callback: typeof onShowPassword): JSX.Element => {
+  //     const Icon = isCorrect ? <EyeIcon /> : <EyeOffIcon/>;
 
-      return (
-        <Icon
-          color="gray.400"
-          w="25px"
-          h="25px"
-          cursor="pointer"
-          onClick={callback}
-        />
-      );
-    },
-    [],
-  );
+  //     return (
+  //       <Icon
+  //         color='$grey4'
+  //         width="25px"
+  //         height="25px"
+  //         cursor="pointer"
+  //         onClick={callback}
+  //       />
+  //     );
+  //   },
+  //   [],
+  // );
 
   const handleClearErrorMessage = useCallback(
     (
@@ -125,15 +129,39 @@ const LoginForm = ({
         </Text>
       </Box>
 
-      <VStack
-        w="100%"
+      <Form
+        width="100%"
         gap="10px"
         alignItems="center"
-        mb="24px"
-        as="form"
+        marginBottom="24px"
         onSubmit={handleSubmit(handleSignIn)}
       >
         <Controller
+          control={control}
+          rules={AUTH_SCHEMA.EMAIL}
+          name="email"
+          render={({ field: { value, onChange }, fieldState: { error } }) => {
+            const handleChange = (valueInput: string) => {
+              const sanitizedValue = valueInput.trim();
+
+              !!error && clearErrors('email');
+              onChange(sanitizedValue);
+            };
+
+            return (
+              <InputField label="Email"
+                variant='form'
+                isError={!!error?.message}
+                errorMessages={error?.message}
+                value={value}
+                onChangeText={handleChange}
+                onFocus={() => focusProps.onFocus()}
+                onBlur={() => focusProps.onBlur()}
+              />
+            );
+          }}
+        />
+        {/* <Controller
           control={control}
           rules={AUTH_SCHEMA.EMAIL}
           name="email"
@@ -157,7 +185,7 @@ const LoginForm = ({
               />
             );
           }}
-        />
+        /> */}
 
         <Controller
           control={control}
@@ -166,13 +194,14 @@ const LoginForm = ({
           render={({ field, fieldState: { error } }) => (
             <InputField
               label="Your password"
-              type={isShowPassword ? 'text' : 'password'}
               variant="form"
-              rightIcon={renderPasswordIcon(isShowPassword, onShowPassword)}
+              secureTextEntry={isShowPassword ? false : true}
+              suffixIcon={isShowPassword ? <EyeOffIcon /> : <EyeIcon />}
+              onPress={onShowPassword}
               isError={!!error?.message}
               errorMessages={error?.message}
               {...field}
-              onChange={handleClearErrorMessage(
+              onChangeText={handleClearErrorMessage(
                 'password',
                 !!error,
                 field.onChange,
@@ -220,7 +249,7 @@ const LoginForm = ({
             SIGN IN
           </Button>
         </Box>
-      </VStack>
+      </Form>
 
       <Flex justifyContent="center" alignItems="center" mb="100px">
         <Text
@@ -269,6 +298,8 @@ const LoginForm = ({
           Sign Up with Google
         </Button>
       </Flex>
+
+
     </Stack>
   );
 };

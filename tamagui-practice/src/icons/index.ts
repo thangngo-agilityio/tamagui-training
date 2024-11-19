@@ -30,3 +30,5 @@ export * from './Success';
 export * from './Hamburger';
 export * from './LogoMobile';
 export * from './Vector';
+export * from './EyeIcon';
+export * from './EyeOffIcon';

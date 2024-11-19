@@ -3,7 +3,7 @@ import { SessionProvider } from 'next-auth/react';
 
 // Components
 import { TamaguiProvider } from '@/providers';
-import './globals.css';
+import '../styles/index.css'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
@@ -23,6 +23,6 @@ export default function RootLayout({
           <TamaguiProvider>{children}</TamaguiProvider>
         </SessionProvider>
       </body>
-    </html>
+    </html >
   );
 }

@@ -20,12 +20,18 @@ export type GeneralTheme = {
   textProductCard: string;
   textFooter: string;
   textCopyright: string;
+  textPlaceholder: string;
+  textLabel: string;
+  textInput: string;
 
   // Button
   buttonPrimary: string;
 
   // Border
-  borderIcon: string;
+  borderPrimaryInput: string;
+  borderSecondaryInput: string;
+  borderErrorInput: string;
+  borderColorInput: string;
 };
 
 export type CustomTheme<T extends string> = {

@@ -1,0 +1,11 @@
+# Add files here to ignore them from prettier formatting
+/dist
+/coverage
+/.nx/cache
+
+# Business app
+apps/kash-web/dist
+apps/kash-web/public
+
+apps/consumer-web/dist
+apps/consumer-web/public

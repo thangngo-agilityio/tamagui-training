@@ -5,10 +5,8 @@ import {
   Button,
   Flex,
   Heading,
-  Stack,
   Text,
   useDisclosure,
-  VStack,
 } from '@chakra-ui/react';
 import { useCallback, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -16,8 +14,7 @@ import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 
 // Component
-import { InputField } from '../common';
-import { GoogleIcon, LineIcon } from '@/icons';
+import { EyeIcon, EyeOffIcon, GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
 import {
@@ -30,6 +27,9 @@ import {
 // Types
 import { TUser } from '@/types';
 import { isEnableSubmitButton } from '@/utils';
+import { Form, Stack, XStack, YStack } from 'tamagui';
+import { InputField } from '@/universal';
+import { useFocus } from '@/hooks';
 
 type TAuthFormProps = {
   isPending?: boolean;
@@ -61,6 +61,7 @@ const SignUpForm = ({
     },
   });
 
+  const { focusProps } = useFocus();
   const { isOpen: isShowPassword, onToggle: onShowPassword } = useDisclosure();
   const { isOpen: isShowConfirmPassword, onToggle: onShowConfirmPassword } =
     useDisclosure();
@@ -108,9 +109,13 @@ const SignUpForm = ({
 
   return (
     <Stack
-      w={{ base: '100%', lg: '556px' }}
-      px={{ base: '28px', lg: 'unset' }}
-      mb="30px"
+      width='$full'
+      paddingHorizontal='28px'
+      $gtLg={{
+        width: '556px',
+        paddingHorizontal: 0
+      }}
+      marginBottom="30px"
       alignItems="center"
       justifyContent="center"
     >
@@ -123,12 +128,11 @@ const SignUpForm = ({
         </Text>
       </Box>
 
-      <VStack
-        w="100%"
+      <Form
+        width="100%"
         gap="10px"
         alignItems="center"
-        mb="24px"
-        as="form"
+        marginBottom="24px"
         onSubmit={handleSubmit(handleSignUp)}
       >
         <Controller
@@ -150,14 +154,15 @@ const SignUpForm = ({
                 isError={!!error?.message}
                 errorMessages={error?.message}
                 value={value}
-                onChange={handleChange}
-                onBlur={handleClearRootError}
+                onChangeText={handleChange}
+                onFocus={() => focusProps.onFocus()}
+                onBlur={() => focusProps.onBlur()}
               />
             );
           }}
         />
 
-        <Flex w="full" flexDirection="row" gap="12px" alignItems="center">
+        <YStack width="100%" gap="12px" alignItems="center">
           <Controller
             control={control}
             rules={AUTH_SCHEMA.NAME}
@@ -168,9 +173,9 @@ const SignUpForm = ({
                 variant="form"
                 isError={!!error}
                 errorMessages={error?.message}
-                isDisabled={isSubmitting}
+                disabled={isSubmitting}
                 {...field}
-                onChange={handleClearErrorMessage(
+                onChangeText={handleClearErrorMessage(
                   'firstName',
                   !!error,
                   field.onChange,
@@ -190,9 +195,9 @@ const SignUpForm = ({
                 variant="form"
                 isError={!!error}
                 errorMessages={error?.message}
-                isDisabled={isSubmitting}
+                disabled={isSubmitting}
                 {...field}
-                onChange={handleClearErrorMessage(
+                onChangeText={handleClearErrorMessage(
                   'lastName',
                   !!error,
                   field.onChange,
@@ -201,7 +206,7 @@ const SignUpForm = ({
               />
             )}
           />
-        </Flex>
+        </YStack>
 
         <Controller
           control={control}
@@ -210,13 +215,14 @@ const SignUpForm = ({
           render={({ field, fieldState: { error } }) => (
             <InputField
               label="Password"
-              type={isShowPassword ? 'text' : 'password'}
               variant="form"
-              rightIcon={renderPasswordIcon(isShowPassword, onShowPassword)}
+              secureTextEntry={isShowPassword ? false : true}
+              suffixIcon={isShowPassword ? <EyeOffIcon /> : <EyeIcon />}
+              onPress={onShowPassword}
               isError={!!error?.message}
               errorMessages={error?.message}
               {...field}
-              onChange={handleClearErrorMessage(
+              onChangeText={handleClearErrorMessage(
                 'password',
                 !!error,
                 field.onChange,
@@ -233,17 +239,15 @@ const SignUpForm = ({
           render={({ field, fieldState: { error } }) => (
             <InputField
               label="Confirm password"
-              type={isShowConfirmPassword ? 'text' : 'password'}
               variant="form"
-              rightIcon={renderPasswordIcon(
-                isShowConfirmPassword,
-                onShowConfirmPassword,
-              )}
+              secureTextEntry={isShowConfirmPassword ? false : true}
+              suffixIcon={isShowConfirmPassword ? <EyeOffIcon /> : <EyeIcon />}
+              onPress={onShowConfirmPassword}
               {...field}
               isError={!!error}
               errorMessages={error?.message}
-              isDisabled={isSubmitting}
-              onChange={handleClearErrorMessage(
+              disabled={isSubmitting}
+              onChangeText={handleClearErrorMessage(
                 'confirmPassword',
                 !!error,
                 field.onChange,
@@ -272,7 +276,7 @@ const SignUpForm = ({
             SIGN UP
           </Button>
         </Box>
-      </VStack>
+      </Form>
 
       <Flex justifyContent="center" alignItems="center" mb="100px">
         <Text

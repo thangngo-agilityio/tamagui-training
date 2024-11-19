@@ -24,11 +24,17 @@ export const webTheme: CustomTheme<'light_web'> = {
     textProductCard: colors.black3,
     textFooter: colors.green4,
     textCopyright: colors.green5,
+    textPlaceholder: colors.grey3,
+    textLabel: colors.grey4,
+    textInput: colors.grey2,
 
     // Button
     buttonPrimary: colors.green1,
 
     // Border
-    borderIcon: colors.grey11,
+    borderPrimaryInput: colors.grey11,
+    borderSecondaryInput: colors.grey12,
+    borderErrorInput: colors.red4,
+    borderColorInput: colors.green1,
   },
 };
