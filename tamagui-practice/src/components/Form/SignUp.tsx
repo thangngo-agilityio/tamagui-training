@@ -5,7 +5,6 @@ import {
   Button,
   Flex,
   Heading,
-  Stack,
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
@@ -28,7 +27,7 @@ import {
 // Types
 import { TUser } from '@/types';
 import { isEnableSubmitButton } from '@/utils';
-import { Form } from 'tamagui';
+import { Form, Stack, XStack, YStack } from 'tamagui';
 import { InputField } from '@/universal';
 import { useFocus } from '@/hooks';
 
@@ -110,9 +109,13 @@ const SignUpForm = ({
 
   return (
     <Stack
-      w={{ base: '100%', lg: '556px' }}
-      px={{ base: '28px', lg: 'unset' }}
-      mb="30px"
+      width='$full'
+      paddingHorizontal='28px'
+      $gtLg={{
+        width: '556px',
+        paddingHorizontal: 0
+      }}
+      marginBottom="30px"
       alignItems="center"
       justifyContent="center"
     >
@@ -159,7 +162,7 @@ const SignUpForm = ({
           }}
         />
 
-        <Flex w="full" flexDirection="row" gap="12px" alignItems="center">
+        <YStack width="100%" gap="12px" alignItems="center">
           <Controller
             control={control}
             rules={AUTH_SCHEMA.NAME}
@@ -203,7 +206,7 @@ const SignUpForm = ({
               />
             )}
           />
-        </Flex>
+        </YStack>
 
         <Controller
           control={control}

@@ -6,7 +6,7 @@ import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
 const StyledInput = styled(Input, {
   name: 'InputField',
 
-  fontSize: '$5',
+  fontSize: '$4',
   borderRadius: '$sm',
   borderWidth: '1px',
   borderColor: '$grey11',
@@ -26,8 +26,8 @@ const StyledInput = styled(Input, {
         width: '100%',
         paddingLeft: '20px',
         paddingRight: '20px',
-        paddingTop: '25px',
-        paddingBottom: '22px',
+        paddingTop: '30px',
+        paddingBottom: '15px',
         focusStyle: { borderColor: '$borderSecondaryInput' },
       },
       search: {

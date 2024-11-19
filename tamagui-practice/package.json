@@ -21,6 +21,7 @@
     "@nextui-org/system": "^2.2.5",
     "@tamagui/core": "^1.116.14",
     "@tamagui/next-plugin": "^1.116.14",
+    "@tamagui/next-theme": "^1.116.15",
     "@tamagui/react-native-media-driver": "^1.116.14",
     "@tamagui/web": "^1.116.14",
     "@tanstack/query-sync-storage-persister": "^5.54.1",

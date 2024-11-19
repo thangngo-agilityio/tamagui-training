@@ -29,6 +29,9 @@ importers:
       '@tamagui/next-plugin':
         specifier: ^1.116.14
         version: 1.116.14(@babel/core@7.26.0)(@swc/helpers@0.5.15)(next@14.2.3(@babel/core@7.26.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.4.5)(webpack@5.91.0(@swc/core@1.9.2(@swc/helpers@0.5.15))(esbuild@0.24.0))
+      '@tamagui/next-theme':
+        specifier: ^1.116.15
+        version: 1.116.15(react@18.3.1)
       '@tamagui/react-native-media-driver':
         specifier: ^1.116.14
         version: 1.116.14(react-dom@18.3.1(react@18.3.1))(react-native@0.76.1(@babel/core@7.26.0)(@babel/preset-env@7.25.8(@babel/core@7.26.0))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)
@@ -3467,6 +3470,11 @@ packages:
     peerDependencies:
       react: '*'
 
+  '@tamagui/constants@1.116.15':
+    resolution: {integrity: sha512-pu2q+N69xoT0QhMfe538iJ0NBfKj56C7QbTiz2qLCRuPcB1+4v6YzXo0b2/od8SkK4qKv+vCIvXzi6i38KXerA==}
+    peerDependencies:
+      react: '*'
+
   '@tamagui/core@1.116.14':
     resolution: {integrity: sha512-6yVVXuQvkCDWCX9Q/Ino6460TlGoeAbUnHWF2tdt0wPuJtfJUueCGiFxp+VDFUYs2xQjIvP4d82jMzwy6PE49A==}
 
@@ -3583,6 +3591,11 @@ packages:
     resolution: {integrity: sha512-xvvTTF9B9ULIRi2V5OGG4XCCS5AlzmRzW4VZMdwsJUxob9tmg7kN5v6He3VNPaoLN5wfsQoH7WX1nRv2a0Ah8Q==}
     peerDependencies:
       next: '>=13'
+
+  '@tamagui/next-theme@1.116.15':
+    resolution: {integrity: sha512-qQtDkTDdIoJgM1hyUcXWekAZHmDfeyrJBcT4IXrUnUADSiSLxHIF7MDFudqBykHfbEDBYm05R2oFWco6osnaqQ==}
+    peerDependencies:
+      react: '*'
 
   '@tamagui/normalize-css-color@1.116.14':
     resolution: {integrity: sha512-ETTawXX5PClcuMtOWEQXE+tgE1t4yLaTyDrcyAOa5U7PCS1ohWTqkHWwVsNHfvP0U4RqWIfdyeXVxdln3tV8fg==}
@@ -3783,6 +3796,11 @@ packages:
 
   '@tamagui/use-event@1.116.14':
     resolution: {integrity: sha512-8ty076FUPd4DfGohxk8h8jOYUE/IOJHEZcCYJbzxQq9ifb9di+7o15kVzSR6YLqsNyv1+8AyeWW+kDybBuqZ+g==}
+    peerDependencies:
+      react: '*'
+
+  '@tamagui/use-event@1.116.15':
+    resolution: {integrity: sha512-t2gsKL+zrWCPm2nd3AxtpAmBnt6YsN/RzckeOEVPfXAw7yJtNPDVSq7JvyaPO+R8pIgJz8W8PBocEbku9++uUA==}
     peerDependencies:
       react: '*'
 
@@ -13754,6 +13772,10 @@ snapshots:
     dependencies:
       react: 18.3.1
 
+  '@tamagui/constants@1.116.15(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+
   '@tamagui/core@1.116.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@tamagui/react-native-use-pressable': 1.116.14(react@18.3.1)
@@ -14004,6 +14026,12 @@ snapshots:
       - supports-color
       - typescript
       - webpack
+
+  '@tamagui/next-theme@1.116.15(react@18.3.1)':
+    dependencies:
+      '@tamagui/constants': 1.116.15(react@18.3.1)
+      '@tamagui/use-event': 1.116.15(react@18.3.1)
+      react: 18.3.1
 
   '@tamagui/normalize-css-color@1.116.14':
     dependencies:
@@ -14477,6 +14505,11 @@ snapshots:
   '@tamagui/use-event@1.116.14(react@18.3.1)':
     dependencies:
       '@tamagui/constants': 1.116.14(react@18.3.1)
+      react: 18.3.1
+
+  '@tamagui/use-event@1.116.15(react@18.3.1)':
+    dependencies:
+      '@tamagui/constants': 1.116.15(react@18.3.1)
       react: 18.3.1
 
   '@tamagui/use-force-update@1.116.14(react@18.3.1)':

@@ -44,11 +44,12 @@ const nextConfig = () => {
         ...(config.resolve.alias || {}),
         'react-native$': 'react-native-web',
       };
+
       if (!isServer) {
         config.plugins.push(
           new MiniCssExtractPlugin({
             filename: 'styles/[name].[contenthash].css',
-            insert: "#some-element",
+            insert: '#some-element',
           }),
         );
       }
@@ -73,6 +74,8 @@ const nextConfig = () => {
   const tamaguiPlugin = withTamagui({
     config: './src/tamagui.config.ts',
     components: ['tamagui'],
+    outputCSS: process.env.NODE_ENV === 'production' ? './public/tamagui.css' : null,
+    disableExtraction: process.env.NODE_ENV === 'development',
   });
 
   return {

@@ -23,6 +23,6 @@ export default function RootLayout({
           <TamaguiProvider>{children}</TamaguiProvider>
         </SessionProvider>
       </body>
-    </html>
+    </html >
   );
 }
