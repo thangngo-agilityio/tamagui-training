@@ -37,6 +37,10 @@ const Heading = styled(Text, {
       orderSuccess: {
         color: '$textOrderSuccess',
       },
+      footerPrimary: {
+        color: 'textSeptenary',
+        fontWeight: '700',
+      },
     },
 
     size: {

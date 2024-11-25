@@ -13,6 +13,8 @@ export const webTheme: CustomTheme<'light_web'> = {
     backgroundTotalQuantity: colors.red1,
     backgroundFilter: colors.white4,
     BackgroundItemCategory: colors.white3,
+    BackgroundFooter: colors.white2,
+    backgroundFooterItem: colors.green8,
 
     // Text
     textDefault: colors.blue2,
@@ -32,6 +34,7 @@ export const webTheme: CustomTheme<'light_web'> = {
     textPlaceholder: colors.grey3,
     textLabel: colors.grey4,
     textInput: colors.grey2,
+    textFooterSecondary: colors.grey8,
 
     // Button
     buttonPrimary: colors.green1,

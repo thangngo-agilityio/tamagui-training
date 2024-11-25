@@ -14,13 +14,13 @@ export const Text = defineStyleConfig({
       fontSize: 'sm',
     },
     textMd: {
-      fontSize: 'md',
+      fontSize: 'md', //small
     },
     textLg: {
-      fontSize: 'lg',
+      fontSize: 'lg', //medium
     },
     textXl: {
-      fontSize: 'xl',
+      fontSize: 'xl', //large
     },
     text2Xl: {
       fontSize: '2xl',

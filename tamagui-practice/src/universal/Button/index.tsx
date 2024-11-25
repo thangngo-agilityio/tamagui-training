@@ -109,6 +109,13 @@ const ButtonFrame = styled(View, {
           opacity: 0.8,
         },
       },
+
+      footer: {
+        width: 'fit-content',
+
+        background: 'none',
+        borderWidth: 0
+      },
     },
     fit: {
       false: {
@@ -159,6 +166,13 @@ const ButtonText = styled(Text, {
       warning: {
         color: '$textError',
       },
+
+      footer: {
+        paddingHorizontal: '11px',
+        size: 'medium',
+        color: '$textFooterSecondary',
+        textDecorationLine: 'underline'
+      }
     },
   } as const,
 });
