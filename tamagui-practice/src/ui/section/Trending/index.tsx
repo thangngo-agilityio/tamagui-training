@@ -10,7 +10,6 @@ import {
   HStack,
   RadioGroup,
   Text,
-  useBreakpointValue,
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -36,7 +35,7 @@ type TTrendingSection = {
 };
 
 const TrendingSection = ({ productList }: TTrendingSection) => {
-  const isMobile = useBreakpointValue({ base: true, lg: false });
+  // const isMobile = useBreakpointValue({ base: true, lg: false });
 
   return (
     <Flex
@@ -85,7 +84,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           })}
         </Flex>
 
-        {!isMobile && (
+        {/* {!isMobile && (
           <Flex flexDirection="row" gap="92px" mb="98px" px="104px">
             {BENEFIT_LIST.map((item) => {
               const IconComponent = item.icon || Fragment;
@@ -99,7 +98,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
               );
             })}
           </Flex>
-        )}
+        )} */}
 
         <Flex
           w={{ base: '100%', lg: 'unset' }}
@@ -122,7 +121,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
             >
               Top Trending
             </Heading>
-            {!isMobile && (
+            {/* {!isMobile && (
               <>
                 <Text maxW="797px" variant="septenary" size="text2Xl" mb="10px">
                   Find a bright ideal to suit your taste with our great
@@ -130,7 +129,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
                 </Text>
                 <Box w="98px" h="5px" bgColor="background.300" />
               </>
-            )}
+            )} */}
           </Flex>
           <Flex w="100%" justifyContent="flex-end">
             <HStack as={Link} href={ROUTER.PRODUCT}>

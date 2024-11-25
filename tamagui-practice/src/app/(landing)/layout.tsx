@@ -1,13 +1,11 @@
-import { Box } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
+
 import { ReactNode } from 'react';
 
 // Apis
 import { getCartItems } from '@/apis';
 
 // layouts
-import { Header } from '@/layouts';
-const Footer = dynamic(() => import('@/layouts/Footer'));
+import { Footer, Header } from '@/layouts';
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -18,11 +16,11 @@ const AuthLayout = async ({ children }: AuthLayoutProps) => {
   const { cartItems = [] } = cartList || {};
 
   return (
-    <>
+    <div>
       <Header cartItems={cartItems} />
-      <Box>{children}</Box>
+      <div>{children}</div>
       <Footer />
-    </>
+    </div>
   );
 };
 

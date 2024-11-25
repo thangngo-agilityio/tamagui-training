@@ -1,10 +1,7 @@
-import dynamic from 'next/dynamic';
 
 // Components
-import {} from '@/components';
+import { CartList, TotalCart } from '@/components';
 import { getCartItems } from '@/apis';
-const CartList = dynamic(() => import('@/components/CartList'));
-const TotalCart = dynamic(() => import('@/components/TotalCart'));
 
 const CartPage = async () => {
   const { data: cartList } = await getCartItems();

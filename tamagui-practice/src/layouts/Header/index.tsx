@@ -1,88 +1,83 @@
-import { Box, Flex, Hide, Show, Skeleton, Stack, Text } from '@chakra-ui/react';
+'use client'
+
+import { Skeleton } from '@chakra-ui/react';
 import Link from 'next/link';
 
 // Components
-import { InputSearch } from '@/components';
+import { InputSearch, Navigation } from '@/components';
 
 // Icons
 import { ArrowIcon, LogoIcon, LogoMobile } from '@/icons';
 
 // Constants
 import { ROUTER } from '@/constants';
-import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import { ICartItem } from '@/types';
+import { Stack, XStack } from 'tamagui';
+import { Text } from '@/universal';
 
-const Navigation = dynamic(() => import('@/components/Navigation'));
 
 type THeader = {
   cartItems: ICartItem[];
 };
 
 const Header = ({ cartItems }: THeader) => (
-  <Flex
-    as="header"
-    w="100%"
+  <Stack
+    width="100%"
     justifyContent="center"
-    position={{ base: 'absolute', lg: 'unset' }}
-    flexDir={{ base: 'column', lg: 'unset' }}
-    px={{ base: '20px', lg: '52px' }}
+    position='absolute'
+    flexDirection='column'
+    paddingHorizontal='20px'
+    $gtMd={{ position: 'relative', flexDirection: 'row', paddingHorizontal: '52px' }}
   >
-    <Flex
-      w="100%"
-      maxW="1512px"
-      pt="40px"
-      pb="24px"
+    <Stack
+      width="100%"
+      maxWidth="1512px"
+      paddingTop="40px"
+      paddingBottom="24px"
       flexDirection="row"
       alignItems="center"
       justifyContent="space-between"
     >
-      <Stack w="100%" flexDirection="row" alignItems="center">
-        <Box ml={{ base: '-20px', lg: 'unset' }}>
+      <Stack flexDirection="row" alignItems="center">
+        <Stack marginLeft='-20px' $gtMd={{ marginLeft: '0' }}>
           <Link href={ROUTER.HOME} title="Home">
-            <Show above="lg">
-              <LogoIcon />
-            </Show>
-            <Hide above="lg">
+            <LogoIcon />
+            {/* <Hide above="lg">
               <LogoMobile />
-            </Hide>
+            </Hide> */}
           </Link>
-        </Box>
-        <Show above="lg">
-          <Stack flexDirection="row" alignItems="center">
-            <Flex ml="36px" alignItems="center" gap={1}>
-              <Text size="lg">Space Builder</Text>
-              <Text variant="tertiary">(Coming soon)</Text>
-              <ArrowIcon />
-            </Flex>
-            <Flex
-              as={Link}
+        </Stack>
+        <Stack flexDirection="row" alignItems="center">
+          <XStack marginLeft="36px" alignItems="center" gap={1}>
+            <Text size="large" variant='secondary'>Space Builder</Text>
+            <Text variant="tertiary">(Coming soon)</Text>
+            <ArrowIcon />
+          </XStack>
+          <XStack marginLeft='40px' alignItems='center' gap={1} transition='.2s ease-in' hoverStyle={{ opacity: .8 }}>
+            <Link
               href={ROUTER.PRODUCT}
-              ml="40px"
-              alignItems="center"
-              gap={1}
-              transition=".2s ease-in"
-              _hover={{ opacity: '.8' }}
+              style={{ textDecoration: 'none' }}
             >
-              <Text size="lg">Products</Text>
-              <ArrowIcon />
-            </Flex>
-          </Stack>
-          <Box ml="22px" width="30%">
-            <InputSearch />
-          </Box>
-        </Show>
+              <Text size="large" variant='secondary'>Products</Text>
+            </Link>
+            <ArrowIcon />
+          </XStack>
+        </Stack>
+        <Stack marginLeft="22px" width="30%">
+          <InputSearch />
+        </Stack>
       </Stack>
       <Suspense fallback={<Skeleton w="100px" h="40px" />}>
         <Navigation cartItem={cartItems} />
       </Suspense>
-    </Flex>
+    </Stack >
 
-    <Hide above="lg">
+    {/* <Hide above="lg">
       <Box width="100%">
         <InputSearch />
       </Box>
-    </Hide>
-  </Flex>
+    </Hide> */}
+  </Stack >
 );
 export default Header;

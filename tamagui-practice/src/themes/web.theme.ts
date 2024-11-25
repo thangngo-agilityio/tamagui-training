@@ -8,6 +8,9 @@ export const webTheme: CustomTheme<'light_web'> = {
     backgroundPrimary: colors.orange1,
     backgroundError: colors.red2,
     backgroundAuth: colors.green1,
+    backgroundShowroom: colors.grey10,
+    backgroundShowroomSecondary: colors.grey9,
+    backgroundTotalQuantity: colors.red1,
 
     // Text
     textDefault: colors.blue2,

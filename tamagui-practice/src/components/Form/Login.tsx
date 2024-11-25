@@ -2,7 +2,6 @@
 
 import {
   Box,
-  Button,
   Checkbox,
   Flex,
   HStack,
@@ -16,7 +15,7 @@ import { Form, YStack } from 'tamagui';
 
 
 // Component
-import { Heading, InputField, Text } from '@/universal';
+import { Button, Heading, InputField, Text } from '@/universal';
 import { EyeIcon, EyeOffIcon, GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
@@ -214,37 +213,35 @@ const LoginForm = ({
             </Text>
           </Checkbox>
           <Button
-            variant="authSecondary"
-            px={0}
-            fontSize="md"
-            w="fit-content"
+            variant='warning'
+            paddingHorizontal={0}
+            fit={true}
             aria-label="recover password"
-            textTransform="capitalize"
+            transform="capitalize"
           >
             Recover password
           </Button>
         </HStack>
 
-        <Box mb={7} w="76%">
+        <YStack marginBottom={7} width="76%">
           <Text color="$textError" textAlign="center" paddingVertical={2} height={10}>
             {errorMessage}
           </Text>
-          <Button
-            width="100%"
-            py="26px"
-            type="submit"
-            role="button"
-            aria-label="Sign In"
-            size="md"
-            variant="auth"
-            colorScheme="primary"
-            textTransform="capitalize"
-            isDisabled={isDisableSubmit}
-            isLoading={isPending}
-          >
-            SIGN IN
-          </Button>
-        </Box>
+          <Form.Trigger asChild >
+            <Button
+              width="100%"
+              paddingVertical="15px"
+              role="button"
+              aria-label="Sign In"
+              variant="auth"
+              transform="capitalize"
+              disabled={isDisableSubmit}
+              isLoading={isPending}
+            >
+              SIGN IN
+            </Button>
+          </Form.Trigger>
+        </YStack>
       </Form>
 
       <Flex justifyContent="center" alignItems="center" mb="100px">

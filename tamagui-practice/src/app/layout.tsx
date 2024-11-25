@@ -3,7 +3,7 @@ import { SessionProvider } from 'next-auth/react';
 
 // Components
 import { TamaguiProvider } from '@/providers';
-import '../styles/index.css'
+import '../styles/globals.css'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {

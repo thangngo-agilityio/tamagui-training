@@ -12,6 +12,7 @@ import { SearchIcon } from '@/icons';
 
 // Utils
 import { getSearchParams, updateSearchParams } from '@/utils';
+import { InputField } from '@/universal';
 
 const InputSearch = () => {
   const searchParams = useSearchParams();
@@ -22,8 +23,7 @@ const InputSearch = () => {
   const isShowSearch = pathname === ROUTER.PRODUCT;
 
   const handleOnChange = useDebounceCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
+    (value: string) => {
       const updatedParams = updateSearchParams(
         searchParams,
         SEARCH_QUERIES.NAME,
@@ -41,12 +41,10 @@ const InputSearch = () => {
           <InputLeftElement>
             <SearchIcon />
           </InputLeftElement>
-          <Input
+          <InputField
             placeholder="Search for minimalist chair"
             defaultValue={name}
-            onChange={handleOnChange}
-            variant="search"
-            background="background.100"
+            onChangeText={handleOnChange}
             data-testid="search"
           />
         </InputGroup>

@@ -1,4 +1,5 @@
 'use client';
+
 import { ReactNode } from 'react';
 import { TamaguiProvider as TamaguiUiProvider, Theme } from '@tamagui/core';
 

@@ -31,7 +31,7 @@ type TProductSection = {
 };
 
 const ProductSection = ({ productList }: TProductSection) => {
-  const isMobile = useBreakpointValue({ base: true, lg: false });
+  // const isMobile = useBreakpointValue({ base: true, lg: false });
   return (
     <Flex
       pt={{ base: '54px', lg: '148px' }}
@@ -49,9 +49,8 @@ const ProductSection = ({ productList }: TProductSection) => {
               variant="product"
               size={{ base: 'size2xl', lg: 'size8xl' }}
             >
-              {isMobile ? 'Latest Release' : 'We Have Some Awesome Products.'}
+              We Have Some Awesome Products.
             </Heading>
-            {!isMobile && (
               <Text
                 ml="118px"
                 maxW="518px"
@@ -62,9 +61,8 @@ const ProductSection = ({ productList }: TProductSection) => {
                 industry. Lorem Ipsum has been the industry&apos;s standard
                 dummy text ever since the 1500s,
               </Text>
-            )}
           </Flex>
-          {isMobile && (
+          {/* {isMobile && (
             <Flex w="100%" justifyContent="flex-end">
               <HStack as={Link} href={ROUTER.PRODUCT}>
                 <Text
@@ -76,7 +74,7 @@ const ProductSection = ({ productList }: TProductSection) => {
                 <VectorIcon />
               </HStack>
             </Flex>
-          )}
+          )} */}
         </Flex>
         <Suspense fallback={<SkeletonProductList length={4} />}>
           <Grid

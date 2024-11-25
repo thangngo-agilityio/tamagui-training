@@ -4,6 +4,9 @@ export type GeneralTheme = {
   backgroundPrimary: string;
   backgroundError: string;
   backgroundAuth: string;
+  backgroundShowroom: string;
+  backgroundShowroomSecondary: string;
+  backgroundTotalQuantity: string;
 
   // Text
   textDefault: string;

@@ -115,6 +115,7 @@ const Text = styled(textBase, {
   defaultVariants: {
     size: 'medium',
     weight: 'normal',
+    variant: 'default'
   },
 });
 
