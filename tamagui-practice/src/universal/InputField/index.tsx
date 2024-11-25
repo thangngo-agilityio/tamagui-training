@@ -1,3 +1,5 @@
+'use client'
+
 import { ComponentProps, forwardRef, ReactNode, Ref, useCallback, useState } from "react";
 import { styled, Input, Label, YStack, XStack, View, Stack } from "tamagui";
 import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';

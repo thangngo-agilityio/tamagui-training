@@ -11,6 +11,8 @@ export const webTheme: CustomTheme<'light_web'> = {
     backgroundShowroom: colors.grey10,
     backgroundShowroomSecondary: colors.grey9,
     backgroundTotalQuantity: colors.red1,
+    backgroundFilter: colors.white4,
+    BackgroundItemCategory: colors.white3,
 
     // Text
     textDefault: colors.blue2,

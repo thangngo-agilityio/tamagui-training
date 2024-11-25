@@ -34508,6 +34508,8 @@
         "backgroundShowroom": "#EFE5D5",
         "backgroundShowroomSecondary": "#F2F0E0",
         "backgroundTotalQuantity": "#EB5E55",
+        "backgroundFilter": "#F9F9F9",
+        "BackgroundItemCategory": "#F0F0F0",
         "textDefault": "rgba(33, 56, 66, 60%)",
         "textError": "#EB5E55",
         "textPrimary": "#FFF",

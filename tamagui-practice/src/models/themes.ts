@@ -7,6 +7,8 @@ export type GeneralTheme = {
   backgroundShowroom: string;
   backgroundShowroomSecondary: string;
   backgroundTotalQuantity: string;
+  backgroundFilter: string;
+  BackgroundItemCategory: string;
 
   // Text
   textDefault: string;

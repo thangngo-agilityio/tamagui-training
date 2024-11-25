@@ -15,6 +15,7 @@ const OverviewSection = ({ isHomePage, title }: TOverviewSection) => (
     paddingBottom={isHomePage ? '78px' : '78px'}
     justifyContent="center"
     $gtMd={{
+      alignItems: 'center',
       paddingHorizontal: '122px',
       paddingTop: isHomePage ? '162px' : '35px',
       paddingBottom: isHomePage ? '150px' : '35px'
