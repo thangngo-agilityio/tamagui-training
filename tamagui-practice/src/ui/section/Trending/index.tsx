@@ -156,7 +156,6 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
             display: 'grid',
             ...(gtMd && { gridTemplateColumns: 'repeat(4, 1fr' }),
             ...(!gtMd && { gridTemplateColumns: 'repeat(2, 1fr' })
-
           }}
           paddingHorizontal='28px'
           gap='29px'

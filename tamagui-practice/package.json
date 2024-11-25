@@ -20,6 +20,7 @@
     "@emotion/styled": "^11.13.0",
     "@nextui-org/system": "^2.2.5",
     "@tamagui/core": "^1.116.14",
+    "@tamagui/linear-gradient": "^1.117.1",
     "@tamagui/next-plugin": "^1.116.14",
     "@tamagui/next-theme": "^1.116.15",
     "@tamagui/react-native-media-driver": "^1.116.14",

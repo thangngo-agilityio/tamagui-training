@@ -35,6 +35,7 @@ export const webTheme: CustomTheme<'light_web'> = {
 
     // Button
     buttonPrimary: colors.green1,
+    BackgroundShowroomSection: colors.green7,
 
     // Border
     borderPrimaryInput: colors.grey11,

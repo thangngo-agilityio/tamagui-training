@@ -3,16 +3,7 @@
 import Link from 'next/link';
 import lazy from 'next/dynamic';
 import { Suspense } from 'react';
-import {
-  Box,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  HStack,
-  Text,
-  useBreakpointValue,
-} from '@chakra-ui/react';
+
 
 // Component
 import { SkeletonProductList } from '@/components';
@@ -23,6 +14,8 @@ import { TProduct } from '@/types';
 
 // Constants
 import { ROUTER } from '@/constants';
+import { Stack, useMedia, XStack } from 'tamagui';
+import { Heading, Text } from '@/universal';
 
 const ProductCard = lazy(() => import('@/components/ProductCard'));
 
@@ -32,36 +25,48 @@ type TProductSection = {
 
 const ProductSection = ({ productList }: TProductSection) => {
   // const isMobile = useBreakpointValue({ base: true, lg: false });
+  const { gtMd } = useMedia()
   return (
-    <Flex
-      pt={{ base: '54px', lg: '148px' }}
-      pb={{ base: '50px', lg: '416px' }}
+    <Stack
+      paddingTop='54px'
+      paddingBottom='50px'
       justifyContent="center"
+      alignItems='center'
+      $gtMd={{
+        paddingTop: '148px',
+        paddingBottom: '416px'
+      }}
     >
-      <Box maxW="1512px">
-        <Flex
-          px={{ base: '28px', lg: '104px' }}
-          mb={{ base: '120px', lg: '165px' }}
+      <Stack maxWidth="1512px">
+        <Stack
+          paddingHorizontal='28px'
+          marginBottom='120px'
+          $gtMd={{
+            paddingHorizontal: '104px',
+            marginBottom: '165px'
+          }}
         >
-          <Flex w="100%">
+          <XStack width="100%">
             <Heading
-              maxW="340px"
-              variant="product"
-              size={{ base: 'size2xl', lg: 'size8xl' }}
+              maxWidth="340px"
+              variant="septenary"
+              size='large'
+              $gtMd={{
+                size: 'extraHuge'
+              }}
             >
               We Have Some Awesome Products.
             </Heading>
-              <Text
-                ml="118px"
-                maxW="518px"
-                size="textLg"
-                variant="productPrimary"
-              >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry&apos;s standard
-                dummy text ever since the 1500s,
-              </Text>
-          </Flex>
+            <Text
+              marginLeft="118px"
+              maxWidth="518px"
+              size="medium"
+            >
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry&apos;s standard
+              dummy text ever since the 1500s,
+            </Text>
+          </XStack>
           {/* {isMobile && (
             <Flex w="100%" justifyContent="flex-end">
               <HStack as={Link} href={ROUTER.PRODUCT}>
@@ -75,29 +80,36 @@ const ProductSection = ({ productList }: TProductSection) => {
               </HStack>
             </Flex>
           )} */}
-        </Flex>
+        </Stack>
         <Suspense fallback={<SkeletonProductList length={4} />}>
-          <Grid
-            px={{ base: '28px', lg: '94px' }}
+          <Stack
+            style={{
+              display: 'grid',
+              ...(gtMd && { gridTemplateColumns: 'repeat(4, 1fr' }),
+              ...(!gtMd && { gridTemplateColumns: 'repeat(2, 1fr' })
+            }}
+            paddingHorizontal='28px'
             gap="29px"
             rowGap="120px"
-            templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
-            mb="20px"
+            marginBottom="20px"
+            $gtMd={{
+              paddingHorizontal: '94px'
+            }}
           >
             {productList.map((item) => (
-              <GridItem key={item.id}>
+              <Stack key={item.id}>
                 <ProductCard
                   id={item.id}
                   image={item.image[0]}
                   title={item.name}
                   price={item.price}
                 />
-              </GridItem>
+              </Stack>
             ))}
-          </Grid>
+          </Stack>
         </Suspense>
-      </Box>
-    </Flex>
+      </Stack>
+    </Stack>
   );
 };
 

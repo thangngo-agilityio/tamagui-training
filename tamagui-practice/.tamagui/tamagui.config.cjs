@@ -227,6 +227,7 @@ var webTheme = {
     textInput: colors.grey2,
     // Button
     buttonPrimary: colors.green1,
+    BackgroundShowroomSection: colors.green7,
     // Border
     borderPrimaryInput: colors.grey11,
     borderSecondaryInput: colors.grey12,

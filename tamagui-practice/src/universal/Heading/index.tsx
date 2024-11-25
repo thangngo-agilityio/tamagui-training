@@ -84,7 +84,10 @@ const Heading = styled(Text, {
         fontSize: '$9',
         lineHeight: 48,
       },
-
+      semiHuge: {
+        fontSize: '$11',
+        lineHeight: 48,
+      },
       extraHuge: {
         fontSize: '$10',
         lineHeight: 56,

@@ -31,6 +31,7 @@ export type GeneralTheme = {
 
   // Button
   buttonPrimary: string;
+  BackgroundShowroomSection: string;
 
   // Border
   borderPrimaryInput: string;

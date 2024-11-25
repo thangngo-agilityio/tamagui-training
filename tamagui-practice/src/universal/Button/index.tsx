@@ -85,7 +85,30 @@ const ButtonFrame = styled(View, {
         backgroundColor: 'transparent',
         borderColor: 'none',
         borderWidth: 0
-      }
+      },
+
+      showroom: {
+        width: 'fit-content',
+        backgroundColor: '$BackgroundShowroomSection',
+        color: '$textPrimary',
+        borderWidth: 0,
+        borderRadius: '$xl',
+        opacity: 1,
+        hoverStyle: {
+          opacity: 0.8,
+        },
+      },
+
+      showroomMobile: {
+        width: 'fit-content',
+        backgroundColor: 'transparent',
+        color: '$textQuinary',
+        borderWidth: 0,
+        opacity: 1,
+        hoverStyle: {
+          opacity: 0.8,
+        },
+      },
     },
     fit: {
       false: {
@@ -121,6 +144,16 @@ const ButtonText = styled(Text, {
       auth: {
         size: 'small',
         color: '$textPrimary',
+      },
+
+      showroom: {
+        paddingHorizontal: '26px',
+        paddingVertical: '22px',
+        size: 'specialLarge',
+      },
+
+      showroomMobile: {
+        size: 'tiny'
       },
 
       warning: {

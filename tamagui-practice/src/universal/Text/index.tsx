@@ -41,7 +41,10 @@ const Text = styled(textBase, {
       },
       copyright: {
         color: '$textCopyright'
-      }
+      },
+      productPrimary: {
+        color: 'text.1400',
+      },
     },
 
     size: {
