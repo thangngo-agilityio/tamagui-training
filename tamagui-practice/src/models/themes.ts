@@ -11,6 +11,7 @@ export type GeneralTheme = {
   BackgroundItemCategory: string;
   BackgroundFooter: string;
   backgroundFooterItem: string;
+  backgroundButtonPagination: string;
 
   // Text
   textDefault: string;
