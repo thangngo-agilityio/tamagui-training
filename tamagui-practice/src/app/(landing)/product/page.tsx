@@ -33,13 +33,15 @@ const Product = async ({ searchParams }: TProductPage) => {
     <Box>
       <OverviewSection title="Product page" />
       <Flex
-        pb={{ base: '100px', lg: '350px' }}
+        // paddingBottom={{ base: '100px', md: '350px' }}
+        paddingBottom='350px'
         flexDir="column"
         alignItems="center"
         mb="20px"
       >
         <Flex
-          maxW={{ base: 'unset', lg: '1512px' }}
+          // maxW={{ base: 'unset', lg: '1512px' }}
+          maxW='1512px'
           flexDir="column"
           alignItems="center"
         >

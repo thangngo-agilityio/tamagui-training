@@ -1,14 +1,16 @@
 'use client';
 
+import { RadioGroup, XStack } from 'tamagui';
 import { Fragment, useCallback } from 'react';
-import { Flex, RadioGroup } from '@chakra-ui/react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 // Components
 import ItemCategory from '../ItemCategory';
 
 // Constants
 import { MENU_ITEM_FILTER, SEARCH_QUERIES } from '@/constants';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+
+// Utils
 import { getSearchParams, updateSearchParams } from '@/utils';
 
 const FilterProduct = () => {
@@ -32,18 +34,24 @@ const FilterProduct = () => {
     [pathname, replace, searchParams],
   );
   return (
-    <Flex
-      width={{ base: '100%', lg: '73%' }}
-      px={{ base: '28px', lg: '145px' }}
-      pt="20px"
-      pb="26px"
-      bgColor={{ base: 'transparent', lg: 'background.800' }}
-      boxShadow={{ base: 'unset', lg: '0 11px 30px 4px rgba(0, 0, 0, 7%)' }}
-      gap={{ base: '25px', lg: '75px' }}
+    <XStack
+      width='100%'
+      paddingHorizontal='28px'
+      paddingTop="20px"
+      paddingBottom="26px"
+      backgroundColor='transparent'
+      gap='25px'
       justifyContent="center"
       alignItems="center"
-      mt={{ base: 'unset', lg: '-20px' }}
-      mb="146px"
+      marginBottom="146px"
+      $gtMd={{
+        width: '73%',
+        paddingHorizontal: '145px',
+        backgroundColor: '$backgroundFilter',
+        boxShadow: '0 11px 30px 4px rgba(0, 0, 0, 7%)',
+        gap: '75px',
+        marginTop: '-20px'
+      }}
     >
       {MENU_ITEM_FILTER.map((item) => {
         const IconComponent = item.icon || Fragment;
@@ -53,7 +61,7 @@ const FilterProduct = () => {
             flexDirection="column"
             alignItems="center"
             cursor="pointer"
-            onChange={handleFilterProduct}
+            onValueChange={handleFilterProduct}
             value={category}
             key={item.id}
           >
@@ -67,7 +75,7 @@ const FilterProduct = () => {
           </RadioGroup>
         );
       })}
-    </Flex>
+    </XStack>
   );
 };
 

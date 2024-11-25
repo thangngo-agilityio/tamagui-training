@@ -1,8 +1,7 @@
-import dynamic from 'next/dynamic';
-
 // Types
 import { getProducts } from '@/apis';
 import { ProductList } from '@/components';
+
 
 
 type TTrendingSection = {

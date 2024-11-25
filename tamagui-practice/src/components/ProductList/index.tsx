@@ -13,12 +13,15 @@ import { TProduct } from '@/types';
 
 // Constants
 import { PAGE_SIZE_PRODUCT } from '@/constants';
+import { Stack, useMedia, YStack } from 'tamagui';
 
 type TProductListProps = {
   productList: TProduct[];
 };
 
 const ProductList = ({ productList }: TProductListProps) => {
+  const { gtMd } = useMedia()
+
   const {
     data,
     filterData,
@@ -30,41 +33,49 @@ const ProductList = ({ productList }: TProductListProps) => {
   } = usePagination(productList, PAGE_SIZE_PRODUCT);
 
   return (
-    <Flex flexDir="column" alignItems="center">
+    <YStack alignItems="center">
       {productList.length > 0 ? (
-        <Grid
-          px={{ base: '28px', lg: '94px' }}
-          gap={{ base: '120px 15px', lg: '120px 29px' }}
-          templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
-          mb="20px"
+        <Stack
+          style={{
+            display: 'grid',
+            ...(gtMd && { gridTemplateColumns: 'repeat(4, 2fr' }),
+            ...(!gtMd && { gridTemplateColumns: 'repeat(2, 1fr' })
+          }}
+          paddingHorizontal='28px'
+          gap='120px 15px'
+          marginBottom="20px"
+          $gtMd={{
+            paddingHorizontal: '94px',
+            gap: '120px 29px'
+          }}
         >
-          {filterData.map((item) => (
-            <GridItem key={item.id}>
+          {filterData?.map((item) => (
+            <Stack key={item.id}>
               <ProductCard
                 id={item.id}
                 image={item.image[0]}
                 title={item.name}
                 price={item.price}
               />
-            </GridItem>
+            </Stack>
           ))}
-        </Grid>
+        </Stack>
       ) : (
-        <Box px={{ base: '28px', lg: '320px' }} mb="50px">
+        <Stack paddingHorizontal='28px' marginBottom="50px" $gtMd={{ paddingHorizontal: '320px' }}>
           <Text size="textLg" textAlign="center">
             No products in list
           </Text>
-        </Box>
+        </Stack>
       )}
       <Pagination
-        currentPage={data.currentPage}
+        currentPage={data?.currentPage}
         isDisableNext={isDisableNext}
         isDisabledPrev={isDisabledPrev}
         arrOfCurrButtons={arrOfCurrButtons}
         onPageChange={handlePageChange}
         onClickPage={handlePageClick}
       />
-    </Flex>
+    </YStack>
   );
 };
 

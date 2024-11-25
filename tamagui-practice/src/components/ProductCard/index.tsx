@@ -74,7 +74,7 @@ const ProductCard = ({ id, image, title, price }: ProductCard) => (
           position="absolute"
           justifyContent="center"
           alignItems="center"
-          borderRadius="full"
+          borderRadius="$full"
           backgroundColor="$backgroundBody"
           top="10px"
           right='15px'

@@ -32,10 +32,7 @@ export const usePagination = <T>(pagination: T[], limitPage: number) => {
     return pagination?.slice(start, end);
   }, [currentPage, limit, pagination]);
 
-  const resetPage = useCallback(
-    () => setData((prev) => ({ ...prev, currentPage: 1 })),
-    [],
-  );
+  const resetPage = useCallback(() => setData((prev) => ({ ...prev, currentPage: 1 })), []);
 
   useEffect(() => {
     const tempNumberOfButtons = formatPagination({
