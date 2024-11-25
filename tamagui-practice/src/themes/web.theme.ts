@@ -8,6 +8,13 @@ export const webTheme: CustomTheme<'light_web'> = {
     backgroundPrimary: colors.orange1,
     backgroundError: colors.red2,
     backgroundAuth: colors.green1,
+    backgroundShowroom: colors.grey10,
+    backgroundShowroomSecondary: colors.grey9,
+    backgroundTotalQuantity: colors.red1,
+    backgroundFilter: colors.white4,
+    BackgroundItemCategory: colors.white3,
+    BackgroundFooter: colors.white2,
+    backgroundFooterItem: colors.green8,
 
     // Text
     textDefault: colors.blue2,
@@ -27,9 +34,11 @@ export const webTheme: CustomTheme<'light_web'> = {
     textPlaceholder: colors.grey3,
     textLabel: colors.grey4,
     textInput: colors.grey2,
+    textFooterSecondary: colors.grey8,
 
     // Button
     buttonPrimary: colors.green1,
+    BackgroundShowroomSection: colors.green7,
 
     // Border
     borderPrimaryInput: colors.grey11,

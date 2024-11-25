@@ -2,21 +2,15 @@
 
 import { Fragment } from 'react';
 import {
-  Box,
-  Flex,
   Grid,
-  GridItem,
-  Heading,
-  HStack,
-  RadioGroup,
-  Text,
-  useBreakpointValue,
 } from '@chakra-ui/react';
+import { RadioGroup, Stack, useMedia, XStack, YStack } from 'tamagui';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 // Components
 import { SkeletonProductList } from '@/components';
+import { Heading, Text } from '@/universal';
 
 // Constants
 import { BENEFIT_LIST, MENU_ITEM_FILTER, ROUTER } from '@/constants';
@@ -36,33 +30,39 @@ type TTrendingSection = {
 };
 
 const TrendingSection = ({ productList }: TTrendingSection) => {
-  const isMobile = useBreakpointValue({ base: true, lg: false });
+  // const isMobile = useBreakpointValue({ base: true, lg: false });
+  const { gtMd } = useMedia()
 
   return (
-    <Flex
+    <Stack
       justifyContent="center"
       alignItems="center"
-      px={{ base: 'unset', lg: '94px' }}
+      $gtMd={{ paddingHorizontal: '94px' }}
     >
-      <Flex
-        w={{ base: '100%', lg: 'unset' }}
-        flexDir="column"
-        maxW={{ base: 'unset', lg: '1512px' }}
+      <YStack
+        width='100%'
         justifyContent="center"
         alignItems="center"
+        $gtMd={{ width: 'unset', maxWidth: '1512px' }}
       >
-        <Flex
-          width={{ base: '100%', lg: '73%' }}
-          px={{ base: '28px', lg: '145px' }}
-          pt="20px"
-          pb="26px"
-          bgColor={{ base: 'transparent', lg: 'background.800' }}
-          boxShadow={{ base: 'unset', lg: '0 11px 30px 4px rgba(0, 0, 0, 7%)' }}
-          gap={{ base: '25px', lg: '75px' }}
+        <XStack
+          width='100%'
+          paddingHorizontal='28px'
+          paddingTop="20px"
+          paddingBottom="26px"
+          backgroundColor='transparent'
+          gap='25px'
           justifyContent="center"
           alignItems="center"
-          mt={{ base: 'unset', lg: '-60px' }}
-          mb="46px"
+          marginBottom="46px"
+          $gtMd={{
+            width: '73%',
+            paddingHorizontal: '145px',
+            backgroundColor: '$backgroundFilter',
+            boxShadow: '0 11px 30px 4px rgba(0, 0, 0, 7%)',
+            gap: '75px',
+            marginTop: '-60px',
+          }}
         >
           {MENU_ITEM_FILTER.map((item) => {
             const IconComponent = item.icon || Fragment;
@@ -83,46 +83,55 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
               </RadioGroup>
             );
           })}
-        </Flex>
+        </XStack>
 
-        {!isMobile && (
-          <Flex flexDirection="row" gap="92px" mb="98px" px="104px">
-            {BENEFIT_LIST.map((item) => {
-              const IconComponent = item.icon || Fragment;
-              return (
-                <CardBenefit
-                  key={item.id}
-                  icon={<IconComponent />}
-                  title={item.title}
-                  text={item.text}
-                />
-              );
-            })}
-          </Flex>
-        )}
+        {/* {!isMobile && ( */}
+        <XStack gap="92px" marginBottom="98px" paddingHorizontal="104px">
+          {BENEFIT_LIST.map((item) => {
+            const IconComponent = item.icon || Fragment;
+            return (
+              <CardBenefit
+                key={item.id}
+                icon={<IconComponent />}
+                title={item.title}
+                text={item.text}
+              />
+            );
+          })}
+        </XStack>
+        {/* )} */}
 
-        <Flex
-          w={{ base: '100%', lg: 'unset' }}
-          px={{ base: '28px', lg: 'unset' }}
-          mb={{ base: '106px', lg: '136px' }}
-          flexDir={{ base: 'row', lg: 'column' }}
+        <Stack
+          width='100%'
+          paddingHorizontal='28px'
+          marginBottom='106px'
+          flexDirection='row'
           alignItems="center"
+          $gtMd={{
+            flexDirection: 'column',
+            width: 'unset',
+            paddingHorizontal: 0,
+            marginBottom: '136px'
+          }}
         >
-          <Flex
-            w="100%"
-            flexDirection="column"
-            alignItems={{ base: 'unset', lg: 'center' }}
-            textAlign={{ base: 'unset', lg: 'center' }}
-            mb={{ base: 'unset', lg: '30px' }}
+          <YStack
+            width="100%"
+            $gtMd={{
+              alignItems: 'center',
+              marginBottom: '30px'
+            }}
           >
             <Heading
-              mb="10px"
-              size={{ base: 'size2xl', lg: 'size7xl' }}
+              marginBottom="10px"
+              size='large'
               variant="quinary"
+              $gtMd={{
+                size: 'ultraHuge'
+              }}
             >
               Top Trending
             </Heading>
-            {!isMobile && (
+            {/* {!isMobile && (
               <>
                 <Text maxW="797px" variant="septenary" size="text2Xl" mb="10px">
                   Find a bright ideal to suit your taste with our great
@@ -130,38 +139,46 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
                 </Text>
                 <Box w="98px" h="5px" bgColor="background.300" />
               </>
-            )}
-          </Flex>
-          <Flex w="100%" justifyContent="flex-end">
-            <HStack as={Link} href={ROUTER.PRODUCT}>
-              <Text size={{ base: 'textSm', lg: 'textMd' }} variant="tertiary">
+            )} */}
+          </YStack>
+          <XStack width="100%" alignItems='center' justifyContent="flex-end" gap={5}>
+            <Link href={ROUTER.PRODUCT} style={{ textDecoration: 'none' }}>
+              <Text size='extraSmall' variant="tertiary" $gtMd={{ size: 'small' }}>
                 See all
               </Text>
-              <VectorIcon />
-            </HStack>
-          </Flex>
-        </Flex>
+            </Link>
+            <VectorIcon />
+          </XStack>
+        </Stack>
 
-        <Grid
-          px={{ base: '28px', lg: '94px' }}
-          gap={{ base: '15px', lg: '29px' }}
+        <Stack
+          style={{
+            display: 'grid',
+            ...(gtMd && { gridTemplateColumns: 'repeat(4, 1fr' }),
+            ...(!gtMd && { gridTemplateColumns: 'repeat(2, 1fr' })
+          }}
+          paddingHorizontal='28px'
+          gap='29px'
           rowGap="120px"
-          templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
-          mb="85px"
+          marginBottom="85px"
+          $gtMd={{
+            paddingHorizontal: '94px',
+            gap: '29px'
+          }}
         >
           {productList.map((item) => (
-            <GridItem key={item.id}>
+            <Stack key={item.id}>
               <ProductCard
                 id={item.id}
                 image={item.image[0]}
                 title={item.name}
                 price={item.price}
               />
-            </GridItem>
+            </Stack>
           ))}
-        </Grid>
-      </Flex>
-    </Flex>
+        </Stack>
+      </YStack>
+    </Stack>
   );
 };
 

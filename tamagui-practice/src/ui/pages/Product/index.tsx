@@ -2,8 +2,8 @@ import dynamic from 'next/dynamic';
 
 // Types
 import { getProducts } from '@/apis';
+import { ProductList } from '@/components';
 
-const ProductList = dynamic(() => import('@/components/ProductList'));
 
 type TTrendingSection = {
   queryConfig: {

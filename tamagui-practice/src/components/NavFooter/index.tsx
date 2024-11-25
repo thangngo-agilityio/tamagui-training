@@ -13,6 +13,7 @@ const NavFooter = ({ path, name }: TNavFooter) => (
       fontSize: '16px',
       color: '#B6C197',
       fontWeight: '400',
+      textDecoration: 'none'
     }}
   >
     {name}

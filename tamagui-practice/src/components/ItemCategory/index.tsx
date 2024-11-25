@@ -1,10 +1,14 @@
-import { Flex, Heading, Radio } from '@chakra-ui/react';
+'use client'
+import { RadioGroup, Stack } from 'tamagui';
 import { memo, ReactElement } from 'react';
 import isEqual from 'react-fast-compare';
 
+// Components
+import { Heading } from '@/universal';
+
 type TItemCategory = {
   title: string;
-  value?: string;
+  value: string;
   filter?: string;
   icon?: ReactElement;
   iconActive?: ReactElement;
@@ -20,27 +24,27 @@ const ItemCategory = ({
   const isActive = value === filter;
 
   return (
-    <Radio m={0} value={value}>
-      <Flex
-        w="56px"
-        h="56px"
-        borderRadius="xl"
-        bgColor={isActive ? 'background.300' : 'background.700'}
+    <RadioGroup.Item margin={0} value={value} borderWidth={0} backgroundColor='transparent' cursor='pointer'>
+      <Stack
+        width="56px"
+        height="56px"
+        borderRadius='$xl'
+        backgroundColor={isActive ? '$backgroundPrimary' : '$BackgroundItemCategory'}
         transition=".2s ease-in"
-        opacity="1"
-        _hover={{
-          bgColor: 'background.300',
+        opacity={1}
+        hoverStyle={{
+          backgroundColor: '$backgroundPrimary',
         }}
         justifyContent="center"
         alignItems="center"
-        mb="8px"
+        marginBottom="8px"
       >
         {!isActive ? icon : iconActive}
-      </Flex>
-      <Heading size="xs" variant="quaternary">
+      </Stack>
+      <Heading size="tiny" variant="quaternary">
         {title}
       </Heading>
-    </Radio>
+    </RadioGroup.Item>
   );
 };
 

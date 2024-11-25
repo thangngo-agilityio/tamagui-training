@@ -37,6 +37,10 @@ const Heading = styled(Text, {
       orderSuccess: {
         color: '$textOrderSuccess',
       },
+      footerPrimary: {
+        color: 'textSeptenary',
+        fontWeight: '700',
+      },
     },
 
     size: {
@@ -84,9 +88,20 @@ const Heading = styled(Text, {
         fontSize: '$9',
         lineHeight: 48,
       },
-
+      semiHuge: {
+        fontSize: '$11',
+        lineHeight: 48,
+      },
       extraHuge: {
         fontSize: '$10',
+        lineHeight: 56,
+      },
+      superHuge: {
+        fontSize: '$12',
+        lineHeight: 56,
+      },
+      ultraHuge: {
+        fontSize: '$13',
         lineHeight: 56,
       },
     },

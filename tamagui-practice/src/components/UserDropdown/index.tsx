@@ -14,7 +14,7 @@ type TUserDropdown = {
 
 const UserDropdown = ({ src, alt, onClick }: TUserDropdown) => (
   <Menu>
-    <MenuButton as="button" aria-label="Options">
+    <MenuButton cursor='pointer' backgroundColor='transparent' border='none' aria-label="Options">
       <Avatar src={src} alt={alt} />
     </MenuButton>
     <MenuList>

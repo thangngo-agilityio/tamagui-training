@@ -4,6 +4,13 @@ export type GeneralTheme = {
   backgroundPrimary: string;
   backgroundError: string;
   backgroundAuth: string;
+  backgroundShowroom: string;
+  backgroundShowroomSecondary: string;
+  backgroundTotalQuantity: string;
+  backgroundFilter: string;
+  BackgroundItemCategory: string;
+  BackgroundFooter: string;
+  backgroundFooterItem: string;
 
   // Text
   textDefault: string;
@@ -23,9 +30,11 @@ export type GeneralTheme = {
   textPlaceholder: string;
   textLabel: string;
   textInput: string;
+  textFooterSecondary: string;
 
   // Button
   buttonPrimary: string;
+  BackgroundShowroomSection: string;
 
   // Border
   borderPrimaryInput: string;

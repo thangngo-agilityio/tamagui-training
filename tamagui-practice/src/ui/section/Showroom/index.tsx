@@ -1,70 +1,97 @@
 'use client';
 
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Text,
-  useBreakpointValue,
-} from '@chakra-ui/react';
+import { Stack, XStack, YStack } from 'tamagui';
+import { LinearGradient } from 'tamagui/linear-gradient'
 import Image from 'next/image';
 
+// Component
+import { Button, Heading, Text } from '@/universal';
+
 const ShowroomSection = () => {
-  const isMobile = useBreakpointValue({ base: true, lg: false });
+  // const isMobile = useBreakpointValue({ base: true, lg: false });
   return (
-    <Flex
-      px={{ base: '24px', lg: '125px' }}
-      borderRadius="sm"
-      bgGradient="linear(to-r, background.900, background.400)"
+    <Stack
+      position='relative'
       justifyContent="center"
-      mx={{ base: '20px', lg: 'unset' }}
+      alignItems='center'
+      borderRadius="$sm"
     >
-      <Flex w="100%" maxW="1512px">
-        <Flex
-          flexDir="column"
-          pt={{ base: '30px', lg: '49px' }}
-          pb={{ base: '15px', lg: '39px' }}
-          flex={{ base: 2, lg: 1 }}
+      <LinearGradient
+        position='absolute'
+        width='100%'
+        height='100%'
+        paddingHorizontal='24px'
+        borderRadius="$sm"
+        colors={['$backgroundShowroom', '$backgroundShowroomSecondary']}
+        start={[1, 0]}
+        end={[1, 0]}
+        zIndex={-1}
+
+      />
+      <XStack width="100%" maxWidth="1512px" marginHorizontal='20px' $gtMd={{ paddingHorizontal: '125px', marginHorizontal: 0 }}>
+        <YStack
+          paddingTop='30px'
+          paddingBottom='15px'
+          flex={2}
+          $gtMd={{
+            paddingTop: '49px',
+            paddingBottom: '39px',
+            flex: 1
+          }}
         >
           <Heading
-            mb="10px"
+            marginBottom="10px"
             variant="septenary"
-            size={{ base: 'md', lg: 'size5xl' }}
-            maxW="580px"
+            size='small'
+            maxWidth="580px"
+            $gtMd={{
+              size: 'semiHuge'
+            }}
           >
-            {isMobile
-              ? 'Virtual Reality Showroom'
-              : 'Customize your furniture and build your space with minifurs'}
+            Customize your furniture and build your space with minifurs
           </Heading>
           <Text
-            w={{ base: '180px', lg: 'unset' }}
-            mb={{ base: '5px', lg: '22px' }}
-            size={{ base: 'unset', lg: 'text2Xl' }}
-            fontSize={{ base: '6px', lg: 'unset' }}
-            maxW="580px"
+            width='180px'
+            marginBottom='5px'
+            fontSize='6px'
+            maxWidth="580px"
+            $gtMd={{
+              width: 'unset',
+              marginBottom: '22px',
+              size: 'extraLarge',
+              fontSize: 'unset'
+            }}
           >
             Allows you to view our showrooms containing our latest furniture
             collections
           </Text>
           <Button
-            size={{ base: 'showroomMobile', lg: 'size3xl' }}
-            variant={{ base: 'showroomMobile', lg: 'showroom' }}
+            variant='showroom'
+            // $gtMd={{
+            //   variant: 'showroom'
+            // }}
           >
             Coming soon...
           </Button>
-        </Flex>
+        </YStack>
 
-        <Flex
-          as="div"
+        <Stack
           flex={1}
           justifyContent="center"
-          position={{ base: 'relative', lg: 'unset' }}
+          position='relative'
+          $gtMd={{
+            position: 'unset'
+          }}
         >
-          <Box
-            position={{ base: 'absolute', lg: 'unset' }}
-            w={{ base: '264px', lg: 'unset' }}
-            h={{ base: '127px', lg: 'unset' }}
+          <Stack
+            position='absolute'
+            width='264px'
+            height='127px'
+            $gtMd={{
+              position: 'unset',
+              width: 'unset',
+              height: 'unset'
+            }}
           >
             <Image
               width={545}
@@ -73,10 +100,10 @@ const ShowroomSection = () => {
               alt="egg-chair"
               style={{ width: '100%' }}
             />
-          </Box>
-        </Flex>
-      </Flex>
-    </Flex>
+          </Stack>
+        </Stack>
+      </XStack>
+    </Stack >
   );
 };
 

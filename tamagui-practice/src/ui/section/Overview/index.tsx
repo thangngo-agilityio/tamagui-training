@@ -1,4 +1,7 @@
-import { Button, Flex, Heading, Text } from '@chakra-ui/react';
+'use client'
+
+import { Button, Heading, Text } from '@/universal';
+import { Image, YStack } from 'tamagui';
 
 type TOverviewSection = {
   title?: string;
@@ -6,40 +9,59 @@ type TOverviewSection = {
 };
 
 const OverviewSection = ({ isHomePage, title }: TOverviewSection) => (
-  <Flex
-    px={{ base: '28px', lg: '122px' }}
-    pt={isHomePage ? '162px' : { base: '172px', lg: '35px' }}
-    pb={isHomePage ? { base: '78px', lg: '150' } : { base: '78px', lg: '35px' }}
-    bgImage="/images/background-overview.png"
-    bgRepeat="no-repeat"
-    bgSize="cover"
+  <YStack
+    paddingHorizontal='28px'
+    paddingTop={isHomePage ? '162px' : '172px'}
+    paddingBottom={isHomePage ? '78px' : '78px'}
     justifyContent="center"
+    $gtMd={{
+      alignItems: 'center',
+      paddingHorizontal: '122px',
+      paddingTop: isHomePage ? '162px' : '35px',
+      paddingBottom: isHomePage ? '150px' : '35px'
+    }}
   >
-    <Flex flexDir="column" w="100%" maxW="1512px">
+    <Image
+      source={{ uri: '/images/background-overview.png' }} style={{
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        opacity: 'unset',
+        objectFit: 'contain',
+      }}
+    />
+    <YStack width="100%" maxWidth="1512px">
       <Heading
-        maxW="705px"
-        size={isHomePage ? { base: 'xl', lg: 'size7xl' } : 'size6xl'}
-        variant="secondary"
+        maxWidth="705px"
+        size={isHomePage ? 'medium' : 'superHuge'}
+        variant="primary"
         textAlign={!isHomePage ? 'center' : 'unset'}
+        $gtMd={{
+          size: isHomePage ? 'ultraHuge' : 'superHuge'
+        }}
       >
         {isHomePage ? 'We allow customers build & Customize items' : title}
       </Heading>
       {isHomePage && (
         <>
           <Text
-            maxW="665px"
-            mb="20px"
-            size={{ base: 'textXs', lg: 'textXl' }}
-            variant="secondary"
+            maxWidth="665px"
+            marginBottom="20px"
+            size='tiny'
+            variant="primary"
+            $gtMd={{ size: 'middleLarge' }}
           >
             Find a bright ideal to suit your taste with our great selection of
             suspension, wall, floor and table lights.
           </Text>
-          <Button size={{ base: 'xs', lg: 'size4xl' }}>Shop Now</Button>
+          <Button variant='overview'>Shop Now</Button>
         </>
       )}
-    </Flex>
-  </Flex>
+    </YStack>
+  </YStack >
+
 );
 
 export default OverviewSection;

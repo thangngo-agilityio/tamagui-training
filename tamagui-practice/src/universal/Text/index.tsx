@@ -41,7 +41,11 @@ const Text = styled(textBase, {
       },
       copyright: {
         color: '$textCopyright'
-      }
+      },
+      footerPrimary: {
+        color: '$textPrimary',
+        fontWeight: '700',
+      },
     },
 
     size: {
@@ -115,6 +119,7 @@ const Text = styled(textBase, {
   defaultVariants: {
     size: 'medium',
     weight: 'normal',
+    variant: 'default'
   },
 });
 

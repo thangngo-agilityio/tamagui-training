@@ -1,10 +1,18 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+'use client'
 import Image from 'next/image';
+import { Stack, YStack } from 'tamagui';
+import Link from 'next/link';
+
+// Component
+import { Heading, Text } from '@/universal';
 
 // Icons
 import { HeartIcon } from '@/icons';
+
+// Utils
 import { formatAmountNumber } from '@/utils';
-import Link from 'next/link';
+
+// Constants
 import { ROUTER } from '@/constants';
 
 type ProductCard = {
@@ -15,31 +23,36 @@ type ProductCard = {
 };
 
 const ProductCard = ({ id, image, title, price }: ProductCard) => (
-  <Link href={ROUTER.PRODUCT_DETAIL_PAGE(id)} scroll>
-    <Flex
+  <Link href={ROUTER.PRODUCT_DETAIL_PAGE(id)} scroll style={{ textDecoration: 'none' }}>
+    <YStack
       flexDirection="column"
       borderRadius="sm"
       boxShadow="0 4px 50px -5px rgba(32, 32, 32, 10%)"
-      pb={{ base: '8px', lg: '14px' }}
+      paddingBottom='8px'
       alignItems="center"
+      $gtMd={{
+        paddingBottom: '14px'
+      }}
     >
-      <Flex
-        w="90%"
+      <Stack
+        width="90%"
         position="relative"
         justifyContent="center"
-        mt="-90px"
-        mb="18px"
+        marginTop="-90px"
+        marginBottom="18px"
         transition=".2s ease-in"
-        _hover={{
-          w: '100%',
+        hoverStyle={{
+          width: '100%',
         }}
       >
-        <Box
-          as="div"
-          w="100%"
-          h={{ base: '94px', lg: '180px' }}
-          borderRadius="sm"
+        <Stack
+          width="100%"
+          height='94px'
+          borderRadius="$sm"
           overflow="hidden"
+          $gtMd={{
+            height: '180px'
+          }}
         >
           <Image
             width={276}
@@ -54,30 +67,35 @@ const ProductCard = ({ id, image, title, price }: ProductCard) => (
               objectFit: 'cover',
             }}
           />
-        </Box>
-        <Flex
-          w={{ base: '30px', lg: '45px' }}
-          h={{ base: '30px', lg: '45px' }}
+        </Stack>
+        <Stack
+          width='30px'
+          height='30px'
           position="absolute"
           justifyContent="center"
           alignItems="center"
           borderRadius="full"
-          bgColor="background.100"
+          backgroundColor="$backgroundBody"
           top="10px"
-          right={{ base: '15px', lg: '30px' }}
+          right='15px'
+          $gtMd={{
+            width: '45px',
+            height: '45px',
+            right: '30px'
+          }}
         >
           <HeartIcon />
-        </Flex>
-      </Flex>
-      <Flex w="100%" px={{ base: '8px', lg: '16px' }} flexDirection="column">
-        <Heading variant="senary" size={{ base: 'sm', lg: 'xl' }} noOfLines={1}>
+        </Stack>
+      </Stack>
+      <YStack width="100%" paddingHorizontal='8px' $gtMd={{ paddingHorizontal: '16px' }}>
+        <Heading variant="senary" size='extraSmall' numberOfLines={1} $gtMd={{ size: 'medium' }}>
           {title}
         </Heading>
-        <Text variant="productCard" size={{ base: 'textMd', lg: 'textLg' }}>
+        <Text variant="productCard" size='small' weight='bold' $gtMd={{ size: 'medium' }}>
           N{formatAmountNumber(price.toString())}
         </Text>
-      </Flex>
-    </Flex>
+      </YStack>
+    </YStack>
   </Link>
 );
 
