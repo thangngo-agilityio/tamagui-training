@@ -1,33 +1,52 @@
-import { ROUTER } from '@/constants';
-import { SuccessIcon } from '@/icons';
-import { Button, Heading, Text, VStack } from '@chakra-ui/react';
+'use client'
+
 import Link from 'next/link';
+import { Stack } from 'tamagui';
+
+// Component
+import { Button, Heading, Text } from '@/universal';
+
+// Constants
+import { ROUTER } from '@/constants';
+
+// Icons
+import { SuccessIcon } from '@/icons';
 
 const OrderSuccess = () => (
-  <VStack
-    pt="202px"
-    px={{ base: '28px', lg: 'unset' }}
-    pb={{ base: '100px', lg: '468px' }}
+  <Stack
+    paddingTop="202px"
+    paddingHorizontal='28px'
+    paddingBottom='100px'
     alignItems="center"
     justifyContent="center"
-    textAlign={{ base: 'center', lg: 'unset' }}
+    $gtMd={{
+      paddingHorizontal: 0,
+      paddingBottom: '468px'
+    }}
   >
     <SuccessIcon />
-    <Heading variant="orderSuccess" size="size5xl" mb="10px">
+    <Heading variant="orderSuccess" size="semiHuge" marginBottom="10px">
       Your Order has been accepted
     </Heading>
-    <Text size="textXl" variant="orderSuccess" mb="70px">
+    <Text size="large" variant="orderSuccess" marginBottom="70px">
       Your item is being processed! A confirmation email will be sent to you!
     </Text>
-    <Button
-      as={Link}
+    <Link
       href={ROUTER.HOME}
-      variant="orderSuccess"
-      size={{ base: 'xl', lg: 'orderSuccess' }}
+      style={{
+        width: 400,
+        height: 20,
+        textAlign: 'center',
+        backgroundColor: '#284F49',
+        borderRadius: '15px',
+        textDecoration: 'none',
+        padding: 20,
+        color: '#FFF'
+      }}
     >
       Back home
-    </Button>
-  </VStack>
+    </Link>
+  </Stack>
 );
 
 export default OrderSuccess;

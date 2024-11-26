@@ -7,7 +7,7 @@ import { useCallback } from 'react';
 import { updateMyCart } from '@/actions';
 
 // Components
-import { CartItem } from '@/components';
+import { CartItem, HeadingSection } from '@/components';
 
 // Hooks
 import { useCustomToast } from '@/hooks';
@@ -17,6 +17,7 @@ import { SUCCESS_MESSAGES } from '@/constants';
 
 // Types
 import { ICartItem } from '@/types';
+import { YStack } from 'tamagui';
 
 type TCartList = {
   cartItem: ICartItem[];
@@ -47,45 +48,48 @@ const CartList = ({ cartItem, cartId }: TCartList) => {
     [cartId, cartItem, showToast],
   );
   return (
-    <Flex flexDir="column" mb="90px">
-      {cartItem.map((cart) => {
-        const { product, quantity } = cart || {};
-        const {
-          id = '',
-          name = '',
-          image = [],
-          description = '',
-          price = 0,
-        } = product || {};
+    <YStack>
+      <HeadingSection title="Cart" />
+      <YStack marginBottom="90px" $gtMd={{ paddingHorizontal: '67px' }}>
+        {cartItem.map((cart) => {
+          const { product, quantity } = cart || {};
+          const {
+            id = '',
+            name = '',
+            image = [],
+            description = '',
+            price = 0,
+          } = product || {};
 
-        const total = price * quantity;
-        return (
-          <Box
-            mb="36px"
-            pb="54px"
-            borderBottom="1px solid"
-            borderColor="border.500"
-            _last={{
-              mb: 'unset',
-              pb: 'unset',
-              borderBottom: 'unset',
-              borderColor: 'unset',
-            }}
-            key={id}
-          >
-            <CartItem
-              id={id}
-              title={name}
-              image={image}
-              description={description}
-              price={total}
-              quantity={quantity}
-              onRemoveItem={handleRemoveItem}
-            />
-          </Box>
-        );
-      })}
-    </Flex>
+          const total = price * quantity;
+          return (
+            <Box
+              mb="36px"
+              pb="54px"
+              borderBottom="1px solid"
+              borderColor="border.500"
+              _last={{
+                mb: 'unset',
+                pb: 'unset',
+                borderBottom: 'unset',
+                borderColor: 'unset',
+              }}
+              key={id}
+            >
+              <CartItem
+                id={id}
+                title={name}
+                image={image}
+                description={description}
+                price={total}
+                quantity={quantity}
+                onRemoveItem={handleRemoveItem}
+              />
+            </Box>
+          );
+        })}
+      </YStack>
+    </YStack>
   );
 };
 

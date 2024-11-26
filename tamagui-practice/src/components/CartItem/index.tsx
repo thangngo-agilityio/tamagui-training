@@ -1,6 +1,11 @@
+'use client'
+
 import Image from 'next/image';
-import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/react';
 import { useCallback } from 'react';
+import { Stack, XStack, YStack } from 'tamagui';
+
+// Component
+import { Heading, Text } from '@/universal';
 
 // Utils
 import { formatAmountNumber } from '@/utils';
@@ -31,8 +36,8 @@ const CartItem = ({
     onRemoveItem && onRemoveItem(id);
   }, [id, onRemoveItem]);
   return (
-    <Flex flexDir={{ base: 'column', lg: 'row' }} gap="30px">
-      <Flex flex={1}>
+    <Stack flexDirection='column' gap="30px" $gtMd={{ flexDirection: 'row' }}>
+      <Stack flex={1}>
         <Image
           width={347}
           height={290}
@@ -45,59 +50,63 @@ const CartItem = ({
             borderRadius: '8px',
           }}
         />
-      </Flex>
-      <Flex flex={4} flexDir="column">
+      </Stack>
+      <YStack flex={4} >
         <Heading
-          size={{ base: 'size4xl', lg: 'size6xl' }}
+          size='huge'
           variant="quinary"
-          mb="5px"
+          marginBottom="5px"
+          $gtMd={{ size: 'superHuge' }}
         >
           {title}
         </Heading>
         <Text
-          size={{ base: 'textMd', lg: 'text2Xl' }}
+          size='small'
           variant="senary"
-          mb="30px"
+          marginBottom="30px"
+          $gtMd={{
+            size: 'extraLarge'
+          }}
         >
           {description}
         </Text>
 
-        <VStack mb="30px" alignItems="flex-start">
-          <Heading variant="productTitle" size="size2xl">
+        <YStack marginBottom="30px" alignItems="flex-start">
+          <Heading variant="product" size="large">
             Size:
           </Heading>
-          <Flex flexDir="row" gap="5px">
-            <Text variant="senary" size="text2Xl">
+          <XStack gap="5px">
+            <Text variant="senary" size="extraLarge">
               Length-34cm,
             </Text>
-            <Text variant="tertiary" size="text2Xl">
+            <Text variant="tertiary" size="extraLarge">
               Width-56cm
             </Text>
-          </Flex>
-        </VStack>
+          </XStack>
+        </YStack>
 
-        <Box w="50%" borderTopWidth="1px" borderColor="border.300" mb="10px">
-          <Heading size="size9xl" variant="quinary" py="10px">
+        <Stack width="50%" borderTopWidth="1px" borderColor="$borderLineCart" marginBottom="10px">
+          <Heading size="superLarge" variant="quinary" paddingVertical="10px">
             N{formatAmountNumber(price?.toString())}
           </Heading>
-        </Box>
+        </Stack>
 
-        <Flex gap="10px">
-          <Heading variant="productTitle" size="size2xl">
+        <XStack gap="10px" alignItems='center'>
+          <Heading variant="product" size="large">
             Quantity:
           </Heading>
-          <Text variant="tertiary" size="text2Xl">
+          <Text variant="tertiary" size="extraLarge">
             {quantity}
           </Text>
-        </Flex>
-      </Flex>
+        </XStack>
+      </YStack>
 
-      <Flex justifyContent="center" alignItems="center">
-        <Box height="fit-content" onClick={handleRemoveItem} cursor="pointer">
+      <Stack justifyContent="center" alignItems="center">
+        <Stack height="fit-content" onPress={handleRemoveItem} cursor="pointer">
           <DeleteIcon />
-        </Box>
-      </Flex>
-    </Flex>
+        </Stack>
+      </Stack>
+    </Stack>
   );
 };
 

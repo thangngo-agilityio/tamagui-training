@@ -163,6 +163,19 @@ const ButtonFrame = styled(View, {
           backgroundColor: '$backgroundPrimary',
         },
       },
+
+      checkout: {
+        width: 'fit-content',
+        height: 'fit-content',
+        backgroundColor: '$textQuinary',
+        borderRadius: '$xs',
+        transition: '.2s ease-in',
+        borderWidth: '1px',
+        borderColor: '$borderColorInput',
+        hoverStyle: {
+          backgroundColor: 'transparent',
+        },
+      },
     },
     fit: {
       false: {
@@ -239,7 +252,18 @@ const ButtonText = styled(Text, {
         hoverStyle: {
           color: '$textPrimary',
         }
-      }
+      },
+
+      checkout: {
+        paddingHorizontal: '100px',
+        paddingVertical: '30px',
+        color: '$textPrimary',
+        transition: '.2s ease-in',
+        size: 'superLarge',
+        hoverStyle: {
+          color: '$textQuinary',
+        },
+      },
     },
   } as const,
 });

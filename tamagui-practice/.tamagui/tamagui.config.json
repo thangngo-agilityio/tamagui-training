@@ -34527,7 +34527,6 @@
         "textSenary": "#AAAAAA",
         "textSeptenary": "#4D533C",
         "textProduct": "#898989",
-        "textOrderSuccess": "#181725",
         "textProductCard": "#121212",
         "textFooter": "#B6C197",
         "textCopyright": "#B5C096",
@@ -34536,6 +34535,8 @@
         "textInput": "#3A3335",
         "textFooterSecondary": "#D4D6D4",
         "textQuantity": "#000000",
+        "textTotalCart": "#E68314",
+        "textOrderSuccess": "#7C7C7C",
         "buttonPrimary": "#284F49",
         "BackgroundShowroomSection": "#5B5E3E",
         "borderPrimaryInput": "#EDE8E9",
@@ -34543,6 +34544,7 @@
         "borderErrorInput": "#9B1717",
         "borderColorInput": "#284F49",
         "borderButtonCart": "#E68314",
+        "borderLineCart": "rgba(120, 115, 137, 20%)",
         "id": "light_web"
       }
     },
@@ -34849,6 +34851,13 @@
           "name": "c-grey14",
           "val": "#58514B",
           "variable": "var(--c-grey14)"
+        },
+        "grey15": {
+          "isVar": true,
+          "key": "$grey15",
+          "name": "c-grey15",
+          "val": "rgba(120, 115, 137, 20%)",
+          "variable": "var(--c-grey15)"
         },
         "green1": {
           "isVar": true,
@@ -35267,6 +35276,13 @@
         "name": "c-grey14",
         "val": "#58514B",
         "variable": "var(--c-grey14)"
+      },
+      "$color.grey15": {
+        "isVar": true,
+        "key": "$grey15",
+        "name": "c-grey15",
+        "val": "rgba(120, 115, 137, 20%)",
+        "variable": "var(--c-grey15)"
       },
       "$color.green1": {
         "isVar": true,
