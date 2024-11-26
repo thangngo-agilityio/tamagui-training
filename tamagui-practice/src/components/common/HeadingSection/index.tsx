@@ -1,21 +1,28 @@
-import { Flex, Heading } from '@chakra-ui/react';
+'use client'
+
+import { Heading } from '@/universal';
+import { YStack } from 'tamagui';
 
 type THeadingSection = {
   title: string;
 };
 
 const HeadingSection = ({ title }: THeadingSection) => (
-  <Flex
-    w="100%"
-    flexDir="column"
-    borderBottom="1px solid #DEE5EF"
-    mt="65px"
-    mb="35px"
+  <YStack
+    width="100%"
+    borderBottomWidth="1px"
+    borderBottomColor="#DEE5EF"
+    marginTop="65px"
+    marginBottom="35px"
+    marginHorizontal='28px'
+    $gtMd={{
+      marginHorizontal: '67px'
+    }}
   >
-    <Heading size="size5xl" variant="quinary" mb="8px">
+    <Heading size="semiHuge" variant="quinary" marginBottom="8px">
       {title}
     </Heading>
-  </Flex>
+  </YStack>
 );
 
 export default HeadingSection;

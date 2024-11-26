@@ -16,6 +16,10 @@ export const webTheme: CustomTheme<'light_web'> = {
     BackgroundFooter: colors.white2,
     backgroundFooterItem: colors.green8,
     backgroundButtonPagination: colors.grey8,
+    backgroundButtonQuantity: colors.white5,
+    backgroundOptionPrimary: colors.orange2,
+    backgroundOptionSecondary: colors.blue1,
+    backgroundOptionTertiary: colors.grey14,
 
     // Text
     textDefault: colors.blue2,
@@ -36,6 +40,7 @@ export const webTheme: CustomTheme<'light_web'> = {
     textLabel: colors.grey4,
     textInput: colors.grey2,
     textFooterSecondary: colors.grey8,
+    textQuantity: colors.black2,
 
     // Button
     buttonPrimary: colors.green1,
@@ -46,5 +51,6 @@ export const webTheme: CustomTheme<'light_web'> = {
     borderSecondaryInput: colors.grey12,
     borderErrorInput: colors.red4,
     borderColorInput: colors.green1,
+    borderButtonCart: colors.orange1,
   },
 };

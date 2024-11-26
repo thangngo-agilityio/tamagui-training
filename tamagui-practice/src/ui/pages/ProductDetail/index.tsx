@@ -10,7 +10,6 @@ import {
 
 import { getCartItems, getProductDetail } from '@/apis';
 
-// Constants
 
 type TProductDetail = {
   productId: string;
@@ -25,12 +24,12 @@ const ProductDetail = async ({ productId }: TProductDetail) => {
   const { category = '' } = product || {};
 
   return (
-    <Box px={{ base: '28px', lg: '67px' }} pb={{ base: '100px', lg: '610px' }}>
+    <>
       <HeadingSection title={category} />
       <Suspense fallback={<SkeletonProductDetail />}>
         <ProductInfo product={product} cartId={id} cartItems={cartItems} />
       </Suspense>
-    </Box>
+    </>
   );
 };
 

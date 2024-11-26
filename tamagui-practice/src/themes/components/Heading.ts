@@ -21,22 +21,22 @@ export const Heading = defineStyleConfig({
       fontSize: 'md',
     },
     lg: {
-      fontSize: 'lg',
+      fontSize: 'lg', //middleLarge
     },
     xl: {
       fontSize: 'xl',
     },
     size2xl: {
-      fontSize: '2xl',
+      fontSize: '2xl', //Large
     },
     size4xl: {
-      fontSize: '4xl',
+      fontSize: '4xl', // huge
     },
     size5xl: {
       fontSize: '5xl',
     },
     size6xl: {
-      fontSize: '6xl',
+      fontSize: '6xl', // superHuge
     },
     size7xl: {
       fontSize: '7xl',

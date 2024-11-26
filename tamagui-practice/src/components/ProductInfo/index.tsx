@@ -1,23 +1,16 @@
 'use client';
 
-import {
-  Box,
-  Button,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  HStack,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
+import { Stack, useMedia, XStack, YStack } from 'tamagui';
 import { useRouter } from 'next/navigation';
-import dynamic from 'next/dynamic';
 import { Fragment, useCallback, useState } from 'react';
 
 // Actions
 import { updateMyCart } from '@/actions';
+
+// Components
+import ImageProduct from '../ImageProduct';
+import CardBenefit from '../CardBenefit';
+import { Button, Heading, Text } from '@/universal';
 
 // Hooks
 import { useCustomToast } from '@/hooks';
@@ -35,8 +28,6 @@ import { BENEFIT_LIST, ROUTER, SUCCESS_MESSAGES } from '@/constants';
 import { ICartItem, TProduct } from '@/types';
 
 // Components
-const ImageProduct = dynamic(() => import('@/components/ImageProduct'));
-const CardBenefit = dynamic(() => import('@/components/CardBenefit'));
 
 type TProductInfo = {
   cartId: string;
@@ -50,6 +41,7 @@ const ProductInfo = ({ product, cartId, cartItems }: TProductInfo) => {
   const [quantity, setQuantity] = useState(1);
   const { showToast } = useCustomToast();
   const router = useRouter();
+  const { gtMd } = useMedia();
 
   const {
     id: productId = '',
@@ -111,60 +103,61 @@ const ProductInfo = ({ product, cartId, cartItems }: TProductInfo) => {
   }, [onChange]);
 
   return (
-    <Flex flexDir={{ base: 'column', lg: 'row' }} gap="42px">
+    <Stack flexDirection='column' gap="42px" paddingHorizontal='28px' paddingBottom='100px' $gtMd={{ flexDirection: 'row', paddingHorizontal: '67px', paddingBottom: '610px' }}>
       <ImageProduct image={image} alt={name} />
-      <Stack flexDir="column" flex={1}>
+      <YStack flex={1}>
         <Heading
-          size={{ base: 'size4xl', lg: 'size6xl' }}
+          size='huge'
           variant="quinary"
-          mb="5px"
+          marginBottom="5px"
+          $gtMd={{ size: 'superHuge' }}
         >
           {name}
         </Heading>
         <Text
-          size={{ base: 'textMd', lg: 'text2Xl' }}
+          size='small'
           variant="senary"
-          mb={{ base: '10px', lg: '30px' }}
+          marginBottom='10px'
+          $gtMd={{ size: 'extraLarge', marginBottom: '30px' }}
         >
           {description}
         </Text>
-        <VStack mb={{ base: '10px', lg: '30px' }} alignItems="flex-start">
-          <Heading variant="productTitle" size="size2xl">
+        <YStack marginBottom='10px' alignItems="flex-start" $gtMd={{ marginBottom: '30px' }}>
+          <Heading variant="product" weight='bold' size="superLarge">
             Dimension:
           </Heading>
-          <Flex flexDir="row" gap="5px">
-            <Text variant="senary" size={{ base: 'textMd', lg: 'text2Xl' }}>
-              Length-34cm,
+          <XStack gap="5px">
+            <Text variant="senary" size='small' $gtMd={{ size: 'extraLarge' }} >
+              Length - 34cm,
             </Text>
-            <Text variant="tertiary" size={{ base: 'textMd', lg: 'text2Xl' }}>
+            <Text variant="tertiary" size='small' $gtMd={{ size: 'extraLarge' }}>
               Width-56cm
             </Text>
-          </Flex>
-        </VStack>
+          </XStack>
+        </YStack>
 
-        <Box
+        <Stack
           borderTopWidth="1px"
           borderBottomWidth="1px"
           borderColor="border.300"
-          mb="28px"
+          marginBottom="28px"
         >
-          <Heading size="size9xl" variant="quinary" py="10px">
+          <Heading size="superLarge" variant="quinary" paddingVertical="10px">
             N{formatAmountNumber(price?.toString())}
           </Heading>
-        </Box>
+        </Stack>
 
-        <Stack flexDir="row" mb="44px" gap="60px">
-          <VStack alignItems="flex-start">
-            <Heading variant="quaternary" size="lg" mb="20px">
+        <XStack marginBottom="44px" gap="60px">
+          <YStack alignItems="flex-start">
+            <Heading variant="quaternary" size="middleLarge" marginBottom="20px">
               Quantity available
             </Heading>
-            <HStack gap="20px">
+            <XStack gap="20px">
               <Button
                 variant="quantity"
-                size="quantity"
                 data-testid="btn-decrement"
-                onClick={handleDecrement}
-                isDisabled={quantity === 1}
+                onPress={handleDecrement}
+                disabled={quantity === 1}
                 aria-label="Minus button"
               >
                 <MinusIcon />
@@ -172,92 +165,96 @@ const ProductInfo = ({ product, cartId, cartItems }: TProductInfo) => {
               <Text variant="quantity">{quantity}</Text>
               <Button
                 variant="quantity"
-                size="quantity"
-                onClick={handleIncrement}
+                onPress={handleIncrement}
                 data-testid="btn-increment"
                 aria-label="Plus button"
               >
                 <PlusIcon />
               </Button>
-            </HStack>
-          </VStack>
-          <VStack alignItems="flex-start">
-            <Heading mb="20px" variant="quaternary" size="lg">
+            </XStack>
+          </YStack>
+          <YStack alignItems="flex-start">
+            <Heading marginBottom="20px" variant="quaternary" size="middleLarge">
               Color:
             </Heading>
-            <HStack>
-              <Box
-                w="36px"
-                h="36px"
+            <XStack gap='10px'>
+              <Stack
+                width="36px"
+                height="36px"
                 borderRadius="100%"
-                bgColor="background.1400"
+                backgroundColor="$backgroundOptionPrimary"
               />
-              <Box
-                w="36px"
-                h="36px"
+              <Stack
+                width="36px"
+                height="36px"
                 borderRadius="100%"
-                bgColor="background.1500"
+                backgroundColor="$backgroundOptionSecondary"
               />
-              <Box
-                w="36px"
-                h="36px"
+              <Stack
+                width="36px"
+                height="36px"
                 borderRadius="100%"
-                bgColor="background.1600"
+                backgroundColor="$backgroundOptionTertiary"
               />
-            </HStack>
-          </VStack>
-        </Stack>
+            </XStack>
+          </YStack>
+        </XStack>
 
-        <Grid
-          flexDirection="row"
-          gap={{ base: '20px', lg: '92px' }}
-          mb={{ base: '20px', lg: '40px' }}
-          templateColumns={{ base: '', lg: 'repeat(2, 1fr)' }}
+        <XStack
+          style={{
+            display: 'grid',
+            ...(gtMd && { gridTemplateColumns: 'repeat(2, 1fr' }),
+          }}
+          gap='20px'
+          marginBottom='20px'
+          $gtMd={{ gap: '92px', marginBottom: '40px' }}
         >
           {BENEFIT_LIST.map((item) => {
             const IconComponent = item.icon || Fragment;
             return (
-              <GridItem key={item.id}>
+              <Stack key={item.id}>
                 <CardBenefit
                   icon={<IconComponent />}
                   title={item.title}
                   text={item.text}
                 />
-              </GridItem>
+              </Stack>
             );
           })}
-        </Grid>
+        </XStack>
 
         <Heading
           variant="quinary"
-          size="size2xl"
-          mb={{ base: '25px', lg: '58px' }}
+          size="large"
+          marginBottom='25px'
+          $gtMd={{ marginBottom: '58px' }}
         >
           Delivery Fee: N3,000-N5000
         </Heading>
 
         <Stack
-          flexDir={{ base: 'column', lg: 'row' }}
-          gap={{ base: '20px', lg: 'unset' }}
+          flexDirection='column'
+          gap='20px'
+          $gtMd={{ flexDirection: 'row', gap: 0 }}
         >
           <Button
-            size={{ base: 'xl', lg: 'productDetail' }}
             variant="buy"
-            onClick={handleBuyNow}
+            onPress={handleBuyNow}
           >
             Buy now
           </Button>
           <Button
-            size={{ base: 'xl', lg: 'productDetail' }}
             variant="cart"
-            ml={{ base: 'unset', lg: '30px' }}
-            onClick={handleAddToCart}
+            onPress={handleAddToCart}
+            $gtMd={{
+              marginLeft: '30px'
+            }}
           >
             Add to cart
           </Button>
         </Stack>
-      </Stack>
-    </Flex>
+      </YStack >
+    </Stack >
   );
 };
 

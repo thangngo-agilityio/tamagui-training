@@ -1,6 +1,9 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+'use client';
+
+import { Stack, YStack } from 'tamagui';
 import { memo, ReactElement } from 'react';
 import isEqual from 'react-fast-compare';
+import { Heading, Text } from '@/universal';
 
 type TCardBenefit = {
   icon?: ReactElement;
@@ -9,17 +12,17 @@ type TCardBenefit = {
 };
 
 const CardBenefit = ({ icon, title, text }: TCardBenefit) => (
-  <Flex alignItems="center" flexDirection="row">
-    <Box>{icon}</Box>
-    <Flex maxW="206px" ml="24px" flexDirection="column">
-      <Heading size="xl" mb="2px">
+  <Stack alignItems="center" flexDirection="row">
+    <Stack>{icon}</Stack>
+    <YStack maxWidth="206px" marginLeft="24px">
+      <Heading size="medium" marginBottom="2px">
         {title}
       </Heading>
-      <Text variant="senary" size="textLg">
+      <Text variant="senary" size="medium">
         {text}
       </Text>
-    </Flex>
-  </Flex>
+    </YStack>
+  </Stack>
 );
 
 export default memo(CardBenefit, isEqual);

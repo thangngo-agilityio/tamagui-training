@@ -46,6 +46,10 @@ const Text = styled(textBase, {
         color: '$textPrimary',
         fontWeight: '700',
       },
+      quantity: {
+        color: '$textQuantity',
+        fontFamily: 'lufgaBold',
+      },
     },
 
     size: {
