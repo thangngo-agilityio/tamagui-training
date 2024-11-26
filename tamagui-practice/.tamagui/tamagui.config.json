@@ -34512,6 +34512,7 @@
         "BackgroundItemCategory": "#F0F0F0",
         "BackgroundFooter": "#FAFAFA",
         "backgroundFooterItem": "#444A34",
+        "backgroundButtonPagination": "#D4D6D4",
         "textDefault": "rgba(33, 56, 66, 60%)",
         "textError": "#EB5E55",
         "textPrimary": "#FFF",

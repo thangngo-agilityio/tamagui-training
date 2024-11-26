@@ -209,6 +209,7 @@ var webTheme = {
     BackgroundItemCategory: colors.white3,
     BackgroundFooter: colors.white2,
     backgroundFooterItem: colors.green8,
+    backgroundButtonPagination: colors.grey8,
     // Text
     textDefault: colors.blue2,
     textError: colors.red1,

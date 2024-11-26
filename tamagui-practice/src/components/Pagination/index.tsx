@@ -1,10 +1,11 @@
-import { Button, Flex } from '@chakra-ui/react';
-
+'use client';
 // Components
 import { ArrowPaginationIcon } from '@/icons';
 
 // Constants
 import { DOTS, NEXT, PREV } from '@/constants';
+import { Stack, XStack } from 'tamagui';
+import { Button } from '@/universal';
 
 interface PaginationProps {
   currentPage?: number;
@@ -28,45 +29,41 @@ const PaginationComponent = ({
   const handlePrevPage = () => onPageChange(PREV);
 
   return (
-    <Flex
+    <XStack
       data-testid="pagination"
       justifyContent="space-between"
-      mt={1}
-      flexDir="row"
+      marginTop={1}
       flexWrap="wrap"
-      gap={{ base: 3, default: 0 }}
+      gap={3}
+      $gtMd={{
+        gap: 0,
+      }}
     >
-      <Flex
+      <XStack
         alignItems="center"
-        w={{
-          base: arrOfCurrButtons.length > 1 ? '100%' : 'auto',
-          '0.8sm': arrOfCurrButtons.length > 2 ? '100%' : 'auto',
-          default: 'auto',
+        width={arrOfCurrButtons.length > 1 ? '100%' : 'auto'}
+        gap="10px"
+        $gtMd={{
+          width: arrOfCurrButtons.length > 2 ? '100%' : 'auto',
         }}
-        gap="4px"
       >
         <Button
-          width={{ base: '6px', default: '30px' }}
-          height={{ base: '6px', default: '30px' }}
+          width="6px"
+          height="6px"
           data-testid="prev-button"
           aria-label="btn-prev"
           variant="iconSecondary"
           cursor={isDisabledPrev ? 'not-allowed' : ''}
-          isDisabled={isDisabledPrev}
-          onClick={handlePrevPage}
+          disabled={isDisabledPrev}
+          onPress={handlePrevPage}
+          $gtMd={{
+            width: '30px',
+            height: '30px',
+          }}
         >
-          <ArrowPaginationIcon
-            width="10px"
-            height="10px"
-            isExpanded={false}
-            rotate="90deg"
-          />
+          <ArrowPaginationIcon width="10px" height="10px" isExpanded={false} rotate="90deg" />
         </Button>
-        <Flex
-          alignItems="center"
-          justifyContent="space-between"
-          w={{ base: '100%', default: 'auto' }}
-        >
+        <XStack alignItems="center" justifyContent="space-between" width="100%" $gtMd={{ width: 'auto' }}>
           {arrOfCurrButtons.map((item: string, index: number) => {
             const isDots = item === DOTS;
             const isDisable = currentPage === +item || isDots;
@@ -89,41 +86,40 @@ const PaginationComponent = ({
                 key={`${item}-${index}`}
                 data-testid={`page-${item}-button`}
                 aria-label="btn-pages"
-                isDisabled={isDisable}
-                mx={0.5}
-                p={{ base: '15px', lg: '25px' }}
-                fontSize={{ base: 'sm', lg: 'md' }}
-                bg={currentPage === +item ? 'background.800' : 'transparent'}
-                color={currentPage === +item ? 'text.700' : 'text.200'}
+                disabled={isDisable}
+                marginHorizontal={0.5}
+                variant="pagination"
+                paddingHorizontal="15px"
+                paddingVertical="10px"
+                backgroundColor={currentPage === +item ? '$backgroundButtonPagination' : 'transparent'}
                 {...(isDots && { cursor: 'not-allowed' })}
-                _hover={hoverStyle}
-                _disabled={disableStyle}
-                onClick={handleClickPage}
+                hoverStyle={hoverStyle}
+                onPress={handleClickPage}
+                style={{ fontSize: '$sm', color: currentPage === +item ? 'text.700' : 'text.200' }}
               >
                 {item}
               </Button>
             );
           })}
-        </Flex>
+        </XStack>
         <Button
           data-testid="next-button"
           aria-label="btn-next"
           variant="iconSecondary"
           cursor={isDisableNext ? 'not-allowed' : ''}
-          isDisabled={isDisableNext}
-          onClick={handleNextPage}
-          width={{ base: '6px', default: '30px' }}
-          height={{ base: '6px', default: '30px' }}
+          disabled={isDisableNext}
+          onPress={handleNextPage}
+          width="6px"
+          height="6px"
+          $gtMd={{
+            width: '30px',
+            height: '30px',
+          }}
         >
-          <ArrowPaginationIcon
-            width="10px"
-            height="10px"
-            isExpanded={false}
-            rotate="-90deg"
-          />
+          <ArrowPaginationIcon width="10px" height="10px" isExpanded={false} rotate="-90deg" />
         </Button>
-      </Flex>
-    </Flex>
+      </XStack>
+    </XStack>
   );
 };
 
