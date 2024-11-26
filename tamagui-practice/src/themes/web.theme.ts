@@ -32,7 +32,6 @@ export const webTheme: CustomTheme<'light_web'> = {
     textSenary: colors.grey6,
     textSeptenary: colors.green6,
     textProduct: colors.grey5,
-    textOrderSuccess: colors.black1,
     textProductCard: colors.black3,
     textFooter: colors.green4,
     textCopyright: colors.green5,
@@ -41,6 +40,8 @@ export const webTheme: CustomTheme<'light_web'> = {
     textInput: colors.grey2,
     textFooterSecondary: colors.grey8,
     textQuantity: colors.black2,
+    textTotalCart: colors.orange1,
+    textOrderSuccess: colors.grey7,
 
     // Button
     buttonPrimary: colors.green1,
@@ -52,5 +53,6 @@ export const webTheme: CustomTheme<'light_web'> = {
     borderErrorInput: colors.red4,
     borderColorInput: colors.green1,
     borderButtonCart: colors.orange1,
+    borderLineCart: colors.grey15,
   },
 };

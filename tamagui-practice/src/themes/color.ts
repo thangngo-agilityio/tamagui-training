@@ -28,6 +28,7 @@ const greyPallet = {
   grey12: '#C4C4C4',
   grey13: '#C6D8D3',
   grey14: '#58514B',
+  grey15: 'rgba(120, 115, 137, 20%)',
 };
 
 const greenPallet = {

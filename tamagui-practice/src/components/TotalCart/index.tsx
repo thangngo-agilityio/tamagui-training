@@ -1,6 +1,5 @@
 'use client';
 
-import { Button, Heading, HStack, Stack, Text, VStack } from '@chakra-ui/react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -18,6 +17,8 @@ import { ICartItem } from '@/types';
 
 // Utils
 import { calculateTotalPrice, formatAmountNumber } from '@/utils';
+import { Stack, XStack, YStack } from 'tamagui';
+import { Button, Heading, Text } from '@/universal';
 
 type TTotalCart = {
   cartItem: ICartItem[];
@@ -55,30 +56,31 @@ const TotalCart = ({ cartItem, cartId }: TTotalCart) => {
 
   return (
     <Stack
-      flexDir={{ base: 'column', lg: 'row' }}
+      flexDirection='column'
       justifyContent="space-between"
+      $gtMd={{ flexDirection: 'row', paddingHorizontal: '67px', paddingBottom: '610px' }}
     >
-      <VStack alignItems="flex-start" mb={{ base: '20px', lg: 'unset' }}>
-        <HStack gap="15px">
+      <YStack alignItems="flex-start" marginBottom='20px' $gtMd={{ marginBottom: 0 }}>
+        <XStack gap="15px">
           <Heading
-            variant="productTitle"
-            size={{ base: 'size4xl', lg: 'size7xl' }}
+            variant="product"
+            size='huge'
+            $gtMd={{ size: 'ultraHuge' }}
           >
             Total:
           </Heading>
-          <Text variant="totalCart" size={{ base: 'text4Xl', lg: 'text10xl' }}>
+          <Text variant="totalCart" size='superLarge' $gtMd={{ size: 'ultimateLarge' }}>
             N{formatAmountNumber(total.toString())}
           </Text>
-        </HStack>
-        <Text variant="septenary" size={{ base: 'text2Xl', lg: 'text4Xl' }}>
+        </XStack>
+        <Text variant="septenary" size='extraLarge' $gtMd={{ size: 'superLarge' }}>
           Delivery exclusive
         </Text>
-      </VStack>
+      </YStack>
       <Button
         variant="checkout"
-        size={{ base: 'xl', lg: 'size4xlSecond' }}
-        onClick={handleCheckout}
-        isDisabled={isDisable}
+        onPress={handleCheckout}
+        disabled={isDisable}
       >
         Checkout
       </Button>

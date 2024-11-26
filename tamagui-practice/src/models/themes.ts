@@ -28,7 +28,6 @@ export type GeneralTheme = {
   textSenary: string;
   textSeptenary: string;
   textProduct: string;
-  textOrderSuccess: string;
   textProductCard: string;
   textFooter: string;
   textCopyright: string;
@@ -37,6 +36,8 @@ export type GeneralTheme = {
   textInput: string;
   textFooterSecondary: string;
   textQuantity: string;
+  textTotalCart: string;
+  textOrderSuccess: string;
 
   // Button
   buttonPrimary: string;
@@ -48,6 +49,7 @@ export type GeneralTheme = {
   borderErrorInput: string;
   borderColorInput: string;
   borderButtonCart: string;
+  borderLineCart: string;
 };
 
 export type CustomTheme<T extends string> = {

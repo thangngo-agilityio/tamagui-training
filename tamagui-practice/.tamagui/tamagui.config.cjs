@@ -158,7 +158,8 @@ var greyPallet = {
   grey11: "#EDE8E9",
   grey12: "#C4C4C4",
   grey13: "#C6D8D3",
-  grey14: "#58514B"
+  grey14: "#58514B",
+  grey15: "rgba(120, 115, 137, 20%)"
 };
 var greenPallet = {
   green1: "#284F49",
@@ -225,7 +226,6 @@ var webTheme = {
     textSenary: colors.grey6,
     textSeptenary: colors.green6,
     textProduct: colors.grey5,
-    textOrderSuccess: colors.black1,
     textProductCard: colors.black3,
     textFooter: colors.green4,
     textCopyright: colors.green5,
@@ -234,6 +234,8 @@ var webTheme = {
     textInput: colors.grey2,
     textFooterSecondary: colors.grey8,
     textQuantity: colors.black2,
+    textTotalCart: colors.orange1,
+    textOrderSuccess: colors.grey7,
     // Button
     buttonPrimary: colors.green1,
     BackgroundShowroomSection: colors.green7,
@@ -242,7 +244,8 @@ var webTheme = {
     borderSecondaryInput: colors.grey12,
     borderErrorInput: colors.red4,
     borderColorInput: colors.green1,
-    borderButtonCart: colors.orange1
+    borderButtonCart: colors.orange1,
+    borderLineCart: colors.grey15
   }
 };
 

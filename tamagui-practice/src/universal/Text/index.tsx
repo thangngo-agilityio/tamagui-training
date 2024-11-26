@@ -50,6 +50,12 @@ const Text = styled(textBase, {
         color: '$textQuantity',
         fontFamily: 'lufgaBold',
       },
+      totalCart: {
+        color: '$textTotalCart',
+      },
+      orderSuccess: {
+        color: '$textOrderSuccess',
+      },
     },
 
     size: {
@@ -104,6 +110,10 @@ const Text = styled(textBase, {
 
       megaLarge: {
         fontSize: '$10',
+        lineHeight: 56,
+      },
+      ultimateLarge: {
+        fontSize: '$14',
         lineHeight: 56,
       },
     },

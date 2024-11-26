@@ -45,7 +45,7 @@ export const Heading = defineStyleConfig({
       fontSize: '8xl',
     },
     size9xl: {
-      fontSize: '9xl',
+      fontSize: '9xl', //superLarge
     },
   },
   variants: {
