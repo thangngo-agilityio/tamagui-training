@@ -1,3 +1,5 @@
+'use client'
+
 import { Metadata } from 'next';
 
 // Pages
@@ -9,11 +11,11 @@ import { Box } from '@chakra-ui/react';
 import { Suspense } from 'react';
 import { SkeletonSection } from '@/components';
 
-export const metadata: Metadata = {
-  title: 'Home',
-  description:
-    'This is the Home page in a comprehensive e-commerce web application designed to facilitate online shopping.',
-};
+// export const metadata: Metadata = {
+//   title: 'Home',
+//   description:
+//     'This is the Home page in a comprehensive e-commerce web application designed to facilitate online shopping.',
+// };
 
 // Pages
 

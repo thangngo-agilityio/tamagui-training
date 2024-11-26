@@ -16,6 +16,7 @@ export type GeneralTheme = {
   backgroundOptionPrimary: string;
   backgroundOptionSecondary: string;
   backgroundOptionTertiary: string;
+  backgroundMenu: string;
 
   // Text
   textDefault: string;

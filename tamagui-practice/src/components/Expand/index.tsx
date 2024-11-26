@@ -1,20 +1,4 @@
-import {
-  Box,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
-  Flex,
-  Heading,
-  HStack,
-  Link,
-  Stack,
-  Text,
-  useDisclosure,
-  VStack,
-} from '@chakra-ui/react';
+'use client'
 
 // Component
 import {
@@ -28,6 +12,10 @@ import {
 
 // Constants
 import { ROUTER } from '@/constants';
+import { Button, Sheet, Stack, XStack, YStack } from 'tamagui';
+import { useState } from 'react';
+import Link from 'next/link';
+import { Heading, Text } from '@/universal';
 
 type TSidebarProps = {
   totalQuantity: number;
@@ -35,64 +23,70 @@ type TSidebarProps = {
 };
 
 const ExpandSidebar = ({ totalQuantity, onClick }: TSidebarProps) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOpen, setOpen] = useState(false);
+  const [position, setPosition] = useState(0);
   return (
-    <Stack>
-      <Box
-        onClick={onOpen}
-        top="35px"
-        left="10px"
+    <>
+      <Stack
+        onPress={() => setOpen((prev) => !prev)}
+        left="-15px"
         data-testid="button-hamburger"
       >
         <HamburgerIcon />
-      </Box>
-      <Drawer
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        data-testid="button-close"
+      </Stack>
+      <Sheet
+        forceRemoveScrollEnabled={isOpen}
+        open={isOpen}
+        onOpenChange={setOpen}
+        dismissOnSnapToBottom
+        snapPoints={[80]}
+        // snapPointsMode='mixed'
+        position={position}
+        onPositionChange={setPosition}
+        zIndex={100}
+        animation="medium"
       >
-        <DrawerOverlay />
-        <DrawerContent alignItems="center" justifyContent="center">
-          <DrawerCloseButton />
-          <DrawerHeader>
-            <Link href="/" as="h1" mb="27.5px">
-              <LogoIcon />
-            </Link>
-            <LineIcon />
-          </DrawerHeader>
+        <Sheet.Overlay
+          animation="lazy"
+          backgroundColor='$backgroundMenu'
+        />
+        <Sheet.Handle />
+        <Sheet.Frame width='$full' padding="$4" justifyContent="center" alignItems="center" gap="$5" backgroundColor='$backgroundMenu'>
+          <Button size="$6" circular onPress={() => setOpen(false)}>Close</Button>
+          <Link href="/" as="h1" style={{ marginBottom: '27.5px' }}>
+            <LogoIcon />
+          </Link>
+          <LineIcon />
 
-          <DrawerBody w="100%" px="55px">
-            <VStack gap="15px" alignItems="flex-start">
-              <HStack
-                w="100%"
-                borderBottom="1px solid"
-                borderColor="border.500"
-                pb="10px"
-              >
-                <HeartIcon />
-                <Heading>Favorites</Heading>
-              </HStack>
+          <YStack gap="15px" alignItems="flex-start">
+            <XStack
+              width="100%"
+              borderBottomWidth="1px solid"
+              borderColor="border.500"
+              paddingBottom="10px"
+            >
+              <HeartIcon />
+              <Heading>Favorites</Heading>
+            </XStack>
 
-              <HStack
-                as={Link}
-                href={ROUTER.CART}
-                w="100%"
-                borderBottom="1px solid"
-                borderColor="border.500"
-                pb="10px"
-              >
-                <Box
+            <XStack
+              width="100%"
+              borderBottomWidth="1px "
+              borderColor="$borderSecondaryInput"
+              paddingBottom="10px"
+            >
+              <Link href={ROUTER.CART} style={{ textDecoration: 'none' }}>
+                <Stack
                   position="relative"
                   opacity={1}
                   transition=".2s ease-in"
-                  _hover={{ opacity: '.8' }}
+                  hoverStyle={{ opacity: .8 }}
                 >
                   <CartIcon />
-                  <Flex
-                    w="20px"
-                    h="20px"
-                    bgColor="background.1800"
+                  <Stack
+                    width="20px"
+                    height="20px"
+                    backgroundColor="$backgroundTotalQuantity"
                     borderRadius="100%"
                     alignItems="center"
                     justifyContent="center"
@@ -100,31 +94,31 @@ const ExpandSidebar = ({ totalQuantity, onClick }: TSidebarProps) => {
                     top={-3}
                     right={-3}
                   >
-                    <Text size="textMd" variant="secondary">
+                    <Text size="small" variant="secondary">
                       {totalQuantity}
                     </Text>
-                  </Flex>
-                </Box>
-                <Heading>Cart</Heading>
-              </HStack>
+                  </Stack>
+                </Stack>
+              </Link>
+              <Heading>Cart</Heading>
+            </XStack>
 
-              <HStack
-                w="100%"
-                borderBottom="1px solid"
-                borderColor="border.500"
-                pb="10px"
-                onClick={onClick}
-                cursor="pointer"
-                data-testid="button-logout"
-              >
-                <Logout />
-                <Heading>Logout</Heading>
-              </HStack>
-            </VStack>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-    </Stack>
+            <XStack
+              width="100%"
+              borderBottomWidth="1px"
+              borderColor="$borderSecondaryInput"
+              paddingBottom="10px"
+              onPress={onClick}
+              cursor="pointer"
+              data-testid="button-logout"
+            >
+              <Logout />
+              <Heading>Logout</Heading>
+            </XStack>
+          </YStack>
+        </Sheet.Frame>
+      </Sheet>
+    </>
   );
 };
 
