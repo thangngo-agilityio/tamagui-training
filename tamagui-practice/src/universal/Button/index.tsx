@@ -128,6 +128,41 @@ const ButtonFrame = styled(View, {
         borderWidth: 0,
         borderRadius: '$md',
       },
+
+      quantity: {
+        width: '26px',
+        height: '26px',
+        display: 'flex',
+        borderRadius: '$full',
+        borderWidth: 0,
+        backgroundColor: '$backgroundButtonQuantity',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      buy: {
+        backgroundColor: '$backgroundAuth',
+        borderRadius: '$2xl',
+        boxShadow: '0 6px 14px 4px rgba(164, 237, 163, 32.48%)',
+        transition: '.2s ease-in',
+        borderWidth: '1px',
+        borderColor: '$borderColorInput',
+        hoverStyle: {
+          boxShadow: 'none',
+          backgroundColor: 'transparent',
+        },
+      },
+      cart: {
+        backgroundColor: 'transparent',
+        color: '$textTertiary',
+        borderWidth: '1px',
+        borderColor: '$borderButtonCart',
+        borderRadius: '$2xl',
+        transition: '.2s ease-in',
+        hoverStyle: {
+          color: 'textPrimary',
+          backgroundColor: '$backgroundPrimary',
+        },
+      },
     },
     fit: {
       false: {
@@ -184,6 +219,27 @@ const ButtonText = styled(Text, {
         color: '$textFooterSecondary',
         textDecorationLine: 'underline',
       },
+
+      buy: {
+        paddingHorizontal: '40px',
+        paddingVertical: '20px',
+        size: 'extraLarge',
+        color: '$textPrimary',
+        transition: '.2s ease-in',
+        hoverStyle: {
+          color: '$textQuinary',
+        }
+      },
+      cart: {
+        paddingHorizontal: '40px',
+        paddingVertical: '20px',
+        size: 'extraLarge',
+        color: '$textTertiary',
+        transition: '.2s ease-in',
+        hoverStyle: {
+          color: '$textPrimary',
+        }
+      }
     },
   } as const,
 });

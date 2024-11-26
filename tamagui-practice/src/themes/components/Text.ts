@@ -23,7 +23,7 @@ export const Text = defineStyleConfig({
       fontSize: 'xl', //large
     },
     text2Xl: {
-      fontSize: '2xl',
+      fontSize: '2xl', //extraLarge
     },
     text4Xl: {
       fontSize: '4xl',

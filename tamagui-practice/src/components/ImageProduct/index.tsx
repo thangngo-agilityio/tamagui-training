@@ -1,5 +1,7 @@
-import { Flex } from '@chakra-ui/react';
+'use client'
+
 import Image from 'next/image';
+import { YStack } from 'tamagui';
 
 type TImageProduct = {
   image: string[];
@@ -7,7 +9,7 @@ type TImageProduct = {
 };
 
 const ImageProduct = ({ image, alt }: TImageProduct) => (
-  <Flex as="div" borderRadius="sm" flex={1} flexDir="column" gap="10px">
+  <YStack borderRadius="sm" flex={1} gap="10px">
     {image.map((link, index) => (
       <Image
         key={index}
@@ -18,7 +20,7 @@ const ImageProduct = ({ image, alt }: TImageProduct) => (
         style={{ backgroundSize: '100%', borderRadius: '8px', width: '100%' }}
       />
     ))}
-  </Flex>
+  </YStack>
 );
 
 export default ImageProduct;

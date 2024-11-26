@@ -12,6 +12,10 @@ export type GeneralTheme = {
   BackgroundFooter: string;
   backgroundFooterItem: string;
   backgroundButtonPagination: string;
+  backgroundButtonQuantity: string;
+  backgroundOptionPrimary: string;
+  backgroundOptionSecondary: string;
+  backgroundOptionTertiary: string;
 
   // Text
   textDefault: string;
@@ -32,6 +36,7 @@ export type GeneralTheme = {
   textLabel: string;
   textInput: string;
   textFooterSecondary: string;
+  textQuantity: string;
 
   // Button
   buttonPrimary: string;
@@ -42,6 +47,7 @@ export type GeneralTheme = {
   borderSecondaryInput: string;
   borderErrorInput: string;
   borderColorInput: string;
+  borderButtonCart: string;
 };
 
 export type CustomTheme<T extends string> = {
