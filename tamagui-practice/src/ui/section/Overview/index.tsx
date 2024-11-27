@@ -37,6 +37,7 @@ const OverviewSection = ({ isHomePage, title }: TOverviewSection) => (
         maxWidth="705px"
         size={isHomePage ? 'medium' : 'superHuge'}
         variant="primary"
+        weight='extraBold'
         textAlign={!isHomePage ? 'center' : 'unset'}
         $gtMd={{
           size: isHomePage ? 'ultraHuge' : 'superHuge'
