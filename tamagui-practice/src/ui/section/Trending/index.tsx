@@ -1,9 +1,7 @@
 'use client';
 
 import { Fragment } from 'react';
-import {
-  Grid,
-} from '@chakra-ui/react';
+
 import { RadioGroup, Stack, useMedia, XStack, YStack } from 'tamagui';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
