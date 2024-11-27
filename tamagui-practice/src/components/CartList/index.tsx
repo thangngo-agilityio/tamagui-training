@@ -50,7 +50,7 @@ const CartList = ({ cartItem, cartId }: TCartList) => {
   return (
     <YStack>
       <HeadingSection title="Cart" />
-      <YStack marginBottom="90px" $gtMd={{ paddingHorizontal: '67px' }}>
+      <YStack marginBottom="90px" paddingHorizontal='28px' $gtMd={{ paddingHorizontal: '67px' }}>
         {cartItem.map((cart) => {
           const { product, quantity } = cart || {};
           const {

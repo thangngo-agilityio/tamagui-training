@@ -28,7 +28,6 @@ type TTrendingSection = {
 };
 
 const TrendingSection = ({ productList }: TTrendingSection) => {
-  // const isMobile = useBreakpointValue({ base: true, lg: false });
   const { gtMd } = useMedia()
 
   return (
@@ -83,30 +82,29 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           })}
         </XStack>
 
-        {/* {!isMobile && ( */}
-        <XStack gap="92px" marginBottom="98px" paddingHorizontal="104px">
-          {BENEFIT_LIST.map((item) => {
-            const IconComponent = item.icon || Fragment;
-            return (
-              <CardBenefit
-                key={item.id}
-                icon={<IconComponent />}
-                title={item.title}
-                text={item.text}
-              />
-            );
-          })}
-        </XStack>
-        {/* )} */}
+        {gtMd && (
+          <XStack gap="92px" marginBottom="98px" paddingHorizontal="104px">
+            {BENEFIT_LIST.map((item) => {
+              const IconComponent = item.icon || Fragment;
+              return (
+                <CardBenefit
+                  key={item.id}
+                  icon={<IconComponent />}
+                  title={item.title}
+                  text={item.text}
+                />
+              );
+            })}
+          </XStack>
+        )}
 
         <Stack
           width='100%'
           paddingHorizontal='28px'
-          marginBottom='106px'
-          flexDirection='row'
+          marginBottom='136px'
+          flexDirection='column'
           alignItems="center"
           $gtMd={{
-            flexDirection: 'column',
             width: 'unset',
             paddingHorizontal: 0,
             marginBottom: '136px'
@@ -114,8 +112,8 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
         >
           <YStack
             width="100%"
+            alignItems='center'
             $gtMd={{
-              alignItems: 'center',
               marginBottom: '30px'
             }}
           >
@@ -129,15 +127,15 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
             >
               Top Trending
             </Heading>
-            {/* {!isMobile && (
+            {!gtMd && (
               <>
-                <Text maxW="797px" variant="septenary" size="text2Xl" mb="10px">
+                <Text maxWidth="797px" variant="septenary" size="extraLarge" marginBottom="10px" alignItems='center'>
                   Find a bright ideal to suit your taste with our great
                   selection of suspension, wall, floor and table lights.
                 </Text>
-                <Box w="98px" h="5px" bgColor="background.300" />
+                <Stack width="98px" height="5px" backgroundColor="$backgroundPrimary" />
               </>
-            )} */}
+            )}
           </YStack>
           <XStack width="100%" alignItems='center' justifyContent="flex-end" gap={5}>
             <Link href={ROUTER.PRODUCT} style={{ textDecoration: 'none' }}>
@@ -175,8 +173,8 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
             </Stack>
           ))}
         </Stack>
-      </YStack>
-    </Stack>
+      </YStack >
+    </Stack >
   );
 };
 
