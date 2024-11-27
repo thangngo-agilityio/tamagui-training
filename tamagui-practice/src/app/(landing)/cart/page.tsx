@@ -15,8 +15,6 @@ export const metadata: Metadata = {
 const Cart = () => (
   <Container maxW="100%" p={0}>
     <OverviewSection title="Cart page" />
-
-
     <Suspense fallback={<SkeletonCartList length={2} />}>
       <CartPage />
     </Suspense>
