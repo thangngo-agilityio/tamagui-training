@@ -1,14 +1,7 @@
-'use client'
+'use client';
 
 // Component
-import {
-  CartIcon,
-  HamburgerIcon,
-  HeartIcon,
-  LineIcon,
-  LogoIcon,
-  Logout,
-} from '@/icons';
+import { CartIcon, HamburgerIcon, HeartIcon, LineIcon, LogoIcon, Logout } from '@/icons';
 
 // Constants
 import { ROUTER } from '@/constants';
@@ -27,11 +20,7 @@ const ExpandSidebar = ({ totalQuantity, onClick }: TSidebarProps) => {
   const [position, setPosition] = useState(0);
   return (
     <>
-      <Stack
-        onPress={() => setOpen((prev) => !prev)}
-        left="-15px"
-        data-testid="button-hamburger"
-      >
+      <Stack onPress={() => setOpen((prev) => !prev)} left="-15px" data-testid="button-hamburger">
         <HamburgerIcon />
       </Stack>
       <Sheet
@@ -39,49 +28,40 @@ const ExpandSidebar = ({ totalQuantity, onClick }: TSidebarProps) => {
         open={isOpen}
         onOpenChange={setOpen}
         dismissOnSnapToBottom
-        snapPoints={[80]}
-        // snapPointsMode='mixed'
+        snapPoints={[60]}
+        // snapPointsMode="mixed"
         position={position}
         onPositionChange={setPosition}
         zIndex={100}
         animation="medium"
       >
-        <Sheet.Overlay
-          animation="lazy"
-          backgroundColor='$backgroundMenu'
-        />
+        <Sheet.Overlay animation="lazy" enterStyle={{ opacity: 0 }} exitStyle={{ opacity: 0 }} />
         <Sheet.Handle />
-        <Sheet.Frame width='$full' padding="$4" justifyContent="center" alignItems="center" gap="$5" backgroundColor='$backgroundMenu'>
-          <Button size="$6" circular onPress={() => setOpen(false)}>Close</Button>
+        <Sheet.Frame
+          width="$full"
+          padding="$4"
+          justifyContent="center"
+          alignItems="center"
+          gap="$5"
+          backgroundColor="$backgroundMenu"
+        >
+          <Button size="$6" circular onPress={() => setOpen(false)}>
+            Close
+          </Button>
           <Link href="/" as="h1" style={{ marginBottom: '27.5px' }}>
             <LogoIcon />
           </Link>
           <LineIcon />
 
           <YStack gap="15px" alignItems="flex-start">
-            <XStack
-              width="100%"
-              borderBottomWidth="1px solid"
-              borderColor="border.500"
-              paddingBottom="10px"
-            >
+            <XStack width="100%" borderBottomWidth="1px solid" borderColor="border.500" paddingBottom="10px">
               <HeartIcon />
               <Heading>Favorites</Heading>
             </XStack>
 
-            <XStack
-              width="100%"
-              borderBottomWidth="1px "
-              borderColor="$borderSecondaryInput"
-              paddingBottom="10px"
-            >
+            <XStack width="100%" borderBottomWidth="1px " borderColor="$borderSecondaryInput" paddingBottom="10px">
               <Link href={ROUTER.CART} style={{ textDecoration: 'none' }}>
-                <Stack
-                  position="relative"
-                  opacity={1}
-                  transition=".2s ease-in"
-                  hoverStyle={{ opacity: .8 }}
-                >
+                <Stack position="relative" opacity={1} transition=".2s ease-in" hoverStyle={{ opacity: 0.8 }}>
                   <CartIcon />
                   <Stack
                     width="20px"

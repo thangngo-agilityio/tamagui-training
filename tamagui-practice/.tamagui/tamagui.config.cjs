@@ -224,7 +224,7 @@ var webTheme = {
     backgroundOptionPrimary: colors.orange2,
     backgroundOptionSecondary: colors.blue1,
     backgroundOptionTertiary: colors.grey14,
-    backgroundMenu: colors.grey1,
+    backgroundMenu: colors.grey8,
     // Text
     textDefault: colors.blue2,
     textError: colors.red1,

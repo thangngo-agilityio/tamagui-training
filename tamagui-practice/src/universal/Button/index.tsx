@@ -66,17 +66,13 @@ const ButtonFrame = styled(View, {
       },
 
       iconPrimary: {
+        width: '100%',
+        paddingVertical: '15px',
+        backgroundColor: 'transparent',
         borderRadius: '$lg',
-        borderColor: '$borderIcon',
-
-        hoverStyle: {
-          opacity: 0.9,
-        },
-
-        disabledStyle: {
-          cursor: 'not-allowed',
-          backgroundColor: 'transparent',
-        },
+        borderColor: '$borderPrimaryInput',
+        borderWidth: '1px',
+        opacity: 1,
       },
 
       warning: {
@@ -228,7 +224,7 @@ const ButtonText = styled(Text, {
         transition: '.2s ease-in',
         hoverStyle: {
           color: '$textQuinary',
-        }
+        },
       },
       cart: {
         paddingHorizontal: '40px',
@@ -238,8 +234,11 @@ const ButtonText = styled(Text, {
         transition: '.2s ease-in',
         hoverStyle: {
           color: '$textPrimary',
-        }
-      }
+        },
+      },
+      iconPrimary: {
+        color: 'textQuaternary',
+      },
     },
   } as const,
 });

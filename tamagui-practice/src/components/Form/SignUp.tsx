@@ -1,34 +1,21 @@
 'use client';
 
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/react';
 import { useCallback, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ViewOffIcon, ViewIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 
 // Component
 import { EyeIcon, EyeOffIcon, GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
-import {
-  AUTH_SCHEMA,
-  ISignUpForm,
-  REQUIRED_FIELDS_REGISTER,
-  ROUTER,
-} from '@/constants';
+import { AUTH_SCHEMA, ISignUpForm, REQUIRED_FIELDS_REGISTER, ROUTER } from '@/constants';
 
 // Types
 import { TUser } from '@/types';
 import { isEnableSubmitButton } from '@/utils';
 import { Form, Stack, XStack, YStack } from 'tamagui';
-import { InputField } from '@/universal';
+import { Button, Heading, InputField, Text } from '@/universal';
 import { useFocus } from '@/hooks';
 
 type TAuthFormProps = {
@@ -38,12 +25,7 @@ type TAuthFormProps = {
   onSubmit: (data: TUser) => void;
 };
 
-const SignUpForm = ({
-  isPending,
-  errorMessage = '',
-  handleClearRootError,
-  onSubmit,
-}: TAuthFormProps) => {
+const SignUpForm = ({ isPending, errorMessage = '', handleClearRootError, onSubmit }: TAuthFormProps) => {
   const {
     control,
     formState: { dirtyFields, isSubmitting, errors },
@@ -63,37 +45,14 @@ const SignUpForm = ({
 
   const { focusProps } = useFocus();
   const { isOpen: isShowPassword, onToggle: onShowPassword } = useDisclosure();
-  const { isOpen: isShowConfirmPassword, onToggle: onShowConfirmPassword } =
-    useDisclosure();
-
-  const renderPasswordIcon = useCallback(
-    (isCorrect: boolean, callback: typeof onShowPassword): JSX.Element => {
-      const Icon = isCorrect ? ViewIcon : ViewOffIcon;
-
-      return (
-        <Icon
-          color="gray.400"
-          w="25px"
-          h="25px"
-          cursor="pointer"
-          onClick={callback}
-        />
-      );
-    },
-    [],
-  );
+  const { isOpen: isShowConfirmPassword, onToggle: onShowConfirmPassword } = useDisclosure();
 
   const handleClearErrorMessage = useCallback(
-    (
-      field: keyof ISignUpForm,
-      isError: boolean,
-      onChange: (value: string) => void,
-    ) =>
-      (data: string) => {
-        isError && clearErrors(field);
+    (field: keyof ISignUpForm, isError: boolean, onChange: (value: string) => void) => (data: string) => {
+      isError && clearErrors(field);
 
-        onChange(data);
-      },
+      onChange(data);
+    },
     [clearErrors],
   );
 
@@ -109,32 +68,26 @@ const SignUpForm = ({
 
   return (
     <Stack
-      width='$full'
-      paddingHorizontal='28px'
+      width="$full"
+      paddingHorizontal="28px"
       $gtLg={{
         width: '556px',
-        paddingHorizontal: 0
+        paddingHorizontal: 0,
       }}
       marginBottom="30px"
       alignItems="center"
       justifyContent="center"
     >
-      <Box mb="36px" textAlign="center">
-        <Heading as="h1" mb="8px" variant="tertiary" size="size4xl">
+      <Stack marginBottom="36px" alignItems="center">
+        <Heading marginBottom="8px" variant="tertiary" size="huge">
           Sign Up to get started
         </Heading>
-        <Text variant="quaternary" size="textMd">
+        <Text variant="quaternary" size="small">
           Enter your details to proceed further
         </Text>
-      </Box>
+      </Stack>
 
-      <Form
-        width="100%"
-        gap="10px"
-        alignItems="center"
-        marginBottom="24px"
-        onSubmit={handleSubmit(handleSignUp)}
-      >
+      <Form width="100%" gap="10px" alignItems="center" marginBottom="24px" onSubmit={handleSubmit(handleSignUp)}>
         <Controller
           control={control}
           rules={AUTH_SCHEMA.EMAIL}
@@ -175,11 +128,7 @@ const SignUpForm = ({
                 errorMessages={error?.message}
                 disabled={isSubmitting}
                 {...field}
-                onChangeText={handleClearErrorMessage(
-                  'firstName',
-                  !!error,
-                  field.onChange,
-                )}
+                onChangeText={handleClearErrorMessage('firstName', !!error, field.onChange)}
                 aria-label="first name"
               />
             )}
@@ -197,11 +146,7 @@ const SignUpForm = ({
                 errorMessages={error?.message}
                 disabled={isSubmitting}
                 {...field}
-                onChangeText={handleClearErrorMessage(
-                  'lastName',
-                  !!error,
-                  field.onChange,
-                )}
+                onChangeText={handleClearErrorMessage('lastName', !!error, field.onChange)}
                 aria-label="name"
               />
             )}
@@ -222,11 +167,7 @@ const SignUpForm = ({
               isError={!!error?.message}
               errorMessages={error?.message}
               {...field}
-              onChangeText={handleClearErrorMessage(
-                'password',
-                !!error,
-                field.onChange,
-              )}
+              onChangeText={handleClearErrorMessage('password', !!error, field.onChange)}
               onBlur={handleClearRootError}
             />
           )}
@@ -247,38 +188,32 @@ const SignUpForm = ({
               isError={!!error}
               errorMessages={error?.message}
               disabled={isSubmitting}
-              onChangeText={handleClearErrorMessage(
-                'confirmPassword',
-                !!error,
-                field.onChange,
-              )}
+              onChangeText={handleClearErrorMessage('confirmPassword', !!error, field.onChange)}
             />
           )}
         />
 
-        <Box mb={7} w="76%">
-          <Text color="red" textAlign="center" py={2} h={10}>
+        <YStack marginBottom={7} width="76%">
+          <Text color="$textError" textAlign="center" marginBottom="10px" height={20}>
             {errorMessage}
           </Text>
-          <Button
-            width="100%"
-            py="26px"
-            type="submit"
-            role="button"
-            aria-label="Sign Up"
-            size="md"
-            variant="auth"
-            colorScheme="primary"
-            textTransform="capitalize"
-            isDisabled={isDisableSubmit}
-            isLoading={isPending}
-          >
-            SIGN UP
-          </Button>
-        </Box>
+          <Form.Trigger asChild>
+            <Button
+              width="100%"
+              paddingVertical="15px"
+              aria-label="Sign In"
+              variant="auth"
+              transform="capitalize"
+              disabled={isDisableSubmit}
+              isLoading={isPending}
+            >
+              SIGN UP
+            </Button>
+          </Form.Trigger>
+        </YStack>
       </Form>
 
-      <Flex justifyContent="center" alignItems="center" mb="100px">
+      <XStack justifyContent="center" alignItems="center" marginBottom="100px">
         <Text
           variant="quaternary"
           textAlign="center"
@@ -286,45 +221,39 @@ const SignUpForm = ({
             __html: 'Already have an account?',
           }}
         />
-        <Button
-          as={Link}
+        <Link
           href={ROUTER.LOGIN}
-          aria-label="sign in"
-          w="fit-content"
-          p={0}
-          _hover={{
-            bg: 'transparent',
+          aria-label="sign up"
+          style={{
+            padding: 0,
+            fontSize: 'md',
+            marginLeft: 5,
+            color: '#284F49',
           }}
-          fontSize="md"
-          variant="authTertiary"
-          ml={1}
         >
           Sign in
-        </Button>
-      </Flex>
-      <Flex
-        w={{ base: '100%', lg: 'unset' }}
-        flexDirection="column"
+        </Link>
+      </XStack>
+      <YStack
+        width="100%"
         alignItems="center"
         justifyContent="center"
+        $gtMd={{
+          width: 'unset',
+        }}
       >
-        <Flex flexDirection="row" gap="18px" alignItems="center" mb="14px">
+        <XStack gap="18px" alignItems="center" marginBottom="14px">
           <LineIcon />
           <Text variant="quaternary">Or</Text>
           <LineIcon />
-        </Flex>
-        <Button
-          variant="iconPrimary"
-          size="md"
-          position="relative"
-          isDisabled={true}
-        >
-          <Box position="absolute" top="17px" left="18px">
+        </XStack>
+        <Button variant="iconPrimary" position="relative" disabled={true}>
+          <Stack position="absolute" top="17px" left="18px">
             <GoogleIcon />
-          </Box>
+          </Stack>
           Sign Up with Google
         </Button>
-      </Flex>
+      </YStack>
     </Stack>
   );
 };
