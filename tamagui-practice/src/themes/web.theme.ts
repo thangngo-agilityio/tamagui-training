@@ -20,6 +20,7 @@ export const webTheme: CustomTheme<'light_web'> = {
     backgroundOptionPrimary: colors.orange2,
     backgroundOptionSecondary: colors.blue1,
     backgroundOptionTertiary: colors.grey14,
+    backgroundMenu: colors.grey8,
 
     // Text
     textDefault: colors.blue2,

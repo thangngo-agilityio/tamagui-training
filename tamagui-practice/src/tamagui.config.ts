@@ -1,7 +1,8 @@
-import { createTamagui, createFont, createTokens } from '@tamagui/web';
+import { createTamagui, createFont, createTokens, CreateTamaguiProps } from '@tamagui/web';
 import { createMedia } from '@tamagui/react-native-media-driver';
 import { colors, customThemes, fontConfig, fonts, media } from './themes';
 import { radius, size, space, zIndex } from './themes/metric';
+import { animations } from '@tamagui/config/v3';
 
 const customConfig = {
   settings: {
@@ -26,6 +27,7 @@ const customConfig = {
       ...fontConfig,
     }),
   },
+  animations,
   media: createMedia(media),
   tokens: createTokens({ radius, size, space, zIndex, color: colors }),
 };

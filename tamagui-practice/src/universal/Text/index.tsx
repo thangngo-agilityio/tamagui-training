@@ -1,5 +1,4 @@
-import { styled, Text as textBase } from "tamagui";
-
+import { styled, Text as textBase } from 'tamagui';
 
 const Text = styled(textBase, {
   name: 'Text',
@@ -34,13 +33,13 @@ const Text = styled(textBase, {
         color: '$textSeptenary',
       },
       productCard: {
-        color: '$textProductCard'
+        color: '$textProductCard',
       },
       footer: {
-        color: '$textFooter'
+        color: '$textFooter',
       },
       copyright: {
-        color: '$textCopyright'
+        color: '$textCopyright',
       },
       footerPrimary: {
         color: '$textPrimary',
@@ -55,6 +54,9 @@ const Text = styled(textBase, {
       },
       orderSuccess: {
         color: '$textOrderSuccess',
+      },
+      error: {
+        color: '$textError',
       },
     },
 
@@ -133,8 +135,8 @@ const Text = styled(textBase, {
   defaultVariants: {
     size: 'medium',
     weight: 'normal',
-    variant: 'default'
+    variant: 'default',
   },
 });
 
-export default Text
+export default Text;
