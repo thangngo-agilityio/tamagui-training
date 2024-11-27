@@ -1,6 +1,6 @@
 'use client';
 
-import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import { View, XStack } from 'tamagui';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebounceCallback } from 'usehooks-ts';
 
@@ -22,32 +22,33 @@ const InputSearch = () => {
 
   const isShowSearch = pathname === ROUTER.PRODUCT;
 
-  const handleOnChange = useDebounceCallback(
-    (value: string) => {
-      const updatedParams = updateSearchParams(
-        searchParams,
-        SEARCH_QUERIES.NAME,
-        value,
-      );
+  const handleOnChange = useDebounceCallback((value: string) => {
+    const updatedParams = updateSearchParams(searchParams, SEARCH_QUERIES.NAME, value);
 
-      replace(`${pathname}?${updatedParams.toString()}`, { scroll: false });
-    },
-    500,
-  );
+    replace(`${pathname}?${updatedParams.toString()}`, { scroll: false });
+  }, 500);
   return (
     <>
       {isShowSearch && (
-        <InputGroup>
-          <InputLeftElement>
+        <XStack
+          width="350px"
+          borderWidth="1px"
+          borderRadius="$sm"
+          padding={10}
+          gap={5}
+          backgroundColor="$backgroundBody"
+        >
+          <View>
             <SearchIcon />
-          </InputLeftElement>
+          </View>
           <InputField
+            variant="search"
             placeholder="Search for minimalist chair"
             defaultValue={name}
             onChangeText={handleOnChange}
             data-testid="search"
           />
-        </InputGroup>
+        </XStack>
       )}
     </>
   );

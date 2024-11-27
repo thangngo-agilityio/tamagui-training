@@ -1,30 +1,17 @@
 'use client';
 
-import {
-  Box,
-  Checkbox,
-  Flex,
-  HStack,
-  Stack,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Box, Checkbox, Flex, HStack, useDisclosure } from '@chakra-ui/react';
 import { useCallback, useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Link from 'next/link';
-import { Form, YStack } from 'tamagui';
-
+import { Form, Stack, XStack, YStack } from 'tamagui';
 
 // Component
 import { Button, Heading, InputField, Text } from '@/universal';
 import { EyeIcon, EyeOffIcon, GoogleIcon, LineIcon } from '@/icons';
 
 // Constants
-import {
-  AUTH_SCHEMA,
-  REQUIRED_FIELDS_LOGIN,
-  ROUTER,
-  TSignInForm,
-} from '@/constants';
+import { AUTH_SCHEMA, REQUIRED_FIELDS_LOGIN, ROUTER, TSignInForm } from '@/constants';
 
 // Types
 import { LoginFormData } from '@/types';
@@ -40,12 +27,7 @@ type TAuthFormProps = {
   onSubmit: (data: TSignInForm) => void;
 };
 
-const LoginForm = ({
-  isPending,
-  errorMessage = '',
-  handleClearRootError,
-  onSubmit,
-}: TAuthFormProps) => {
+const LoginForm = ({ isPending, errorMessage = '', handleClearRootError, onSubmit }: TAuthFormProps) => {
   const {
     control,
     formState: { dirtyFields, errors },
@@ -81,23 +63,15 @@ const LoginForm = ({
   // );
 
   const handleClearErrorMessage = useCallback(
-    (
-      field: keyof LoginFormData,
-      isError: boolean,
-      onChange: (value: string) => void,
-    ) =>
-      (data: string) => {
-        isError && clearErrors(field);
+    (field: keyof LoginFormData, isError: boolean, onChange: (value: string) => void) => (data: string) => {
+      isError && clearErrors(field);
 
-        onChange(data);
-      },
+      onChange(data);
+    },
     [clearErrors],
   );
 
-  const handleSignIn = useCallback(
-    (data: TSignInForm) => onSubmit(data),
-    [onSubmit],
-  );
+  const handleSignIn = useCallback((data: TSignInForm) => onSubmit(data), [onSubmit]);
 
   const dirtyItems = Object.keys(dirtyFields);
 
@@ -109,14 +83,18 @@ const LoginForm = ({
 
   return (
     <Stack
-      w={{ base: '100%', lg: '556px' }}
-      px={{ base: '28px', lg: 'unset' }}
-      mb="30px"
+      width="100%"
+      paddingHorizontal="28px"
+      marginBottom="30px"
       alignItems="center"
       justifyContent="center"
+      $gtMd={{
+        width: '556px',
+        paddingHorizontal: 'unset',
+      }}
     >
-      <YStack marginBottom="36px" alignItems='center'>
-        <Heading marginBottom="8px" variant='tertiary' size='huge'>
+      <YStack marginBottom="36px" alignItems="center">
+        <Heading marginBottom="8px" variant="tertiary" size="huge">
           Welcome Back!
         </Heading>
         <Text variant="quaternary" size="small">
@@ -124,13 +102,7 @@ const LoginForm = ({
         </Text>
       </YStack>
 
-      <Form
-        width="100%"
-        gap="10px"
-        alignItems="center"
-        marginBottom="24px"
-        onSubmit={handleSubmit(handleSignIn)}
-      >
+      <Form width="100%" gap="10px" alignItems="center" marginBottom="24px" onSubmit={handleSubmit(handleSignIn)}>
         <Controller
           control={control}
           rules={AUTH_SCHEMA.EMAIL}
@@ -144,8 +116,9 @@ const LoginForm = ({
             };
 
             return (
-              <InputField label="Email"
-                variant='form'
+              <InputField
+                label="Email"
+                variant="form"
                 isError={!!error?.message}
                 errorMessages={error?.message}
                 value={value}
@@ -196,24 +169,20 @@ const LoginForm = ({
               isError={!!error?.message}
               errorMessages={error?.message}
               {...field}
-              onChangeText={handleClearErrorMessage(
-                'password',
-                !!error,
-                field.onChange,
-              )}
+              onChangeText={handleClearErrorMessage('password', !!error, field.onChange)}
               onBlur={handleClearRootError}
             />
           )}
         />
 
-        <HStack justifyContent="space-between" w="100%" mt="10px">
+        <XStack justifyContent="space-between" width="100%" marginTop="10px">
           <Checkbox aria-label="remember" variant="round" position="relative">
             <Text variant="quinary" fontWeight="bold">
               Remember me
             </Text>
           </Checkbox>
           <Button
-            variant='warning'
+            variant="warning"
             paddingHorizontal={0}
             fit={true}
             aria-label="recover password"
@@ -221,17 +190,16 @@ const LoginForm = ({
           >
             Recover password
           </Button>
-        </HStack>
+        </XStack>
 
         <YStack marginBottom={7} width="76%">
-          <Text color="$textError" textAlign="center" paddingVertical={2} height={10}>
+          <Text color="$textError" textAlign="center" marginBottom="10px" height={20}>
             {errorMessage}
           </Text>
-          <Form.Trigger asChild >
+          <Form.Trigger asChild>
             <Button
               width="100%"
               paddingVertical="15px"
-              role="button"
               aria-label="Sign In"
               variant="auth"
               transform="capitalize"
@@ -244,7 +212,7 @@ const LoginForm = ({
         </YStack>
       </Form>
 
-      <Flex justifyContent="center" alignItems="center" mb="100px">
+      <XStack justifyContent="center" alignItems="center" marginBottom="100px">
         <Text
           variant="quaternary"
           textAlign="center"
@@ -252,48 +220,40 @@ const LoginForm = ({
             __html: 'Don&apos;t have an account?',
           }}
         />
-        <Button
-          as={Link}
+        <Link
           href={ROUTER.REGISTER}
           aria-label="sign up"
-          w="fit-content"
-          p={0}
-          _hover={{
-            bg: 'transparent',
+          style={{
+            padding: 0,
+            fontSize: 'md',
+            marginLeft: 5,
+            color: '#284F49',
           }}
-          fontSize="md"
-          variant="authTertiary"
-          ml={1}
         >
           Sign up
-        </Button>
-      </Flex>
-      <Flex
-        w={{ base: '100%', lg: 'unset' }}
-        flexDirection="column"
+        </Link>
+      </XStack>
+      <YStack
+        width="100%"
         alignItems="center"
         justifyContent="center"
+        $gtMd={{
+          width: 'unset',
+        }}
       >
-        <Flex flexDirection="row" gap="18px" alignItems="center" mb="14px">
+        <XStack gap="18px" alignItems="center" marginBottom="14px">
           <LineIcon />
           <Text variant="quaternary">Or</Text>
           <LineIcon />
-        </Flex>
-        <Button
-          variant="iconPrimary"
-          size="md"
-          position="relative"
-          isDisabled={true}
-        >
-          <Box position="absolute" top="17px" left="18px">
+        </XStack>
+        <Button variant="iconPrimary" position="relative" disabled={true}>
+          <Stack position="absolute" top="17px" left="18px">
             <GoogleIcon />
-          </Box>
+          </Stack>
           Sign Up with Google
         </Button>
-      </Flex>
-
-
-    </Stack >
+      </YStack>
+    </Stack>
   );
 };
 

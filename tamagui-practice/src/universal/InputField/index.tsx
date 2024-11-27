@@ -1,16 +1,14 @@
-'use client'
+'use client';
 
-import { ComponentProps, forwardRef, ReactNode, Ref, useCallback, useState } from "react";
-import { styled, Input, Label, YStack, XStack, View, Stack } from "tamagui";
+import { ComponentProps, forwardRef, ReactNode, Ref, useCallback, useState } from 'react';
+import { styled, Input, Label, YStack, XStack, Stack } from 'tamagui';
 import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
-
+import Text from '../Text';
 
 const StyledInput = styled(Input, {
   name: 'InputField',
 
   fontSize: '$4',
-  borderRadius: '$sm',
-  borderWidth: '1px',
   borderColor: '$borderPrimaryInput',
   borderStyle: 'solid',
   color: '$textInput',
@@ -24,37 +22,40 @@ const StyledInput = styled(Input, {
 
   variants: {
     variant: {
+      search: {
+        paddingVertical: '$2',
+        borderWidth: 0,
+      },
       form: {
         width: '100%',
+        borderRadius: '$sm',
+        borderWidth: '1px',
         paddingLeft: '20px',
         paddingRight: '20px',
         paddingTop: '30px',
         paddingBottom: '15px',
         focusStyle: { borderColor: '$borderSecondaryInput' },
       },
-      search: {
-        py: '$2'
-      }
-    }
-  }
-})
+    },
+  },
+});
 
 const StyledLabel = styled(Label, {
   name: 'InputField',
 
-  paddingTop: "24px",
-  paddingLeft: "20px",
-  fontSize: "md",
+  paddingTop: '24px',
+  paddingLeft: '20px',
+  fontSize: 'md',
   marginInlineEnd: 0,
-  minWidth: "max-content",
-  color: "$textLabel",
-  position: "absolute",
-  transition: "0.2s ease",
-  transform: "auto",
+  minWidth: 'max-content',
+  color: '$textLabel',
+  position: 'absolute',
+  transition: '0.2s ease',
+  transform: 'auto',
   focusStyle: {
     fontWeight: '400',
   },
-})
+});
 
 // const IconStyled = styled(
 //   View,
@@ -96,8 +97,8 @@ const InputFieldFrame = styled(XStack, {
         borderColor: '$borderErrorInput',
       },
     },
-  }
-})
+  },
+});
 
 export interface InputFiledProps extends ComponentProps<typeof StyledInput> {
   errorMessages?: string;
@@ -109,25 +110,27 @@ export interface InputFiledProps extends ComponentProps<typeof StyledInput> {
   isSearch?: boolean;
   containerStyle?: ComponentProps<typeof YStack>;
   frameStyle?: ComponentProps<typeof InputFieldFrame>;
-  variant?: 'form';
 }
 
 const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
-  ({
-    isError = false,
-    errorMessages = 'Default error',
-    label,
-    value,
-    suffixIcon: SuffixIcon,
-    isSearch,
-    disabled,
-    containerStyle,
-    frameStyle,
-    onBlur,
-    onFocus,
-    onPress,
-    ...props
-  }, ref) => {
+  (
+    {
+      isError = false,
+      errorMessages = 'Default error',
+      label,
+      value,
+      suffixIcon: SuffixIcon,
+      isSearch,
+      disabled,
+      containerStyle,
+      frameStyle,
+      onBlur,
+      onFocus,
+      onPress,
+      ...props
+    },
+    ref,
+  ) => {
     const [focusInput, setFocusInput] = useState(false);
 
     const onBlurInput = useCallback(
@@ -146,16 +149,18 @@ const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
       [onFocus],
     );
 
-
     return (
-      <YStack width='100%' {...containerStyle}>
+      <YStack width="100%" {...containerStyle}>
         <InputFieldFrame disabled={disabled} hasError={isError} {...frameStyle}>
-          {label && <StyledLabel
-            fontWeight={value || focusInput ? '400' : 'bold'}
-            transform={`translateX(${value || focusInput ? '-1px' : 0}) translateY(${value || focusInput ? '-15px' : 0}) scale(${value || focusInput ? '0.9' : 'unset'})`}
-            htmlFor={label}>
-            {label}
-          </StyledLabel>}
+          {label && (
+            <StyledLabel
+              fontWeight={value || focusInput ? '400' : 'bold'}
+              transform={`translateX(${value || focusInput ? '-1px' : 0}) translateY(${value || focusInput ? '-15px' : 0}) scale(${value || focusInput ? '0.9' : 'unset'})`}
+              htmlFor={label}
+            >
+              {label}
+            </StyledLabel>
+          )}
           <StyledInput id={label} ref={ref as Ref<Input>} onFocus={onFocusInput} onBlur={onBlurInput} {...props} />
           {SuffixIcon && (
             <Stack
@@ -164,7 +169,7 @@ const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
               position="absolute"
               top="25px"
               right="15px"
-              cursor='pointer'
+              cursor="pointer"
               aria-label="The eye icon"
               hoverStyle={{
                 borderColor: 'transparent',
@@ -181,9 +186,14 @@ const InputField = forwardRef<HTMLInputElement | Input, InputFiledProps>(
             </Stack>
           )}
         </InputFieldFrame>
-      </YStack >
+        {isError && (
+          <Text size="extraSmall" variant="error">
+            {errorMessages}
+          </Text>
+        )}
+      </YStack>
     );
-  }
-)
+  },
+);
 
 export default InputField;

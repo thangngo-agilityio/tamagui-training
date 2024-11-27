@@ -23,7 +23,7 @@ import { calculateTotalQuantity } from '@/utils';
 
 // Types
 import { ICartItem } from '@/types';
-import { Stack, XStack } from 'tamagui';
+import { Stack, useMedia, XStack } from 'tamagui';
 
 type TNavigation = {
   cartItem: ICartItem[];
@@ -31,8 +31,8 @@ type TNavigation = {
 
 const Navigation = ({ cartItem }: TNavigation) => {
   const [isLogout, startTransition] = useTransition();
-
   const router = useRouter();
+  const { gtMd } = useMedia();
 
   const totalQuantity = useMemo(
     () => calculateTotalQuantity(cartItem),
@@ -47,39 +47,37 @@ const Navigation = ({ cartItem }: TNavigation) => {
   }, [router]);
   return (
     <>
-      <XStack flexDirection="row" alignItems="center" gap="32px">
-        <HeartIcon />
-        <Link href={ROUTER.CART}>
-          <Box
-            position="relative"
-            opacity={1}
-            transition=".2s ease-in"
-            _hover={{ opacity: '.8' }}
-          >
-            <CartIcon />
-            <Stack
-              width="20px"
-              height="20px"
-              backgroundColor="$backgroundTotalQuantity"
-              borderRadius="100%"
-              alignItems="center"
-              justifyContent="center"
-              position="absolute"
-              top={-10}
-              right={-10}
+      {gtMd ? (
+        <XStack flexDirection="row" alignItems="center" gap="32px">
+          <HeartIcon />
+          <Link href={ROUTER.CART}>
+            <Box
+              position="relative"
+              opacity={1}
+              transition=".2s ease-in"
+              _hover={{ opacity: '.8' }}
             >
-              <Text size="textMd" variant="secondary">
-                {totalQuantity}
-              </Text>
-            </Stack>
-          </Box>
-        </Link>
-        <UserDropdown onClick={handleLogout} />
-      </XStack>
-
-      {/* <Hide above="lg">
-        <Expand totalQuantity={totalQuantity} onClick={handleLogout} />
-      </Hide> */}
+              <CartIcon />
+              <Stack
+                width="20px"
+                height="20px"
+                backgroundColor="$backgroundTotalQuantity"
+                borderRadius="100%"
+                alignItems="center"
+                justifyContent="center"
+                position="absolute"
+                top={-10}
+                right={-10}
+              >
+                <Text size="textMd" variant="secondary">
+                  {totalQuantity}
+                </Text>
+              </Stack>
+            </Box>
+          </Link>
+          <UserDropdown onClick={handleLogout} />
+        </XStack>
+      ) : <Expand totalQuantity={totalQuantity} onClick={handleLogout} />}
 
       {isLogout && <LoadingIndicator />}
     </>
