@@ -34,7 +34,7 @@ const ProductList = ({ productList }: TProductListProps) => {
 
   return (
     <YStack alignItems="center">
-      {productList.length > 0 ? (
+      {productList?.length > 0 ? (
         <Stack
           style={{
             display: 'grid',

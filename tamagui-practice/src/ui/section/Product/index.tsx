@@ -6,25 +6,22 @@ import { Suspense } from 'react';
 
 
 // Component
-import { SkeletonProductList } from '@/components';
-import { VectorIcon } from '@/icons';
+import { ProductCard, SkeletonProductList } from '@/components';
 
 // Types
 import { TProduct } from '@/types';
 
 // Constants
-import { ROUTER } from '@/constants';
 import { Stack, useMedia, XStack } from 'tamagui';
 import { Heading, Text } from '@/universal';
 
-const ProductCard = lazy(() => import('@/components/ProductCard'));
+// const ProductCard = lazy(() => import('@/components/ProductCard'));
 
 type TProductSection = {
   productList: TProduct[];
 };
 
 const ProductSection = ({ productList }: TProductSection) => {
-  // const isMobile = useBreakpointValue({ base: true, lg: false });
   const { gtMd } = useMedia()
   return (
     <Stack
@@ -81,7 +78,7 @@ const ProductSection = ({ productList }: TProductSection) => {
             </Flex>
           )} */}
         </Stack>
-        <Suspense fallback={<SkeletonProductList length={4} />}>
+        {/* <Suspense fallback={<SkeletonProductList length={4} />}> */}
           <Stack
             style={{
               display: 'grid',
@@ -96,7 +93,7 @@ const ProductSection = ({ productList }: TProductSection) => {
               paddingHorizontal: '94px'
             }}
           >
-            {productList.map((item) => (
+            {productList?.map((item) => (
               <Stack key={item.id}>
                 <ProductCard
                   id={item.id}
@@ -107,7 +104,7 @@ const ProductSection = ({ productList }: TProductSection) => {
               </Stack>
             ))}
           </Stack>
-        </Suspense>
+        {/* </Suspense> */}
       </Stack>
     </Stack>
   );

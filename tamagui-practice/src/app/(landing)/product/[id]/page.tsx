@@ -62,9 +62,7 @@ const ProductDetailPage = async ({ params }: TProductDetailPage) => {
   return (
     <Box>
       <OverviewSection title="Product detail" />
-      <Suspense fallback={<SkeletonProductDetail />}>
-        <ProductDetail productId={id} />
-      </Suspense>
+      <ProductDetail productId={id} />
     </Box>
   );
 };

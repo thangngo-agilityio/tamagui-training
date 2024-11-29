@@ -8,7 +8,6 @@ import Image from 'next/image';
 import { Button, Heading, Text } from '@/universal';
 
 const ShowroomSection = () => {
-  // const isMobile = useBreakpointValue({ base: true, lg: false });
   return (
     <Stack
       position='relative'
@@ -67,9 +66,9 @@ const ShowroomSection = () => {
           </Text>
           <Button
             variant='showroom'
-            // $gtMd={{
-            //   variant: 'showroom'
-            // }}
+          // $gtMd={{
+          //   variant: 'showroom'
+          // }}
           >
             Coming soon...
           </Button>

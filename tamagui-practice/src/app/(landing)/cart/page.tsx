@@ -2,9 +2,7 @@ import { Metadata } from 'next';
 
 // Components
 import { CartPage, OverviewSection } from '@/ui';
-import { Box, Container } from '@chakra-ui/react';
-import { Suspense } from 'react';
-import { SkeletonCartList } from '@/components';
+import { Container } from '@chakra-ui/react';
 
 export const metadata: Metadata = {
   title: 'Cart',
@@ -15,9 +13,7 @@ export const metadata: Metadata = {
 const Cart = () => (
   <Container maxW="100%" p={0}>
     <OverviewSection title="Cart page" />
-    <Suspense fallback={<SkeletonCartList length={2} />}>
-      <CartPage />
-    </Suspense>
+    <CartPage />
   </Container>
 );
 

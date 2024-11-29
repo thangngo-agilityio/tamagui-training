@@ -15,6 +15,7 @@ const HeadingSection = ({ title }: THeadingSection) => (
     marginTop="65px"
     marginBottom="35px"
     paddingHorizontal='28px'
+    style={{ textTransform: 'capitalize' }}
     $gtMd={{
       marginHorizontal: '67px'
     }}

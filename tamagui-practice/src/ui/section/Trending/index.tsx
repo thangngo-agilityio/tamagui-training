@@ -7,7 +7,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 // Components
-import { SkeletonProductList } from '@/components';
+import { CardBenefit, ItemCategory, ProductCard, SkeletonProductList } from '@/components';
 import { Heading, Text } from '@/universal';
 
 // Constants
@@ -17,18 +17,18 @@ import { BENEFIT_LIST, MENU_ITEM_FILTER, ROUTER } from '@/constants';
 import { TProduct } from '@/types';
 import { VectorIcon } from '@/icons';
 
-const ProductCard = dynamic(() => import('@/components/ProductCard'), {
-  loading: () => <SkeletonProductList length={1} />,
-});
-const ItemCategory = dynamic(() => import('@/components/ItemCategory'));
-const CardBenefit = dynamic(() => import('@/components/CardBenefit'));
+// const ProductCard = dynamic(() => import('@/components/ProductCard'), {
+//   loading: () => <SkeletonProductList length={1} />,
+// });
+// const ItemCategory = dynamic(() => import('@/components/ItemCategory'));
+// const CardBenefit = dynamic(() => import('@/components/CardBenefit'));
 
 type TTrendingSection = {
   productList: TProduct[];
 };
 
 const TrendingSection = ({ productList }: TTrendingSection) => {
-  const { gtMd } = useMedia()
+  const { gtMd, gtLg } = useMedia()
 
   return (
     <Stack
@@ -83,7 +83,16 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
         </XStack>
 
         {gtMd && (
-          <XStack gap="92px" marginBottom="98px" paddingHorizontal="104px">
+          <XStack
+            gap="92px"
+            marginBottom="98px"
+            paddingHorizontal="104px"
+            style={{
+              display: 'grid',
+              ...(gtMd && { gridTemplateColumns: 'repeat(2, 1fr' }),
+              ...(gtLg && { gridTemplateColumns: 'repeat(4, 1fr' }),
+            }}
+          >
             {BENEFIT_LIST.map((item) => {
               const IconComponent = item.icon || Fragment;
               return (
@@ -102,18 +111,20 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           width='100%'
           paddingHorizontal='28px'
           marginBottom='136px'
-          flexDirection='column'
-          alignItems="center"
+          flexDirection='row'
+          justifyContent='space-between'
           $gtMd={{
+            alignItems: "center",
+            flexDirection: 'column',
             width: 'unset',
             paddingHorizontal: 0,
             marginBottom: '136px'
           }}
         >
           <YStack
-            width="100%"
             alignItems='center'
             $gtMd={{
+              width: "100%",
               marginBottom: '30px'
             }}
           >
@@ -127,9 +138,9 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
             >
               Top Trending
             </Heading>
-            {!gtMd && (
+            {gtMd && (
               <>
-                <Text maxWidth="797px" variant="septenary" size="extraLarge" marginBottom="10px" alignItems='center'>
+                <Text maxWidth="797px" variant="septenary" size="extraLarge" marginBottom="10px" textAlign='center'>
                   Find a bright ideal to suit your taste with our great
                   selection of suspension, wall, floor and table lights.
                 </Text>
@@ -162,7 +173,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
             gap: '29px'
           }}
         >
-          {productList.map((item) => (
+          {productList?.map((item) => (
             <Stack key={item.id}>
               <ProductCard
                 id={item.id}

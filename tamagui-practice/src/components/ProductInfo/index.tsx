@@ -27,7 +27,6 @@ import { BENEFIT_LIST, ROUTER, SUCCESS_MESSAGES } from '@/constants';
 // Types
 import { ICartItem, TProduct } from '@/types';
 
-// Components
 
 type TProductInfo = {
   cartId: string;
