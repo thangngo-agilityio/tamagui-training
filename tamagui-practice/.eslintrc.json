@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "extends": "next",
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -23,7 +23,7 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
+      "extends": ["plugin:@next/next/recommended"],
       "rules": {
         "@typescript-eslint/no-empty-interface": "off",
         "@typescript-eslint/no-empty-function": "off"
@@ -31,7 +31,7 @@
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
+      "extends": ["plugin:@next/next/recommended"],
       "rules": {}
     }
   ]

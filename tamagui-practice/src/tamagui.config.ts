@@ -36,7 +36,7 @@ const tamaguiConfig = createTamagui(customConfig);
 
 export type TamaguiConfig = typeof tamaguiConfig;
 
-declare module '@tamagui/core' {
+declare module 'tamagui' {
   interface TamaguiCustomConfig extends TamaguiConfig {
     themes: {
       light_web: typeof customThemes.light_web;

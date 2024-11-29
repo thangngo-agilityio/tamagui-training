@@ -5,6 +5,9 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -26,6 +29,12 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// node_modules/.pnpm/next@14.2.3_@babel+core@7.26.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/font/local/index.js
+var require_local = __commonJS({
+  "node_modules/.pnpm/next@14.2.3_@babel+core@7.26.0_babel-plugin-macros@3.1.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/font/local/index.js"() {
+  }
+});
 
 // src/tamagui.config.ts
 var tamagui_config_exports = {};
@@ -66,6 +75,9 @@ var media = {
   gtXxl: { minWidth: 1400 },
   landscape: { orientation: "landscape" }
 };
+
+// src/themes/fontConfig.ts
+var import_local = __toESM(require_local());
 
 // src/themes/metric.ts
 var spacing = {
@@ -116,11 +128,21 @@ var zIndex = {
 };
 
 // src/themes/fontConfig.ts
+var lufga = (0, import_local.default)({ src: "../assets/fonts/LufgaRegular.ttf" });
+var lufgaExtraBold = (0, import_local.default)({
+  src: "../assets/fonts/LufgaExtraBold.ttf"
+});
+var lufgaBold = (0, import_local.default)({
+  src: "../assets/fonts/LufgaBold.ttf"
+});
+var lufgaSemiBold = (0, import_local.default)({
+  src: "../assets/fonts/LufgaBold.ttf"
+});
 var fonts = {
-  body: "Lufga-Regular",
-  semiHeading: "Lufga-Semibold",
-  heading: "Lufga-Bold",
-  extraHeading: "Lufga-Extrabold"
+  body: `${lufga.style.fontFamily}, sans-serif`,
+  semiHeading: `${lufgaSemiBold.style.fontFamily}, sans-serif`,
+  heading: `${lufgaBold.style.fontFamily}, sans-serif`,
+  extraHeading: `${lufgaExtraBold.style.fontFamily}, sans-serif`
 };
 var lineHeight = {
   extraTiny: 20,

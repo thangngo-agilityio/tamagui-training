@@ -24,6 +24,7 @@ export { default as Navigation } from './Navigation';
 export { default as FilterProduct } from './FilterProduct';
 export { default as ProductList } from './ProductList';
 export { default as CartList } from './CartList';
+export { default as SwitchTheme } from './SwitchTheme';
 
 // Common
 export * from './common';

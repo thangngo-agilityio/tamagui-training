@@ -1,15 +1,13 @@
 'use client';
 
 import { Fragment } from 'react';
-import {
-  Grid,
-} from '@chakra-ui/react';
+
 import { RadioGroup, Stack, useMedia, XStack, YStack } from 'tamagui';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 // Components
-import { SkeletonProductList } from '@/components';
+import { CardBenefit, ItemCategory, ProductCard, SkeletonProductList } from '@/components';
 import { Heading, Text } from '@/universal';
 
 // Constants
@@ -19,19 +17,18 @@ import { BENEFIT_LIST, MENU_ITEM_FILTER, ROUTER } from '@/constants';
 import { TProduct } from '@/types';
 import { VectorIcon } from '@/icons';
 
-const ProductCard = dynamic(() => import('@/components/ProductCard'), {
-  loading: () => <SkeletonProductList length={1} />,
-});
-const ItemCategory = dynamic(() => import('@/components/ItemCategory'));
-const CardBenefit = dynamic(() => import('@/components/CardBenefit'));
+// const ProductCard = dynamic(() => import('@/components/ProductCard'), {
+//   loading: () => <SkeletonProductList length={1} />,
+// });
+// const ItemCategory = dynamic(() => import('@/components/ItemCategory'));
+// const CardBenefit = dynamic(() => import('@/components/CardBenefit'));
 
 type TTrendingSection = {
   productList: TProduct[];
 };
 
 const TrendingSection = ({ productList }: TTrendingSection) => {
-  // const isMobile = useBreakpointValue({ base: true, lg: false });
-  const { gtMd } = useMedia()
+  const { gtMd, gtLg } = useMedia()
 
   return (
     <Stack
@@ -85,29 +82,39 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           })}
         </XStack>
 
-        {/* {!isMobile && ( */}
-        <XStack gap="92px" marginBottom="98px" paddingHorizontal="104px">
-          {BENEFIT_LIST.map((item) => {
-            const IconComponent = item.icon || Fragment;
-            return (
-              <CardBenefit
-                key={item.id}
-                icon={<IconComponent />}
-                title={item.title}
-                text={item.text}
-              />
-            );
-          })}
-        </XStack>
-        {/* )} */}
+        {gtMd && (
+          <XStack
+            gap="92px"
+            marginBottom="98px"
+            paddingHorizontal="104px"
+            style={{
+              display: 'grid',
+              ...(gtMd && { gridTemplateColumns: 'repeat(2, 1fr' }),
+              ...(gtLg && { gridTemplateColumns: 'repeat(4, 1fr' }),
+            }}
+          >
+            {BENEFIT_LIST.map((item) => {
+              const IconComponent = item.icon || Fragment;
+              return (
+                <CardBenefit
+                  key={item.id}
+                  icon={<IconComponent />}
+                  title={item.title}
+                  text={item.text}
+                />
+              );
+            })}
+          </XStack>
+        )}
 
         <Stack
           width='100%'
           paddingHorizontal='28px'
-          marginBottom='106px'
+          marginBottom='136px'
           flexDirection='row'
-          alignItems="center"
+          justifyContent='space-between'
           $gtMd={{
+            alignItems: "center",
             flexDirection: 'column',
             width: 'unset',
             paddingHorizontal: 0,
@@ -115,9 +122,9 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           }}
         >
           <YStack
-            width="100%"
+            alignItems='center'
             $gtMd={{
-              alignItems: 'center',
+              width: "100%",
               marginBottom: '30px'
             }}
           >
@@ -131,15 +138,15 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
             >
               Top Trending
             </Heading>
-            {/* {!isMobile && (
+            {gtMd && (
               <>
-                <Text maxW="797px" variant="septenary" size="text2Xl" mb="10px">
+                <Text maxWidth="797px" variant="septenary" size="extraLarge" marginBottom="10px" textAlign='center'>
                   Find a bright ideal to suit your taste with our great
                   selection of suspension, wall, floor and table lights.
                 </Text>
-                <Box w="98px" h="5px" bgColor="background.300" />
+                <Stack width="98px" height="5px" backgroundColor="$backgroundPrimary" />
               </>
-            )} */}
+            )}
           </YStack>
           <XStack width="100%" alignItems='center' justifyContent="flex-end" gap={5}>
             <Link href={ROUTER.PRODUCT} style={{ textDecoration: 'none' }}>
@@ -166,7 +173,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
             gap: '29px'
           }}
         >
-          {productList.map((item) => (
+          {productList?.map((item) => (
             <Stack key={item.id}>
               <ProductCard
                 id={item.id}
@@ -177,8 +184,8 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
             </Stack>
           ))}
         </Stack>
-      </YStack>
-    </Stack>
+      </YStack >
+    </Stack >
   );
 };
 

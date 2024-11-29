@@ -1,10 +1,25 @@
+import LocalFont from 'next/font/local';
 import { spacing } from './metric';
 
+export const lufga = LocalFont({ src: '../assets/fonts/LufgaRegular.ttf' });
+
+export const lufgaExtraBold = LocalFont({
+  src: '../assets/fonts/LufgaExtraBold.ttf',
+});
+
+export const lufgaBold = LocalFont({
+  src: '../assets/fonts/LufgaBold.ttf',
+});
+
+export const lufgaSemiBold = LocalFont({
+  src: '../assets/fonts/LufgaBold.ttf',
+});
+
 export const fonts = {
-  body: 'Lufga-Regular',
-  semiHeading: 'Lufga-Semibold',
-  heading: 'Lufga-Bold',
-  extraHeading: 'Lufga-Extrabold',
+  body: `${lufga.style.fontFamily}, sans-serif`,
+  semiHeading: `${lufgaSemiBold.style.fontFamily}, sans-serif`,
+  heading: `${lufgaBold.style.fontFamily}, sans-serif`,
+  extraHeading: `${lufgaExtraBold.style.fontFamily}, sans-serif`,
 };
 
 export const lineHeight = {

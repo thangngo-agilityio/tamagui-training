@@ -14,8 +14,8 @@ type TCardBenefit = {
 const CardBenefit = ({ icon, title, text }: TCardBenefit) => (
   <Stack alignItems="center" flexDirection="row">
     <Stack>{icon}</Stack>
-    <YStack maxWidth="206px" marginLeft="24px">
-      <Heading size="medium" marginBottom="2px">
+    <YStack width='100%' marginLeft="24px">
+      <Heading variant='secondary' size="medium" marginBottom="2px">
         {title}
       </Heading>
       <Text variant="senary" size="medium">

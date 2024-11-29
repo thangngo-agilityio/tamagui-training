@@ -58,6 +58,7 @@ const TotalCart = ({ cartItem, cartId }: TTotalCart) => {
     <Stack
       flexDirection='column'
       justifyContent="space-between"
+      paddingHorizontal='28px'
       $gtMd={{ flexDirection: 'row', paddingHorizontal: '67px', paddingBottom: '610px' }}
     >
       <YStack alignItems="flex-start" marginBottom='20px' $gtMd={{ marginBottom: 0 }}>

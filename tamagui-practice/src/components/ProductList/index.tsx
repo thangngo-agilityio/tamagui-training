@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
 
 // Components
 import { ProductCard, Pagination } from '@/components';
@@ -34,7 +34,7 @@ const ProductList = ({ productList }: TProductListProps) => {
 
   return (
     <YStack alignItems="center">
-      {productList.length > 0 ? (
+      {productList?.length > 0 ? (
         <Stack
           style={{
             display: 'grid',

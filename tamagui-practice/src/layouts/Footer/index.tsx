@@ -1,9 +1,9 @@
 'use client'
 
-import { Image, Stack, useMedia, XStack, YStack } from 'tamagui';
+import { Circle, Image, Stack, useMedia, XStack, YStack } from 'tamagui';
 
 // Components
-import { NavFooter } from '@/components';
+import { NavFooter, SwitchTheme } from '@/components';
 import { LineDownIcon, LogoWhiteIcon } from '@/icons';
 
 // Constants
@@ -102,6 +102,9 @@ const Footer = () => {
                         minifurs@gmail.com
                       </Text>
                       <XStack alignItems="center" gap="12px">
+                        <Circle size='35px'
+                          backgroundColor="$backgroundFooterItem" />
+                        <SwitchTheme />
                         <Stack
                           width="35px"
                           height="35px"
