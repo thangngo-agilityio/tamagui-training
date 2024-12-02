@@ -52,6 +52,8 @@ const ProductInfo = ({ product, cartId, cartItems, category }: TProductInfo) => 
     description = '',
   } = product || {};
 
+  const currentQuantity = cartItems.map((item) => item.quantity)
+
   const handleAddToCart = useCallback(async () => {
     const newCartItems = [...cartItems];
 
@@ -62,10 +64,12 @@ const ProductInfo = ({ product, cartId, cartItems, category }: TProductInfo) => 
       return id === productId;
     });
 
+    const totalQuantity = quantity + currentQuantity[0]
+
     if (itemExist) {
-      itemExist.quantity = quantity;
+      itemExist.quantity = totalQuantity;
     } else {
-      newCartItems.push({ product, quantity: quantity });
+      newCartItems.push({ product, quantity: totalQuantity });
     }
 
     const res = await updateMyCart(cartId, newCartItems);
