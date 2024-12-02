@@ -27,6 +27,7 @@ const ProductSection = ({ productList }: TProductSection) => {
   const { gtMd } = useMedia()
   return (
     <Stack
+      backgroundColor='$backgroundBody'
       paddingTop='54px'
       paddingBottom='50px'
       justifyContent="center"

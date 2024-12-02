@@ -9,8 +9,10 @@ import { LineDownIcon, LogoWhiteIcon } from '@/icons';
 // Constants
 import { FOOTER_COMPANY_LIST, FOOTER_SERVICE_LIST } from '@/constants';
 import { Button, Heading, Text } from '@/universal';
+import { useThemeContext } from '@/providers/Tamagui';
 
 const Footer = () => {
+  const { theme } = useThemeContext()
   const { gtMd } = useMedia();
   return (
     <>
@@ -102,33 +104,7 @@ const Footer = () => {
                         minifurs@gmail.com
                       </Text>
                       <XStack alignItems="center" gap="12px">
-                        <Circle size='35px'
-                          backgroundColor="$backgroundFooterItem" />
-                        <SwitchTheme />
-                        <Stack
-                          width="35px"
-                          height="35px"
-                          borderRadius="$full"
-                          backgroundColor="$backgroundFooterItem"
-                        />
-                        <Stack
-                          width="35px"
-                          height="35px"
-                          borderRadius="$full"
-                          backgroundColor="$backgroundFooterItem"
-                        />
-                        <Stack
-                          width="35px"
-                          height="35px"
-                          borderRadius="$full"
-                          backgroundColor="$backgroundPrimary"
-                        />
-                        <Stack
-                          width="35px"
-                          height="35px"
-                          borderRadius="$full"
-                          backgroundColor="$backgroundFooterItem"
-                        />
+                        <SwitchTheme bgColor={theme === 'light' ? '$backgroundFooterItem' : '$backgroundPrimary'} />
                       </XStack>
                     </YStack>
                   </Stack>

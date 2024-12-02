@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { Box } from '@chakra-ui/react';
 
 // Components
 import {
@@ -25,9 +24,8 @@ const ProductDetail = async ({ productId }: TProductDetail) => {
 
   return (
     <>
-      <HeadingSection title={category} />
       <Suspense fallback={<SkeletonProductDetail />}>
-        <ProductInfo product={product} cartId={id} cartItems={cartItems} />
+        <ProductInfo product={product} cartId={id} cartItems={cartItems} category={category} />
       </Suspense>
     </>
   );

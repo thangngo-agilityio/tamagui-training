@@ -25,6 +25,7 @@ const Header = ({ cartItems }: THeader) => {
 
   return (
     <Stack
+      backgroundColor='$backgroundBody'
       width="100%"
       justifyContent="center"
       position="absolute"

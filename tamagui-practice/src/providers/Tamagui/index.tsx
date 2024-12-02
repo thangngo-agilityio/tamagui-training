@@ -1,59 +1,41 @@
 'use client';
 
-import { ReactNode } from 'react';
-import { TamaguiProvider as TamaguiUiProvider, Theme } from '@tamagui/core';
-import { StyleSheet } from 'react-native';
-
-// Customize themes
+import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { TamaguiProvider, Theme } from 'tamagui';
+import { NextThemeProvider } from '@tamagui/next-theme';
 import config from '@/tamagui.config';
-import { useServerInsertedHTML } from 'next/navigation';
-import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
-import tamaguiConfig from '@/tamagui.config';
 
-const TamaguiProvider = ({ children }: { children?: ReactNode }) => {
-  const [theme, setTheme] = useRootTheme()
-  useServerInsertedHTML(() => {
-    // @ts-ignore
-    const rnwStyle = StyleSheet.getSheet()
-    return (
-      <>
-        <style
-          dangerouslySetInnerHTML={{ __html: rnwStyle.textContent }}
-          id={rnwStyle.id}
-        />
-        <style jsx global>{`
-          html {
-            font-family: 'Lufga-Regular';
-          }
-        `}</style>
-        <style
-          dangerouslySetInnerHTML={{
-            __html: tamaguiConfig.getCSS({
-              // if you are using "outputCSS" option, you should use this "exclude"
-              // if not, then you can leave the option out
-              exclude: process.env.NODE_ENV === 'production' ? 'design-system' : null,
-            }),
-          }}
-        />
-      </>
-    )
-  })
+type ThemeContextType = {
+  theme: string;
+  toggleTheme: () => void;
+};
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
   return (
-    <NextThemeProvider
-      skipNextHead
-      // change default theme (system) here:
-      // defaultTheme="light"
-      onChangeTheme={(next) => {
-        setTheme(next as any)
-      }}
-    >
-      <TamaguiUiProvider config={config} defaultTheme={theme}>
-        <Theme name='light_web'>
-          {children}
-        </Theme>
-      </TamaguiUiProvider>
-    </NextThemeProvider>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <NextThemeProvider defaultTheme={theme}>
+        <TamaguiProvider config={config} defaultTheme={theme}>
+          <Theme name='light_web'>
+            {children}
+          </Theme>
+        </TamaguiProvider>
+      </NextThemeProvider>
+    </ThemeContext.Provider>
   );
-}
+};
 
-export default TamaguiProvider;
+export const useThemeContext = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useThemeContext must be used within a ThemeProvider');
+  }
+  return context;
+};

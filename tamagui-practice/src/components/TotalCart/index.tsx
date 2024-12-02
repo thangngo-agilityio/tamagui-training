@@ -59,6 +59,7 @@ const TotalCart = ({ cartItem, cartId }: TTotalCart) => {
       flexDirection='column'
       justifyContent="space-between"
       paddingHorizontal='28px'
+      backgroundColor='$backgroundBody'
       paddingBottom='50px'
       $gtMd={{ flexDirection: 'row', paddingHorizontal: '67px', paddingBottom: '610px' }}
     >
