@@ -1,6 +1,6 @@
 'use client';
 
-import { Stack, XStack, YStack } from 'tamagui';
+import { Stack, useMedia, XStack, YStack } from 'tamagui';
 import { LinearGradient } from 'tamagui/linear-gradient'
 import Image from 'next/image';
 
@@ -8,18 +8,25 @@ import Image from 'next/image';
 import { Button, Heading, Text } from '@/universal';
 
 const ShowroomSection = () => {
+  const { gtMd } = useMedia();
+
   return (
     <Stack
       position='relative'
       justifyContent="center"
       alignItems='center'
       borderRadius="$sm"
+      paddingHorizontal='24px'
+      marginHorizontal='20px'
+      $gtMd={{
+        paddingHorizontal: '125px',
+        marginHorizontal: 0
+      }}
     >
       <LinearGradient
         position='absolute'
         width='100%'
         height='100%'
-        paddingHorizontal='24px'
         borderRadius="$sm"
         colors={['$backgroundShowroom', '$backgroundShowroomSecondary']}
         start={[1, 0]}
@@ -40,20 +47,22 @@ const ShowroomSection = () => {
         >
           <Heading
             marginBottom="10px"
-            variant="septenary"
+            variant="tertiary"
             size='small'
             maxWidth="580px"
             $gtMd={{
               size: 'semiHuge'
             }}
           >
-            Customize your furniture and build your space with minifurs
+            {!gtMd ? 'Virtual Reality Showroom'
+              : 'Customize your furniture and build your space with minifurs'}
           </Heading>
           <Text
             width='180px'
             marginBottom='5px'
             fontSize='6px'
             maxWidth="580px"
+            lineHeight={16}
             $gtMd={{
               width: 'unset',
               marginBottom: '22px',
@@ -86,8 +95,10 @@ const ShowroomSection = () => {
             position='absolute'
             width='264px'
             height='127px'
+            right={-78}
             $gtMd={{
               position: 'unset',
+              left: 0,
               width: 'unset',
               height: 'unset'
             }}
@@ -101,7 +112,7 @@ const ShowroomSection = () => {
             />
           </Stack>
         </Stack>
-      </XStack>
+      </XStack >
     </Stack >
   );
 };
