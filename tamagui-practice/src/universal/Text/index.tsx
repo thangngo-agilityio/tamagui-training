@@ -116,7 +116,7 @@ const Text = styled(textBase, {
       },
       ultimateLarge: {
         fontSize: '$14',
-        lineHeight: 56,
+        lineHeight: 73,
       },
     },
 

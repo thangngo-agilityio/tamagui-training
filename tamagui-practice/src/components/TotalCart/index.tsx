@@ -59,10 +59,11 @@ const TotalCart = ({ cartItem, cartId }: TTotalCart) => {
       flexDirection='column'
       justifyContent="space-between"
       paddingHorizontal='28px'
+      paddingBottom='50px'
       $gtMd={{ flexDirection: 'row', paddingHorizontal: '67px', paddingBottom: '610px' }}
     >
       <YStack alignItems="flex-start" marginBottom='20px' $gtMd={{ marginBottom: 0 }}>
-        <XStack gap="15px">
+        <XStack gap="15px" alignItems='center'>
           <Heading
             variant="product"
             size='huge'
@@ -70,7 +71,7 @@ const TotalCart = ({ cartItem, cartId }: TTotalCart) => {
           >
             Total:
           </Heading>
-          <Text variant="totalCart" size='superLarge' $gtMd={{ size: 'ultimateLarge' }}>
+          <Text variant="totalCart" size='superLarge' weight='bold' $gtMd={{ size: 'ultimateLarge' }}>
             N{formatAmountNumber(total.toString())}
           </Text>
         </XStack>
