@@ -31,6 +31,9 @@ const ProductCard = ({ id, image, title, price }: ProductCard) => {
         boxShadow="0 4px 50px -5px rgba(32, 32, 32, 10%)"
         paddingBottom='8px'
         alignItems="center"
+        borderBottomRightRadius='$lg'
+        borderBottomLeftRadius='$lg'
+        backgroundColor='$BackgroundItemCategory'
         $gtMd={{
           paddingBottom: '14px'
         }}

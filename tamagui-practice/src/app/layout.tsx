@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { SessionProvider } from 'next-auth/react';
-import { TamaguiProvider } from '@/providers';
+import { ThemeProvider } from '@/providers/Tamagui';
 
 import '../styles/globals.css'
 
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <body>
         <SessionProvider refetchInterval={10 * 60} refetchOnWindowFocus={false}>
-          <TamaguiProvider>{children}</TamaguiProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </SessionProvider>
       </body>
     </html >

@@ -40,6 +40,7 @@ declare module 'tamagui' {
   interface TamaguiCustomConfig extends TamaguiConfig {
     themes: {
       light_web: typeof customThemes.light_web;
+      dark_web: typeof customThemes.dark_web;
     };
   }
 }

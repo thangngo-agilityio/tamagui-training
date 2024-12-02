@@ -26,6 +26,8 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
 
   return (
     <Stack
+      backgroundColor='$backgroundBody'
+
       justifyContent="center"
       alignItems="center"
       $gtMd={{ paddingHorizontal: '94px' }}

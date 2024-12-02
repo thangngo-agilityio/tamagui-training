@@ -39,17 +39,11 @@ const Product = async ({ searchParams }: TProductPage) => {
         alignItems="center"
         mb="20px"
       >
-        <Flex
-          // maxW={{ base: 'unset', lg: '1512px' }}
-          maxW='1512px'
-          flexDir="column"
-          alignItems="center"
-        >
-          <FilterProduct />
-          <Suspense fallback={<SkeletonProductList length={8} />}>
-            <ProductPage queryConfig={queryConfig} />
-          </Suspense>
-        </Flex>
+
+        <FilterProduct />
+        <Suspense fallback={<SkeletonProductList length={8} />}>
+          <ProductPage queryConfig={queryConfig} />
+        </Suspense>
       </Flex>
     </Box>
   );

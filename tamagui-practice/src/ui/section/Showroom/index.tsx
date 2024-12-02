@@ -61,10 +61,10 @@ const ShowroomSection = () => {
             width='180px'
             marginBottom='5px'
             fontSize='6px'
-            maxWidth="580px"
             lineHeight={16}
             $gtMd={{
-              width: 'unset',
+              maxWidth: "580px",
+              width: '100%',
               marginBottom: '22px',
               size: 'extraLarge',
               fontSize: 'unset'

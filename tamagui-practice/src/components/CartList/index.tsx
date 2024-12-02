@@ -48,7 +48,7 @@ const CartList = ({ cartItem, cartId }: TCartList) => {
     [cartId, cartItem, showToast],
   );
   return (
-    <YStack>
+    <YStack backgroundColor='$backgroundBody'>
       <HeadingSection title="Cart" />
       <YStack marginBottom="90px" paddingHorizontal='28px' $gtMd={{ paddingHorizontal: '67px' }}>
         {cartItem.map((cart) => {

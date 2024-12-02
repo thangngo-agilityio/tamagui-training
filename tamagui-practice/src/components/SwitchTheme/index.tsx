@@ -1,18 +1,19 @@
 'use client'
-import { useState } from 'react'
-import { Button, useIsomorphicLayoutEffect } from 'tamagui'
-import { useThemeSetting, useRootTheme } from '@tamagui/next-theme'
+import { useThemeContext } from '@/providers/Tamagui';
+import { useState } from 'react';
+import { Button } from 'tamagui'
 
-const SwitchThemeButton = () => {
-  const themeSetting = useThemeSetting()
-  const [theme] = useRootTheme()
+type TSwitchTheme = {
+  bgColor: string
+}
 
-  const [clientTheme, setClientTheme] = useState<string | undefined>('light_web')
+const SwitchThemeButton = ({ bgColor }: TSwitchTheme) => {
+  const { toggleTheme } = useThemeContext();
 
-  useIsomorphicLayoutEffect(() => {
-    setClientTheme(themeSetting.forcedTheme || themeSetting.current || theme)
-  }, [themeSetting.current, themeSetting.resolvedTheme])
-
-  return <Button onPress={themeSetting.toggle}>Change theme: {clientTheme}</Button>
+  return <Button onPress={toggleTheme} width="35px"
+    height="35px"
+    borderRadius="$full"
+    backgroundColor={bgColor} />;
 }
 export default SwitchThemeButton
+
