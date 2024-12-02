@@ -1,6 +1,5 @@
 'use client';
 
-import { Box, Text } from '@chakra-ui/react';
 import { useCallback, useMemo, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -24,6 +23,7 @@ import { calculateTotalQuantity } from '@/utils';
 // Types
 import { ICartItem } from '@/types';
 import { Stack, useMedia, XStack } from 'tamagui';
+import { Text } from '@/universal';
 
 type TNavigation = {
   cartItem: ICartItem[];
@@ -51,11 +51,11 @@ const Navigation = ({ cartItem }: TNavigation) => {
         <XStack flexDirection="row" alignItems="center" gap="32px">
           <HeartIcon />
           <Link href={ROUTER.CART}>
-            <Box
+            <Stack
               position="relative"
               opacity={1}
               transition=".2s ease-in"
-              _hover={{ opacity: '.8' }}
+              hoverStyle={{ opacity: .8 }}
             >
               <CartIcon />
               <Stack
@@ -69,11 +69,11 @@ const Navigation = ({ cartItem }: TNavigation) => {
                 top={-10}
                 right={-10}
               >
-                <Text size="textMd" variant="secondary">
+                <Text size="small" variant="primary">
                   {totalQuantity}
                 </Text>
               </Stack>
-            </Box>
+            </Stack>
           </Link>
           <UserDropdown onClick={handleLogout} />
         </XStack>

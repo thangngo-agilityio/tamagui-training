@@ -35,31 +35,33 @@ const ExpandSidebar = ({ totalQuantity, onClick }: TSidebarProps) => {
         zIndex={100}
         animation="medium"
       >
-        <Sheet.Overlay animation="lazy" enterStyle={{ opacity: 0 }} exitStyle={{ opacity: 0 }} />
+        <Sheet.Overlay animation="lazy" />
         <Sheet.Handle />
         <Sheet.Frame
           width="$full"
-          padding="$4"
           justifyContent="center"
-          alignItems="center"
-          gap="$5"
-          backgroundColor="$backgroundMenu"
+          alignItems='flex-start'
+          paddingHorizontal={25}
+          gap="10px"
+          backgroundColor="$backgroundButtonQuantity"
         >
-          <Button size="$6" circular onPress={() => setOpen(false)}>
-            Close
-          </Button>
+          <Stack position='absolute' top={10} right={10}>
+            <Button size="$6" onPress={() => setOpen(false)}>
+              Close
+            </Button>
+          </Stack>
           <Link href="/" as="h1" style={{ marginBottom: '27.5px' }}>
             <LogoIcon />
           </Link>
           <LineIcon />
 
-          <YStack gap="15px" alignItems="flex-start">
-            <XStack width="100%" borderBottomWidth="1px solid" borderColor="border.500" paddingBottom="10px">
+          <YStack width='100%' gap="15px" alignItems="flex-start">
+            <XStack width="100%" borderBottomWidth="1px" borderColor="$borderSecondaryInput" paddingBottom="10px" gap={10}>
               <HeartIcon />
               <Heading>Favorites</Heading>
             </XStack>
 
-            <XStack width="100%" borderBottomWidth="1px " borderColor="$borderSecondaryInput" paddingBottom="10px">
+            <XStack width="100%" borderBottomWidth="1px " borderColor="$borderSecondaryInput" paddingBottom="10px" gap={10}>
               <Link href={ROUTER.CART} style={{ textDecoration: 'none' }}>
                 <Stack position="relative" opacity={1} transition=".2s ease-in" hoverStyle={{ opacity: 0.8 }}>
                   <CartIcon />
@@ -71,10 +73,10 @@ const ExpandSidebar = ({ totalQuantity, onClick }: TSidebarProps) => {
                     alignItems="center"
                     justifyContent="center"
                     position="absolute"
-                    top={-3}
-                    right={-3}
+                    top={-10}
+                    right={-10}
                   >
-                    <Text size="small" variant="secondary">
+                    <Text size="small" variant='primary'>
                       {totalQuantity}
                     </Text>
                   </Stack>
@@ -91,13 +93,14 @@ const ExpandSidebar = ({ totalQuantity, onClick }: TSidebarProps) => {
               onPress={onClick}
               cursor="pointer"
               data-testid="button-logout"
+              gap={10}
             >
               <Logout />
               <Heading>Logout</Heading>
             </XStack>
           </YStack>
         </Sheet.Frame>
-      </Sheet>
+      </Sheet >
     </>
   );
 };

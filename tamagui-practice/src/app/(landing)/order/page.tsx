@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 
 // Components
 import { OrderSuccess } from '@/components';
+import { OverviewSection } from '@/ui';
 
 export const metadata: Metadata = {
   title: 'Order',
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 
 const OrderPage = () => (
   <>
+    <OverviewSection />
     <OrderSuccess />
   </>
 );

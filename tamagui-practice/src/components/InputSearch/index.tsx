@@ -31,12 +31,15 @@ const InputSearch = () => {
     <>
       {isShowSearch && (
         <XStack
-          width="350px"
+          width="100%"
           borderWidth="1px"
           borderRadius="$sm"
           padding={10}
           gap={5}
           backgroundColor="$backgroundBody"
+          $gtMd={{
+            width: '350px'
+          }}
         >
           <View>
             <SearchIcon />

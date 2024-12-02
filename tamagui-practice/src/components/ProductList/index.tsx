@@ -33,7 +33,7 @@ const ProductList = ({ productList }: TProductListProps) => {
   } = usePagination(productList, PAGE_SIZE_PRODUCT);
 
   return (
-    <YStack alignItems="center">
+    <YStack alignItems="center" $gtMd={{ paddingHorizontal: 0 }}>
       {productList?.length > 0 ? (
         <Stack
           style={{

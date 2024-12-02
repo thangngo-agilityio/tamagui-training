@@ -43,6 +43,7 @@ export const webTheme: CustomTheme<'light_web'> = {
     textQuantity: colors.black2,
     textTotalCart: colors.orange1,
     textOrderSuccess: colors.grey7,
+    textPagination: colors.white3,
 
     // Button
     buttonPrimary: colors.green1,

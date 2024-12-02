@@ -39,6 +39,7 @@ export type GeneralTheme = {
   textQuantity: string;
   textTotalCart: string;
   textOrderSuccess: string;
+  textPagination: string;
 
   // Button
   buttonPrimary: string;

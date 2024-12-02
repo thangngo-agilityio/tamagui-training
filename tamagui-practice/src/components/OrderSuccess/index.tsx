@@ -34,13 +34,12 @@ const OrderSuccess = () => (
     <Link
       href={ROUTER.HOME}
       style={{
-        width: 400,
-        height: 20,
+        width: 300,
         textAlign: 'center',
         backgroundColor: '#284F49',
         borderRadius: '15px',
         textDecoration: 'none',
-        padding: 20,
+        padding: 10,
         color: '#FFF'
       }}
     >

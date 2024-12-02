@@ -17,12 +17,6 @@ import { BENEFIT_LIST, MENU_ITEM_FILTER, ROUTER } from '@/constants';
 import { TProduct } from '@/types';
 import { VectorIcon } from '@/icons';
 
-// const ProductCard = dynamic(() => import('@/components/ProductCard'), {
-//   loading: () => <SkeletonProductList length={1} />,
-// });
-// const ItemCategory = dynamic(() => import('@/components/ItemCategory'));
-// const CardBenefit = dynamic(() => import('@/components/CardBenefit'));
-
 type TTrendingSection = {
   productList: TProduct[];
 };
@@ -48,7 +42,7 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           paddingTop="20px"
           paddingBottom="26px"
           backgroundColor='transparent'
-          gap='25px'
+          gap='15px'
           justifyContent="center"
           alignItems="center"
           marginBottom="46px"
@@ -113,8 +107,8 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
           marginBottom='136px'
           flexDirection='row'
           justifyContent='space-between'
+          alignItems="center"
           $gtMd={{
-            alignItems: "center",
             flexDirection: 'column',
             width: 'unset',
             paddingHorizontal: 0,
@@ -148,14 +142,14 @@ const TrendingSection = ({ productList }: TTrendingSection) => {
               </>
             )}
           </YStack>
-          <XStack width="100%" alignItems='center' justifyContent="flex-end" gap={5}>
-            <Link href={ROUTER.PRODUCT} style={{ textDecoration: 'none' }}>
+          <Link href={ROUTER.PRODUCT} style={{ textDecoration: 'none' }}>
+            <XStack width="100%" alignItems='center' justifyContent="flex-end" gap={5}>
               <Text size='extraSmall' variant="tertiary" $gtMd={{ size: 'small' }}>
                 See all
               </Text>
-            </Link>
-            <VectorIcon />
-          </XStack>
+              <VectorIcon />
+            </XStack>
+          </Link>
         </Stack>
 
         <Stack

@@ -30,7 +30,7 @@ const Product = async ({ searchParams }: TProductPage) => {
   };
 
   return (
-    <Box>
+    <Box overflow='hidden'>
       <OverviewSection title="Product page" />
       <Flex
         // paddingBottom={{ base: '100px', md: '350px' }}

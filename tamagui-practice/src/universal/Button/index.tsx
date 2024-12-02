@@ -83,25 +83,17 @@ const ButtonFrame = styled(View, {
 
       showroom: {
         width: 'fit-content',
-        backgroundColor: '$BackgroundShowroomSection',
-        color: '$textPrimary',
-        borderWidth: 0,
-        borderRadius: '$xl',
-        opacity: 1,
-        hoverStyle: {
-          opacity: 0.8,
-        },
-      },
-
-      showroomMobile: {
-        width: 'fit-content',
-        backgroundColor: 'transparent',
         color: '$textQuinary',
         borderWidth: 0,
         opacity: 1,
         hoverStyle: {
           opacity: 0.8,
         },
+        $gtMd: {
+          backgroundColor: '$BackgroundShowroomSection',
+          color: '$textPrimary',
+          borderRadius: '$xl',
+        }
       },
 
       footer: {
@@ -161,8 +153,7 @@ const ButtonFrame = styled(View, {
       },
 
       checkout: {
-        width: 'fit-content',
-        height: 'fit-content',
+        width: '100%',
         backgroundColor: '$textQuinary',
         borderRadius: '$xs',
         transition: '.2s ease-in',
@@ -171,6 +162,10 @@ const ButtonFrame = styled(View, {
         hoverStyle: {
           backgroundColor: 'transparent',
         },
+        $gtMd: {
+          width: 'fit-content',
+          height: 'fit-content',
+        }
       },
     },
     fit: {
@@ -196,11 +191,16 @@ const ButtonText = styled(Text, {
   variants: {
     variant: {
       overview: {
-        paddingHorizontal: '42px',
-        paddingVertical: '22px',
+        paddingHorizontal: '18px',
+        paddingVertical: '14px',
         color: '$textPrimary',
-        size: 'superLarge',
+        size: 'tiny',
         weight: 'bold',
+        $gtMd: {
+          size: 'superLarge',
+          paddingHorizontal: '42px',
+          paddingVertical: '22px',
+        }
       },
 
       auth: {
@@ -209,13 +209,14 @@ const ButtonText = styled(Text, {
       },
 
       showroom: {
-        paddingHorizontal: '26px',
-        paddingVertical: '22px',
-        size: 'specialLarge',
-      },
-
-      showroomMobile: {
         size: 'tiny',
+        weight: 'bold',
+        padding: 0,
+        $gtMd: {
+          paddingHorizontal: '26px',
+          paddingVertical: '22px',
+          size: 'specialLarge',
+        }
       },
 
       warning: {
@@ -251,14 +252,19 @@ const ButtonText = styled(Text, {
       },
 
       checkout: {
-        paddingHorizontal: '100px',
-        paddingVertical: '30px',
+        paddingVertical: '4px',
         color: '$textPrimary',
         transition: '.2s ease-in',
-        size: 'superLarge',
+        weight: 'bold',
+        size: 'large',
         hoverStyle: {
           color: '$textQuinary',
         },
+        $gtMd: {
+          paddingHorizontal: '100px',
+          paddingVertical: '30px',
+          size: 'superLarge',
+        }
       },
       iconPrimary: {
         color: 'textQuaternary',
