@@ -42,7 +42,7 @@ const Footer = () => {
                 <Heading
                   maxWidth="864px"
                   size="ultraHuge"
-                  variant="footerPrimary"
+                  variant="septenary"
                   marginBottom="48px"
                 >
                   Let’s make your space amazing together.
