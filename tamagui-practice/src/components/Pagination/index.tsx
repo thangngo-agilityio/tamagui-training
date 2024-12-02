@@ -21,8 +21,8 @@ const PaginationComponent = ({
   arrOfCurrButtons = [],
   isDisabledPrev = false,
   isDisableNext = false,
-  onPageChange = () => {},
-  onClickPage = () => {},
+  onPageChange = () => { },
+  onClickPage = () => { },
 }: PaginationProps) => {
   const handleNextPage = () => onPageChange(NEXT);
 
@@ -48,37 +48,35 @@ const PaginationComponent = ({
         }}
       >
         <Button
-          width="6px"
-          height="6px"
+          width="30px"
+          height="30px"
+          justifyContent='center'
+          alignItems='center'
           data-testid="prev-button"
           aria-label="btn-prev"
           variant="iconSecondary"
           cursor={isDisabledPrev ? 'not-allowed' : ''}
           disabled={isDisabledPrev}
           onPress={handlePrevPage}
-          $gtMd={{
-            width: '30px',
-            height: '30px',
-          }}
         >
           <ArrowPaginationIcon width="10px" height="10px" isExpanded={false} rotate="90deg" />
         </Button>
-        <XStack alignItems="center" justifyContent="space-between" width="100%" $gtMd={{ width: 'auto' }}>
+        <XStack alignItems="center"  $gtMd={{ width: 'auto' }}>
           {arrOfCurrButtons.map((item: string, index: number) => {
             const isDots = item === DOTS;
             const isDisable = currentPage === +item || isDots;
             const hoverStyle = isDots
               ? {}
               : {
-                  color: 'text.700',
-                  bg: 'background.800',
-                };
+                color: '$textTotalCart',
+                backgroundColor: '$backgroundFilter',
+              };
             const disableStyle = isDots
               ? {}
               : {
-                  color: 'text.700',
-                  bg: 'background.800',
-                };
+                color: '$textTotalCart',
+                backgroundColor: '$backgroundFilter',
+              };
             const handleClickPage = () => onClickPage(+item);
 
             return (
@@ -95,7 +93,8 @@ const PaginationComponent = ({
                 {...(isDots && { cursor: 'not-allowed' })}
                 hoverStyle={hoverStyle}
                 onPress={handleClickPage}
-                style={{ fontSize: '$sm', color: currentPage === +item ? 'text.700' : 'text.200' }}
+                disabledStyle={disableStyle}
+                style={{ fontSize: '$sm', color: currentPage === +item ? '$textPagination' : '$textSecondary' }}
               >
                 {item}
               </Button>
@@ -103,18 +102,16 @@ const PaginationComponent = ({
           })}
         </XStack>
         <Button
+          width="30px"
+          height="30px"
+          justifyContent='center'
+          alignItems='center'
           data-testid="next-button"
           aria-label="btn-next"
           variant="iconSecondary"
           cursor={isDisableNext ? 'not-allowed' : ''}
           disabled={isDisableNext}
           onPress={handleNextPage}
-          width="6px"
-          height="6px"
-          $gtMd={{
-            width: '30px',
-            height: '30px',
-          }}
         >
           <ArrowPaginationIcon width="10px" height="10px" isExpanded={false} rotate="-90deg" />
         </Button>

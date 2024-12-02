@@ -269,6 +269,7 @@ var webTheme = {
     textQuantity: colors.black2,
     textTotalCart: colors.orange1,
     textOrderSuccess: colors.grey7,
+    textPagination: colors.white3,
     // Button
     buttonPrimary: colors.green1,
     BackgroundShowroomSection: colors.green7,

@@ -40,7 +40,7 @@ const FilterProduct = () => {
       paddingTop="20px"
       paddingBottom="26px"
       backgroundColor='transparent'
-      gap='25px'
+      gap='15px'
       justifyContent="center"
       alignItems="center"
       marginBottom="146px"

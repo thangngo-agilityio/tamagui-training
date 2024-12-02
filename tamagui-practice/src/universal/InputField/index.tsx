@@ -25,6 +25,9 @@ const StyledInput = styled(Input, {
       search: {
         paddingVertical: '$2',
         borderWidth: 0,
+        focusStyle: {
+          borderWidth: 0,
+        }
       },
       form: {
         width: '100%',
