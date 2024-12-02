@@ -37,7 +37,7 @@ const CartItem = ({
   }, [id, onRemoveItem]);
   return (
     <Stack flexDirection='column' gap="30px" $gtMd={{ flexDirection: 'row' }}>
-      <Stack flex={1}>
+      <Stack flex={1} $gtMd={{ minWidth: '447px' }}>
         <Image
           width={347}
           height={290}
